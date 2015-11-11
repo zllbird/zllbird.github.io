@@ -45,7 +45,7 @@
 
 &lt;p&gt;下面是 git status 中对于修改的文件和刚刚加入的文件的显示&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;images/git-untruck.png&#34; alt=&#34;git-untruck&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;git-untruck.png&#34; alt=&#34;git-untruck&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这个时候，上面两个文件是无法被忽略的，而add.txt，是可以被忽略的。&lt;/p&gt;
 

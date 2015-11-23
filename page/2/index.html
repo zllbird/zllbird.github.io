@@ -74,9 +74,9 @@
     
     <div class="post">
       <h1 class="post-title">
-        <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/">Git清理误传的文件</a>
+        <a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">Android Transition 学习心得</a>
       </h1>
-      <span class="post-date">Nov 11, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/#disqus_thread">Comments</a>
+      <span class="post-date">Nov 12, 2015 &middot; 3 minute read &middot; <a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#disqus_thread">Comments</a>
       
       <br/>
       <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
@@ -84,76 +84,265 @@
       
       
 
-<h1 id="git清理误传的文件:2c3299dc152aba749c72550a3d365541">Git清理误传的文件</h1>
+<h1 id="android-transition-学习心得:197eea1a2f41ae8a1e21912c062e6b04">Android Transition 学习心得</h1>
 
-<p>​   Git进行版本管理的时候，项目中很多文件(配置文件，自动生成文件，构建生成文件，依赖包等)是不需要同步上传到服务器。一方面，造成文件的多余，另一方面，如本地配置文件（<code>local.properties</code>），不同人员的来回提交，则会造成同步开发人员的版本混乱——不断地解决重复冲突，这是相当不值得的。</p>
+<p>Android 5.0之后。Transition 被更多的应用起来，support也对其越来越多得支持。这种大背景下，各种动画的学习便是必不可少的了。而其中Transition便是其中的佼佼者。</p>
 
-<p>​   Git提供了一种忽略机制——gitignore。本质上也是一种Git配置，类似于配置文件。将配置文件中相关文件忽略，写法与Android工程是熟悉的混淆配置文件（<code>proguard-rules.pro</code>）非常相似。功能也是将<code>.gitignore</code>里面配置好的文件忽略，或者说是剔除，不让此文件加入版本控制。</p>
+<p>下面是比较详细的介绍和应用实践，我也是主要通过这个项目学习，但强烈建议，只先通看文档，别上来直接就照着写（还有看完后，记得回来啊！！！）：</p>
 
-<p>​   关于gitignore的详细介绍请<a href="http://git.oschina.net/progit/">参考这里,第二章基础</a></p>
+<p><a href="https://github.com/lgvalle/Material-Animations">Material-Animations</a></p>
 
-<p>​   显然，对于我这种Git新手，很可能知道这些的时候，已经把配置文件都扔到服务器上了。然后，一阵胡搞乱搞…（都是满纸辛酸泪），其实根本原因还是对Git本身理解不够。接下来，简单介绍一下做法，以及远离。</p>
+<p>看完后，我那叫一个心血澎湃。但按住心情，现在才是真正意义上的开始学习。</p>
 
-<p>​   解决步奏：</p>
+<p>我学习的过程，大概分以下几部分，可以做个参考，也非常欢迎大家的质疑和讨论。</p>
 
 <ol>
-<li>将配置文件文件名（如<code>local.properties</code>）放到.gitignore里。</li>
-<li>检查工作空间里是否还有这个文件（如，在配置文件里随便改点，然后，git status检查工作空间里是否存在）</li>
-<li>如果不存在，你可以关掉网页了。如果存在，备份，然后删除它！！！（直接在shell里rm）</li>
-<li>然后 add , commit ,push 一套走下来。</li>
-<li>查看远程git服务器端也没有这个文件。</li>
-<li>然后，把刚才备份的文件拿回来。</li>
+<li>先运行Demo或者Examples代码，运行结果ok后，认真研读代码。<em>我始终认为，读一个轻量，但完整的工程代码，是快速学习的最有效的途径</em></li>
+<li>对关键API(类和方法)的学习。<em>知其然，也必须，知其所以然</em></li>
+<li>尝试代码。<em>写代码千万不要粘贴，千万不要忘记配置文件，android中千万不要忘记style等</em></li>
 </ol>
 
-<p>写到这，突然觉得自己好无聊啊好无聊，这么特么的不就是删了就完了。好吧，我承认，这就是&hellip;</p>
+<h3 id="activity跳转:197eea1a2f41ae8a1e21912c062e6b04">Activity跳转</h3>
 
-<p>接下来说说我的理解，Git的版本控制其实本质上是对文件的操作跟踪。所以，一旦进入了版本控制，跟踪系统就会去记录它（这个文件）上发生的所有操作，即便把它放到忽略文件里也同样。因为忽略是晚于跟踪的，也就是说，只有未被跟踪的文件才有被忽略的权利。</p>
+<h4 id="1-activity跳转都是需要添加-window-属性:197eea1a2f41ae8a1e21912c062e6b04">1)Activity跳转都是需要添加<code>window</code>属性。</h4>
 
-<p>下面是 git status 中对于修改的文件和刚刚加入的文件的显示</p>
+<p>配置文件：</p>
 
-<p><img src="https://zllbird.github.io/images/git-untruck.png" alt="git-untruck" /></p>
+<pre><code class="language-xml">&lt;style name=&quot;MaterialAnimations&quot; parent=&quot;@style/Theme.AppCompat.Light.NoActionBar&quot;&gt;
+  ...
+  //添加window开启Transtions动画属性
+  &lt;item name=&quot;android:windowContentTransitions&quot;&gt;true&lt;/item&gt; 
 
-<p>这个时候，上面两个文件是无法被忽略的，而add.txt，是可以被忽略的。</p>
-
-<p>这也刚才我们必须先删除，再拿回来的原因。</p>
-
-<p>附上Android常用的.gitgnore。</p>
-
-<pre><code># built application files
-*.ap_
-
-# files for the dex VM
-*.dex
-*.iml
-
-# Java class files
-*.class
-
-# generated files
-bin/
-gen/
-*target/
-*build/
-*build*
-.gradle/
-.idea/
-
-gen-external-apklibs/
-
-# Local configuration file (sdk path, etc)
-/library_wheel/build
-local.properties
-
-# Eclipse project files
-.classpath
-.project
-
-# Mac os
-.DS_Store
-
-# DEBUG
-captures/
+  //是否覆盖执行，其实可以理解成是否同步执行还是顺序执行
+  &lt;item name=&quot;android:windowAllowEnterTransitionOverlap&quot;&gt;false&lt;/item&gt;
+  &lt;item name=&quot;android:windowAllowReturnTransitionOverlap&quot;&gt;false&lt;/item&gt;
+  ...
+&lt;/style&gt;
 </code></pre>
+
+<p>当然，也可以直接在代码里写</p>
+
+<pre><code class="language-java"> getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+</code></pre>
+
+<p>不过不建议在代码里写，因为现在使用Support v7 比较多，所以，不是直接原生的Activity，会又很多莫名其妙的错误。</p>
+
+<h4 id="2-配置进出动画:197eea1a2f41ae8a1e21912c062e6b04">2)配置进出动画</h4>
+
+<pre><code class="language-java">private void setupWindowAnimations() {
+    // Re-enter transition is executed when returning to this activity
+    Slide slideTransition = new Slide();
+    slideTransition.setSlideEdge(Gravity.LEFT);
+ slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+    getWindow().setReenterTransition(slideTransition); // 5.0以后的方法
+    getWindow().setExitTransition(slideTransition); // 5.0以后的方法
+}
+</code></pre>
+
+<h4 id="3-启动页面跳转:197eea1a2f41ae8a1e21912c062e6b04">3)启动页面跳转</h4>
+
+<p>这里需要注意的跳转的时候<strong>一定一定一定</strong>要配置ActivityOption。</p>
+
+<pre><code class="language-java">// 配置这个option必不可少
+ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity,view,shareName);
+startActivity(intent,options.toBundle());
+</code></pre>
+
+<p>当然，现在用support已经成为主流，下面是v4提供的支持类，用法相同</p>
+
+<pre><code class="language-java">// 配置这个option必不可少
+ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,view,shareName);
+startActivity(intent,options.toBundle());
+</code></pre>
+
+<p>好了，基本Activity的跳转就实现了。官方提供了三种实践，<strong>Explode</strong>, <strong>Slide</strong> 和<strong>Fade</strong>，分别是上下拉开，上下左右滑入滑出，以及淡出淡入等。</p>
+
+<h3 id="shareelement共享元素:197eea1a2f41ae8a1e21912c062e6b04">ShareElement共享元素</h3>
+
+<p>不同界面的相同元素，进行跳转的时候，共联跳转，看起来简直是舒服到不行。也是我学习TransitionAnimation最大的动力。</p>
+
+<p><a href="https://github.com/lgvalle/Material-Animations">Material-Animations</a>中有非常详细的介绍实现。</p>
+
+<p>我整体试了一下，发觉使用<code>Fragment</code>比使用<code>Activity</code>动画不仅连贯很多，而且整体感更强。而且，<code>Fragment</code>的API对Transtion更加的亲善。</p>
+
+<pre><code class="language-java">// Transition for fragment1
+Slide slideTransition = new Slide(Gravity.LEFT); 
+slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+// Create fragment and define some of it transitions
+SharedElementFragment1 sharedElementFragment1 = SharedElementFragment1.newInstance(sample);
+// 下面这几个方法都是Fragment的方法，可见Google已经建议使用Fragment，进行共享元素跳转是相当好的体验
+sharedElementFragment1.setReenterTransition(slideTransition); 
+sharedElementFragment1.setExitTransition(slideTransition);
+sharedElementFragment1.setSharedElementEnterTransition(new ChangeBounds());
+
+getSupportFragmentManager().beginTransaction()
+        .replace(R.id.sample2_content, sharedElementFragment1)
+        .commit();
+</code></pre>
+
+<p>Google建议，使用Fragment去承载UI界面，Activity主要承载操作Fragment。因此，关于跳转，也强烈建议使用上面的实践。</p>
+
+<h3 id="view动画:197eea1a2f41ae8a1e21912c062e6b04">View动画</h3>
+
+<h4 id="scenes:197eea1a2f41ae8a1e21912c062e6b04">Scenes</h4>
+
+<p>在一个界面内（Activity or Fragment）实现动画，就需要<code>scenes</code>，这个scene，翻译成视图，结果图都觉得很别扭，我就这么解释，scene是一种静态或者结果状态，就是最后是啥样子的。如果是位移动画，相当于初始位置的图，和运动完后的位置图。然后由，<code>TransitionManager</code>最后调用，go方法，他就跑起来了。</p>
+
+<p>详细请看项目中的<code>AnimationsActivity2</code>类，核心代码是：</p>
+
+<pre><code class="language-java">cene1 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene1, this);
+scene2 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene2, this);
+scene3 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene3, this);
+scene4 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene4, this);
+
+View button1 = findViewById(R.id.sample3_button1);
+button1.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        TransitionManager.go(scene1, new ChangeBounds());
+    }
+});
+View button2 = findViewById(R.id.sample3_button2);
+button2.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        TransitionManager.go(scene2, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds));
+    }
+});
+
+View button3 = findViewById(R.id.sample3_button3);
+button3.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        TransitionManager.go(scene3, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds_sequential));
+    }
+});
+
+View button4 = findViewById(R.id.sample3_button4);
+button4.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        TransitionManager.go(scene4, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds_sequential_with_interpolators));
+    }
+});
+</code></pre>
+
+<h4 id="view-属性改变引起的动画:197eea1a2f41ae8a1e21912c062e6b04">View 属性改变引起的动画</h4>
+
+<p>这个就有点变态了，你更改了空间的layout属性，告诉Transtion一声，他就做成动画反馈在界面上。听起来就很叼！</p>
+
+<p>实现起来非常非常的简单，简单到想哭。</p>
+
+<pre><code class="language-java">private void changeLayout() {
+
+  // 声明，由Transition接管界面变化的意思，这里的viewRoot相当于根视图，
+  // 也就是说，想改变layout布局的view,父类要先被接管
+    TransitionManager.beginDelayedTransition(viewRoot);
+
+    ViewGroup.LayoutParams params = square.getLayoutParams();
+    if (sizeChanged) {
+        params.width = savedWidth;
+    } else {
+        savedWidth = params.width;
+        params.width = 200;
+    }
+    sizeChanged = !sizeChanged;
+    square.setLayoutParams(params);
+}
+
+private void changePosition() {
+    TransitionManager.beginDelayedTransition(viewRoot);
+
+    LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) square.getLayoutParams();
+    if (positionChanged) {
+        lp.gravity = Gravity.CENTER;
+    } else {
+        lp.gravity = Gravity.LEFT;
+    }
+    positionChanged = !positionChanged;
+    square.setLayoutParams(lp);
+}
+</code></pre>
+
+<p>相信，介于此，5.0后的android上很多用户体验能提升一大截。</p>
+
+<h3 id="reveal-揭示动画:197eea1a2f41ae8a1e21912c062e6b04">Reveal，揭示动画</h3>
+
+<p>这也是相当符合设计一种动画，通过一点引发触动（可以是接触点，也可以位移后触动），然后由点及面，揭示（展现）内容。</p>
+
+<p>一般都是通过shared elements一起组合使用，完成界面跳转。</p>
+
+<p>Circular Reveal 即通过原点，然后由点及面逐步揭示，而且还有一个弧度，视觉体验感非常好。</p>
+
+<p>这里要用到<code>ViewAnimationUtils</code>类（这个类里承载了很多动画，非常还用!）</p>
+
+<pre><code class="language-java">// 揭示原点，这里的点取的是控件的中点
+int cx = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
+int cy = (viewRoot.getTop() + viewRoot.getBottom()) / 2;
+int finalRadius = Math.max(viewRoot.getWidth(), viewRoot.getHeight()); // 揭示弧度
+
+// 获得动画
+Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, cx, cy, 0, finalRadius);
+
+// 这里更改动画，是为了看到的揭示能比较清楚
+viewRoot.setBackgroundColor(color);
+anim.addListener(new AnimatorListenerAdapter() {
+    @Override
+    public void onAnimationEnd(Animator animation) {
+        animateButtonsIn();
+    }
+});
+anim.start();
+</code></pre>
+
+<p>如果不是由控件引起的，而是由点击（其实就是触摸）引起的，只需要传入接触点的x,y坐标就好了。</p>
+
+<pre><code class="language-java">@Override
+public boolean onTouch(View view, MotionEvent motionEvent) {
+    if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+        if (view.getId() == R.id.square_yellow) {
+            revealFromCoordinates(motionEvent.getRawX(), motionEvent.getRawY());
+        }
+    }
+    return false;
+}
+</code></pre>
+
+<pre><code class="language-java">private Animator animateRevealColorFromCoordinates(int x, int y) {
+
+    float finalRadius = (float) Math.hypot(viewRoot.getWidth(), viewRoot.getHeight());
+
+    Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, x, y, 0, finalRadius);
+    viewRoot.setBackgroundColor(color);
+    anim.start();
+}
+</code></pre>
+
+<p>刚才提到的改变layout属性，就可以改变动画其实也是可以用到圆揭示：</p>
+
+<pre><code class="language-java">Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.changebounds_with_arcmotion);
+transition.addListener(new Transition.TransitionListener() {
+    @Override
+    public void onTransitionEnd(Transition transition) {
+        animateRevealColor(bgViewGroup, R.color.red);
+    }
+    (...)
+
+});
+//接管后，传入想要改变的动画
+TransitionManager.beginDelayedTransition(bgViewGroup, transition);
+RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+btnRed.setLayoutParams(layoutParams);
+</code></pre>
+
+<h3 id="总结:197eea1a2f41ae8a1e21912c062e6b04">总结</h3>
+
+<p>写的比较简单，很多东西还是对API的熟悉和使用。</p>
+
+<p>Material 正在改变Android，相信以后的UI无论从实感还是物理感，都会更加贴合用户，贴近使用。</p>
+
+<hr />
 
       
     </div>
@@ -184,12 +373,15 @@ captures/
         ><a href="/page/4/">4</a></li>
         
         <li
+        ><a href="/page/5/">5</a></li>
+        
+        <li
         >
         <a href="/page/3/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/4/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/5/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

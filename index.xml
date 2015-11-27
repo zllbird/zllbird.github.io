@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Coder-bird</title>
+      <title> on Coder-bird </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>https://zllbird.github.io/</link>
-    <description>Recent content on Coder-bird</description>
-    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <author>诸隆隆</author>
     <copyright>© 2015 Copyright Text</copyright>
-    <lastBuildDate>Thu, 26 Nov 2015 12:57:43 +0800</lastBuildDate>
-    <atom:link href="https://zllbird.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <updated>Thu, 26 Nov 2015 12:57:43 CST</updated>
     
     <item>
       <title>日出</title>
       <link>https://zllbird.github.io/2015/11/26/%E6%97%A5%E5%87%BA/</link>
-      <pubDate>Thu, 26 Nov 2015 12:57:43 +0800</pubDate>
-      
+      <pubDate>Thu, 26 Nov 2015 12:57:43 CST</pubDate>
+      <author>诸隆隆</author>
       <guid>https://zllbird.github.io/2015/11/26/%E6%97%A5%E5%87%BA/</guid>
       <description>
 
@@ -148,8 +147,8 @@
     <item>
       <title>感想 我该如何成长</title>
       <link>https://zllbird.github.io/2015/11/25/%E6%84%9F%E6%83%B3-%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E6%88%90%E9%95%BF/</link>
-      <pubDate>Wed, 25 Nov 2015 09:25:11 +0800</pubDate>
-      
+      <pubDate>Wed, 25 Nov 2015 09:25:11 CST</pubDate>
+      <author>诸隆隆</author>
       <guid>https://zllbird.github.io/2015/11/25/%E6%84%9F%E6%83%B3-%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E6%88%90%E9%95%BF/</guid>
       <description>
 
@@ -220,8 +219,8 @@
     <item>
       <title>Android自定义属性使用</title>
       <link>https://zllbird.github.io/2015/11/23/android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Mon, 23 Nov 2015 16:49:45 +0800</pubDate>
-      
+      <pubDate>Mon, 23 Nov 2015 16:49:45 CST</pubDate>
+      <author>诸隆隆</author>
       <guid>https://zllbird.github.io/2015/11/23/android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%BD%BF%E7%94%A8/</guid>
       <description>
 
@@ -339,8 +338,8 @@
     <item>
       <title>Android Transition 学习心得</title>
       <link>https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</link>
-      <pubDate>Thu, 12 Nov 2015 15:40:32 +0800</pubDate>
-      
+      <pubDate>Thu, 12 Nov 2015 15:40:32 CST</pubDate>
+      <author>诸隆隆</author>
       <guid>https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</guid>
       <description>
 
@@ -609,8 +608,8 @@ btnRed.setLayoutParams(layoutParams);
     <item>
       <title>Git清理误传的文件</title>
       <link>https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/</link>
-      <pubDate>Wed, 11 Nov 2015 09:53:37 +0800</pubDate>
-      
+      <pubDate>Wed, 11 Nov 2015 09:53:37 CST</pubDate>
+      <author>诸隆隆</author>
       <guid>https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/</guid>
       <description>
 
@@ -690,8 +689,8 @@ captures/
     <item>
       <title>second</title>
       <link>https://zllbird.github.io/2015/11/03/second/</link>
-      <pubDate>Tue, 03 Nov 2015 15:08:38 +0800</pubDate>
-      
+      <pubDate>Tue, 03 Nov 2015 15:08:38 CST</pubDate>
+      <author>诸隆隆</author>
       <guid>https://zllbird.github.io/2015/11/03/second/</guid>
       <description>
 
@@ -704,8 +703,8 @@ captures/
     <item>
       <title>执着</title>
       <link>https://zllbird.github.io/2015/11/02/%E6%89%A7%E7%9D%80/</link>
-      <pubDate>Mon, 02 Nov 2015 16:35:33 +0800</pubDate>
-      
+      <pubDate>Mon, 02 Nov 2015 16:35:33 CST</pubDate>
+      <author>诸隆隆</author>
       <guid>https://zllbird.github.io/2015/11/02/%E6%89%A7%E7%9D%80/</guid>
       <description>
 

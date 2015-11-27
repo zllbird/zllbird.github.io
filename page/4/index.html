@@ -1,414 +1,146 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!DOCTYPE HTML>
+
+<html lang="en-us">
+
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta charset="utf-8">
+	<title>Coder-bird</title>
+	<meta name="author" content="map[name:诸隆隆]">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	
+	
+	<meta name="description" content="">
+	
 
-  <title>Coder-bird &middot; 诸隆隆</title>
+	
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<link rel="canonical" href="https://zllbird.github.io/">
+	<link href="https://zllbird.github.io//favicon.png" rel="shortcut icon">
+	<link href="https://zllbird.github.io//css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="https://zllbird.github.io//css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  
 
-  
-  <link rel="stylesheet" href="https://zllbird.github.io/css/poole.css">
-  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde.css">
-  <link rel="stylesheet" href="https://zllbird.github.io/css/poole-overrides.css">
-  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-overrides.css">
-  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-x.css">
-  <link rel="stylesheet" href="https://zllbird.github.io/css/highlight/sunburst.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://zllbird.github.io/touch-icon-144-precomposed.png">
-  <link href="https://zllbird.github.io/favicon.png" rel="icon">
-
-  
-  
-  
-  <link href="https://zllbird.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Coder-bird &middot; 诸隆隆" />
-
-  <meta name="description" content="我是一只小小鸟">
-  <meta name="keywords" content="书,文字,生活">
-  
 </head>
+
+
 <body>
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      
-      <h1>诸隆隆</h1>
-      <p class="lead">我要飞的更高</p>
-    </div>
-
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/">Blog</a></li>
-      
-    </ul>
-
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-item">
-      <a href="zllbird"><i class="fa fa-github-square fa-3x"></i></a>
-      
-      
-      
-      
-      <a href="%e8%af%b8%e9%9a%86%e9%9a%86"><i class="fa fa-facebook-square fa-3x"></i></a>
-      <a href="%e8%af%b8%e9%9a%86%e9%9a%86"><i class="fa fa-twitter-square fa-3x"></i></a>
-      
-      
-      </li>
-    </ul>
-
-    
-
-    <p>Copyright &copy; 2015 <a href="https://zllbird.github.io/license/">License</a><br/>
-       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
-  </div>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	
+	
 </div>
 
-
-<div class="content container">
-  <div class="posts">
-    
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">Android Transition 学习心得</a>
-      </h1>
-      <span class="post-date">Nov 12, 2015 &middot; 3 minute read &middot; <a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#disqus_thread">Comments</a>
-      
-      <br/>
-      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
-      </span>
-      
-      
-
-<h1 id="android-transition-学习心得:197eea1a2f41ae8a1e21912c062e6b04">Android Transition 学习心得</h1>
-
-<p>Android 5.0之后。Transition 被更多的应用起来，support也对其越来越多得支持。这种大背景下，各种动画的学习便是必不可少的了。而其中Transition便是其中的佼佼者。</p>
-
-<p>下面是比较详细的介绍和应用实践，我也是主要通过这个项目学习，但强烈建议，只先通看文档，别上来直接就照着写（还有看完后，记得回来啊！！！）：</p>
-
-<p><a href="https://github.com/lgvalle/Material-Animations">Material-Animations</a></p>
-
-<p>看完后，我那叫一个心血澎湃。但按住心情，现在才是真正意义上的开始学习。</p>
-
-<p>我学习的过程，大概分以下几部分，可以做个参考，也非常欢迎大家的质疑和讨论。</p>
-
-<ol>
-<li>先运行Demo或者Examples代码，运行结果ok后，认真研读代码。<em>我始终认为，读一个轻量，但完整的工程代码，是快速学习的最有效的途径</em></li>
-<li>对关键API(类和方法)的学习。<em>知其然，也必须，知其所以然</em></li>
-<li>尝试代码。<em>写代码千万不要粘贴，千万不要忘记配置文件，android中千万不要忘记style等</em></li>
-</ol>
-
-<h3 id="activity跳转:197eea1a2f41ae8a1e21912c062e6b04">Activity跳转</h3>
-
-<h4 id="1-activity跳转都是需要添加-window-属性:197eea1a2f41ae8a1e21912c062e6b04">1)Activity跳转都是需要添加<code>window</code>属性。</h4>
-
-<p>配置文件：</p>
-
-<pre><code class="language-xml">&lt;style name=&quot;MaterialAnimations&quot; parent=&quot;@style/Theme.AppCompat.Light.NoActionBar&quot;&gt;
-  ...
-  //添加window开启Transtions动画属性
-  &lt;item name=&quot;android:windowContentTransitions&quot;&gt;true&lt;/item&gt; 
-
-  //是否覆盖执行，其实可以理解成是否同步执行还是顺序执行
-  &lt;item name=&quot;android:windowAllowEnterTransitionOverlap&quot;&gt;false&lt;/item&gt;
-  &lt;item name=&quot;android:windowAllowReturnTransitionOverlap&quot;&gt;false&lt;/item&gt;
-  ...
-&lt;/style&gt;
-</code></pre>
-
-<p>当然，也可以直接在代码里写</p>
-
-<pre><code class="language-java"> getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-</code></pre>
-
-<p>不过不建议在代码里写，因为现在使用Support v7 比较多，所以，不是直接原生的Activity，会又很多莫名其妙的错误。</p>
-
-<h4 id="2-配置进出动画:197eea1a2f41ae8a1e21912c062e6b04">2)配置进出动画</h4>
-
-<pre><code class="language-java">private void setupWindowAnimations() {
-    // Re-enter transition is executed when returning to this activity
-    Slide slideTransition = new Slide();
-    slideTransition.setSlideEdge(Gravity.LEFT);
- slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
-    getWindow().setReenterTransition(slideTransition); // 5.0以后的方法
-    getWindow().setExitTransition(slideTransition); // 5.0以后的方法
-}
-</code></pre>
-
-<h4 id="3-启动页面跳转:197eea1a2f41ae8a1e21912c062e6b04">3)启动页面跳转</h4>
-
-<p>这里需要注意的跳转的时候<strong>一定一定一定</strong>要配置ActivityOption。</p>
-
-<pre><code class="language-java">// 配置这个option必不可少
-ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity,view,shareName);
-startActivity(intent,options.toBundle());
-</code></pre>
-
-<p>当然，现在用support已经成为主流，下面是v4提供的支持类，用法相同</p>
-
-<pre><code class="language-java">// 配置这个option必不可少
-ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,view,shareName);
-startActivity(intent,options.toBundle());
-</code></pre>
-
-<p>好了，基本Activity的跳转就实现了。官方提供了三种实践，<strong>Explode</strong>, <strong>Slide</strong> 和<strong>Fade</strong>，分别是上下拉开，上下左右滑入滑出，以及淡出淡入等。</p>
-
-<h3 id="shareelement共享元素:197eea1a2f41ae8a1e21912c062e6b04">ShareElement共享元素</h3>
-
-<p>不同界面的相同元素，进行跳转的时候，共联跳转，看起来简直是舒服到不行。也是我学习TransitionAnimation最大的动力。</p>
-
-<p><a href="https://github.com/lgvalle/Material-Animations">Material-Animations</a>中有非常详细的介绍实现。</p>
-
-<p>我整体试了一下，发觉使用<code>Fragment</code>比使用<code>Activity</code>动画不仅连贯很多，而且整体感更强。而且，<code>Fragment</code>的API对Transtion更加的亲善。</p>
-
-<pre><code class="language-java">// Transition for fragment1
-Slide slideTransition = new Slide(Gravity.LEFT); 
-slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
-// Create fragment and define some of it transitions
-SharedElementFragment1 sharedElementFragment1 = SharedElementFragment1.newInstance(sample);
-// 下面这几个方法都是Fragment的方法，可见Google已经建议使用Fragment，进行共享元素跳转是相当好的体验
-sharedElementFragment1.setReenterTransition(slideTransition); 
-sharedElementFragment1.setExitTransition(slideTransition);
-sharedElementFragment1.setSharedElementEnterTransition(new ChangeBounds());
-
-getSupportFragmentManager().beginTransaction()
-        .replace(R.id.sample2_content, sharedElementFragment1)
-        .commit();
-</code></pre>
-
-<p>Google建议，使用Fragment去承载UI界面，Activity主要承载操作Fragment。因此，关于跳转，也强烈建议使用上面的实践。</p>
-
-<h3 id="view动画:197eea1a2f41ae8a1e21912c062e6b04">View动画</h3>
-
-<h4 id="scenes:197eea1a2f41ae8a1e21912c062e6b04">Scenes</h4>
-
-<p>在一个界面内（Activity or Fragment）实现动画，就需要<code>scenes</code>，这个scene，翻译成视图，结果图都觉得很别扭，我就这么解释，scene是一种静态或者结果状态，就是最后是啥样子的。如果是位移动画，相当于初始位置的图，和运动完后的位置图。然后由，<code>TransitionManager</code>最后调用，go方法，他就跑起来了。</p>
-
-<p>详细请看项目中的<code>AnimationsActivity2</code>类，核心代码是：</p>
-
-<pre><code class="language-java">cene1 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene1, this);
-scene2 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene2, this);
-scene3 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene3, this);
-scene4 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene4, this);
-
-View button1 = findViewById(R.id.sample3_button1);
-button1.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        TransitionManager.go(scene1, new ChangeBounds());
-    }
-});
-View button2 = findViewById(R.id.sample3_button2);
-button2.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        TransitionManager.go(scene2, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds));
-    }
-});
-
-View button3 = findViewById(R.id.sample3_button3);
-button3.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        TransitionManager.go(scene3, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds_sequential));
-    }
-});
-
-View button4 = findViewById(R.id.sample3_button4);
-button4.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        TransitionManager.go(scene4, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds_sequential_with_interpolators));
-    }
-});
-</code></pre>
-
-<h4 id="view-属性改变引起的动画:197eea1a2f41ae8a1e21912c062e6b04">View 属性改变引起的动画</h4>
-
-<p>这个就有点变态了，你更改了空间的layout属性，告诉Transtion一声，他就做成动画反馈在界面上。听起来就很叼！</p>
-
-<p>实现起来非常非常的简单，简单到想哭。</p>
-
-<pre><code class="language-java">private void changeLayout() {
-
-  // 声明，由Transition接管界面变化的意思，这里的viewRoot相当于根视图，
-  // 也就是说，想改变layout布局的view,父类要先被接管
-    TransitionManager.beginDelayedTransition(viewRoot);
-
-    ViewGroup.LayoutParams params = square.getLayoutParams();
-    if (sizeChanged) {
-        params.width = savedWidth;
-    } else {
-        savedWidth = params.width;
-        params.width = 200;
-    }
-    sizeChanged = !sizeChanged;
-    square.setLayoutParams(params);
-}
-
-private void changePosition() {
-    TransitionManager.beginDelayedTransition(viewRoot);
-
-    LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) square.getLayoutParams();
-    if (positionChanged) {
-        lp.gravity = Gravity.CENTER;
-    } else {
-        lp.gravity = Gravity.LEFT;
-    }
-    positionChanged = !positionChanged;
-    square.setLayoutParams(lp);
-}
-</code></pre>
-
-<p>相信，介于此，5.0后的android上很多用户体验能提升一大截。</p>
-
-<h3 id="reveal-揭示动画:197eea1a2f41ae8a1e21912c062e6b04">Reveal，揭示动画</h3>
-
-<p>这也是相当符合设计一种动画，通过一点引发触动（可以是接触点，也可以位移后触动），然后由点及面，揭示（展现）内容。</p>
-
-<p>一般都是通过shared elements一起组合使用，完成界面跳转。</p>
-
-<p>Circular Reveal 即通过原点，然后由点及面逐步揭示，而且还有一个弧度，视觉体验感非常好。</p>
-
-<p>这里要用到<code>ViewAnimationUtils</code>类（这个类里承载了很多动画，非常还用!）</p>
-
-<pre><code class="language-java">// 揭示原点，这里的点取的是控件的中点
-int cx = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
-int cy = (viewRoot.getTop() + viewRoot.getBottom()) / 2;
-int finalRadius = Math.max(viewRoot.getWidth(), viewRoot.getHeight()); // 揭示弧度
-
-// 获得动画
-Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, cx, cy, 0, finalRadius);
-
-// 这里更改动画，是为了看到的揭示能比较清楚
-viewRoot.setBackgroundColor(color);
-anim.addListener(new AnimatorListenerAdapter() {
-    @Override
-    public void onAnimationEnd(Animator animation) {
-        animateButtonsIn();
-    }
-});
-anim.start();
-</code></pre>
-
-<p>如果不是由控件引起的，而是由点击（其实就是触摸）引起的，只需要传入接触点的x,y坐标就好了。</p>
-
-<pre><code class="language-java">@Override
-public boolean onTouch(View view, MotionEvent motionEvent) {
-    if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-        if (view.getId() == R.id.square_yellow) {
-            revealFromCoordinates(motionEvent.getRawX(), motionEvent.getRawY());
-        }
-    }
-    return false;
-}
-</code></pre>
-
-<pre><code class="language-java">private Animator animateRevealColorFromCoordinates(int x, int y) {
-
-    float finalRadius = (float) Math.hypot(viewRoot.getWidth(), viewRoot.getHeight());
-
-    Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, x, y, 0, finalRadius);
-    viewRoot.setBackgroundColor(color);
-    anim.start();
-}
-</code></pre>
-
-<p>刚才提到的改变layout属性，就可以改变动画其实也是可以用到圆揭示：</p>
-
-<pre><code class="language-java">Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.changebounds_with_arcmotion);
-transition.addListener(new Transition.TransitionListener() {
-    @Override
-    public void onTransitionEnd(Transition transition) {
-        animateRevealColor(bgViewGroup, R.color.red);
-    }
-    (...)
-
-});
-//接管后，传入想要改变的动画
-TransitionManager.beginDelayedTransition(bgViewGroup, transition);
-RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
-btnRed.setLayoutParams(layoutParams);
-</code></pre>
-
-<h3 id="总结:197eea1a2f41ae8a1e21912c062e6b04">总结</h3>
-
-<p>写的比较简单，很多东西还是对API的熟悉和使用。</p>
-
-<p>Material 正在改变Android，相信以后的UI无论从实感还是物理感，都会更加贴合用户，贴近使用。</p>
-
-<hr />
-
-      
-    </div>
-    
-    
-    
-    <ul class="pagination">
-        
-        <li>
-            <a href="/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-        </li>
-        
-        <li
-        >
-        <a href="/page/3/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-        </li>
-        
-        <li
-        ><a href="/">1</a></li>
-        
-        <li
-        ><a href="/page/2/">2</a></li>
-        
-        <li
-        ><a href="/page/3/">3</a></li>
-        
-        <li
-        class="active"><a href="/page/4/">4</a></li>
-        
-        <li
-        ><a href="/page/5/">5</a></li>
-        
-        <li
-        ><a href="/page/6/">6</a></li>
-        
-        <li
-        ><a href="/page/7/">7</a></li>
-        
-        <li
-        >
-        <a href="/page/5/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-        </li>
-        
-        <li>
-            <a href="/page/7/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-        </li>
-        
-    </ul>
-    
-  </div>
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/shashankmehta">About</a></li>
+    <li><a href="/post/">Archives</a></li>
+</ul>
+
+<section class="aboutme">
+  <p>
+    我是一只小小鸟
+  </p>
+</section>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+			<a class="facebook" href='http://www.facebook.com/%e8%af%b8%e9%9a%86%e9%9a%86' title="Facebook">Facebook</a>
+		
+		
+		
+			<a class="twitter" href='http://twitter.com/%e8%af%b8%e9%9a%86%e9%9a%86' title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href='https://github.com/zllbird' title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+	</div>
+</nav>
+</header>
+			</div>
+		</div>
+		<div class="mid-col">
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+					
+					<div itemscope itemtype="http://schema.org/Blog">
+					
+				        <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="meta">
+		<div class="date"><time datetime='Thu, Nov 12, 2015' data-updated="true" itemprop="datePublished">Thu, Nov 12, 2015</time>
 </div>
+		<div class="tags">
 
 
+	
+	
+	    <a href="https://zllbird.github.io//categories/%E5%BC%80%E5%8F%91"> 开发 </a>
+	
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" itemprop="url">Android Transition 学习心得</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		Android Transition 学习心得 Android 5.0之后。Transition 被更多的应用起来，support也对其越来越多得支持。这种大背景下，各种动画的学习便是必不可少的了。而其中Transition便是其中的佼佼者。 下面是比较详细的介绍和应用实践，我也是主要通过这个项目学习，但强烈建议，只先通看文档，别上来直接就照着写（还有看完后，记得回来啊！！！）： Material-Animations 看完后，我那叫一个心血澎湃。但按住心情，现在才是真正意义上的开始学习。 我学习的过程，大概分以下几部分，可以做个参考，也非常欢迎大家的质疑和讨论。 先运行Demo或者Examples代码，运行结果ok后，认真研读代码。我始终认为，读一个轻量，但完整的工程代码，是快速学习的最有效的途径 对关键API(类和方法)的学习。知其然，也必须，知其所以然 尝试代码。写代码千万不要粘贴，千万不要忘记配置文件，android中千万不要忘记style等 Activity跳转 1)Activity跳转都是需要添加window属性。 配置文件： &lt;style name=&quot;MaterialAnimations&quot; parent=&quot;@style/Theme.AppCompat.Light.NoActionBar&quot;&gt; ... //添加window开启Transtions动画属性 &lt;item name=&quot;android:windowContentTransitions&quot;&gt;true&lt;/item&gt; //是否覆盖执行，其实可以理解成是否同步执行还是顺序执行 &lt;item name=&quot;android:windowAllowEnterTransitionOverlap&quot;&gt;false&lt;/item&gt; &lt;item name=&quot;android:windowAllowReturnTransitionOverlap&quot;&gt;false&lt;/item&gt; ... &lt;/style&gt; 当然，也可以直接在代码里写 getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS); 不过不建议在代码里写，因为现在使用Support v7 比较多，所以，不是直接原生的Activity，会又很多莫名其妙的错误。 2)配置进出动画 private void setupWindowAnimations() { // Re-enter transition is executed when returning to this activity Slide slideTransition = new Slide(); slideTransition.setSlideEdge(Gravity.LEFT); slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long)); getWindow().setReenterTransition(slideTransition); // 5.0以后的方法 getWindow().setExitTransition(slideTransition); // 5.0以后的方法 } 3)启动页面跳转 这里需要注意的跳转的时候一定一定一定要配置ActivityOption。 // 配置这个option必不可少 ActivityOptions options
+		<a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" class="more-link">Read on →</a>
+	</div>
+</article>
+
+				    
+				    </div>
+				    <nav id="pagenavi">
+					    
+					        <a href="/page/3/" class="prev">Prev</a>
+					    
+					    
+					        <a href="/page/5/" class="next">Next</a>
+					    
+					    <div class="center"><a href="https://zllbird.github.io//post/">Blog Archives</a></div>
+					</nav>
+				</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
+
+    诸隆隆
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+<script src="https://zllbird.github.io//js/slash.js"></script>
+<script src="https://zllbird.github.io//js/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
-var disqus_shortname = "ZllBird";
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script></footer>
+		</div>
+	</div>
+	
 
-<script src="https://zllbird.github.io/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 
+	
 </body>
 </html>
-

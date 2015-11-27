@@ -1,225 +1,146 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!DOCTYPE HTML>
+
+<html lang="en-us">
+
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta charset="utf-8">
+	<title>Coder-bird</title>
+	<meta name="author" content="map[name:诸隆隆]">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	
+	
+	<meta name="description" content="">
+	
 
-  <title>Coder-bird &middot; 诸隆隆</title>
+	
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<link rel="canonical" href="https://zllbird.github.io/">
+	<link href="https://zllbird.github.io//favicon.png" rel="shortcut icon">
+	<link href="https://zllbird.github.io//css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="https://zllbird.github.io//css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  
 
-  
-  <link rel="stylesheet" href="https://zllbird.github.io/css/poole.css">
-  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde.css">
-  <link rel="stylesheet" href="https://zllbird.github.io/css/poole-overrides.css">
-  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-overrides.css">
-  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-x.css">
-  <link rel="stylesheet" href="https://zllbird.github.io/css/highlight/sunburst.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://zllbird.github.io/touch-icon-144-precomposed.png">
-  <link href="https://zllbird.github.io/favicon.png" rel="icon">
-
-  
-  
-  
-  <link href="https://zllbird.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Coder-bird &middot; 诸隆隆" />
-
-  <meta name="description" content="我是一只小小鸟">
-  <meta name="keywords" content="书,文字,生活">
-  
 </head>
+
+
 <body>
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      
-      <h1>诸隆隆</h1>
-      <p class="lead">我要飞的更高</p>
-    </div>
-
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/">Blog</a></li>
-      
-    </ul>
-
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-item">
-      <a href="zllbird"><i class="fa fa-github-square fa-3x"></i></a>
-      
-      
-      
-      
-      <a href="%e8%af%b8%e9%9a%86%e9%9a%86"><i class="fa fa-facebook-square fa-3x"></i></a>
-      <a href="%e8%af%b8%e9%9a%86%e9%9a%86"><i class="fa fa-twitter-square fa-3x"></i></a>
-      
-      
-      </li>
-    </ul>
-
-    
-
-    <p>Copyright &copy; 2015 <a href="https://zllbird.github.io/license/">License</a><br/>
-       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
-  </div>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	
+	
 </div>
 
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/shashankmehta">About</a></li>
+    <li><a href="/post/">Archives</a></li>
+</ul>
 
-<div class="content container">
-  <div class="posts">
-    
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/">Git清理误传的文件</a>
-      </h1>
-      <span class="post-date">Nov 11, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/#disqus_thread">Comments</a>
-      
-      <br/>
-      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
-      </span>
-      
-      
-
-<h1 id="git清理误传的文件:2c3299dc152aba749c72550a3d365541">Git清理误传的文件</h1>
-
-<p>​   Git进行版本管理的时候，项目中很多文件(配置文件，自动生成文件，构建生成文件，依赖包等)是不需要同步上传到服务器。一方面，造成文件的多余，另一方面，如本地配置文件（<code>local.properties</code>），不同人员的来回提交，则会造成同步开发人员的版本混乱——不断地解决重复冲突，这是相当不值得的。</p>
-
-<p>​   Git提供了一种忽略机制——gitignore。本质上也是一种Git配置，类似于配置文件。将配置文件中相关文件忽略，写法与Android工程是熟悉的混淆配置文件（<code>proguard-rules.pro</code>）非常相似。功能也是将<code>.gitignore</code>里面配置好的文件忽略，或者说是剔除，不让此文件加入版本控制。</p>
-
-<p>​   关于gitignore的详细介绍请<a href="http://git.oschina.net/progit/">参考这里,第二章基础</a></p>
-
-<p>​   显然，对于我这种Git新手，很可能知道这些的时候，已经把配置文件都扔到服务器上了。然后，一阵胡搞乱搞…（都是满纸辛酸泪），其实根本原因还是对Git本身理解不够。接下来，简单介绍一下做法，以及远离。</p>
-
-<p>​   解决步奏：</p>
-
-<ol>
-<li>将配置文件文件名（如<code>local.properties</code>）放到.gitignore里。</li>
-<li>检查工作空间里是否还有这个文件（如，在配置文件里随便改点，然后，git status检查工作空间里是否存在）</li>
-<li>如果不存在，你可以关掉网页了。如果存在，备份，然后删除它！！！（直接在shell里rm）</li>
-<li>然后 add , commit ,push 一套走下来。</li>
-<li>查看远程git服务器端也没有这个文件。</li>
-<li>然后，把刚才备份的文件拿回来。</li>
-</ol>
-
-<p>写到这，突然觉得自己好无聊啊好无聊，这么特么的不就是删了就完了。好吧，我承认，这就是&hellip;</p>
-
-<p>接下来说说我的理解，Git的版本控制其实本质上是对文件的操作跟踪。所以，一旦进入了版本控制，跟踪系统就会去记录它（这个文件）上发生的所有操作，即便把它放到忽略文件里也同样。因为忽略是晚于跟踪的，也就是说，只有未被跟踪的文件才有被忽略的权利。</p>
-
-<p>下面是 git status 中对于修改的文件和刚刚加入的文件的显示</p>
-
-<p><img src="https://zllbird.github.io/images/git-untruck.png" alt="git-untruck" /></p>
-
-<p>这个时候，上面两个文件是无法被忽略的，而add.txt，是可以被忽略的。</p>
-
-<p>这也刚才我们必须先删除，再拿回来的原因。</p>
-
-<p>附上Android常用的.gitgnore。</p>
-
-<pre><code># built application files
-*.ap_
-
-# files for the dex VM
-*.dex
-*.iml
-
-# Java class files
-*.class
-
-# generated files
-bin/
-gen/
-*target/
-*build/
-*build*
-.gradle/
-.idea/
-
-gen-external-apklibs/
-
-# Local configuration file (sdk path, etc)
-/library_wheel/build
-local.properties
-
-# Eclipse project files
-.classpath
-.project
-
-# Mac os
-.DS_Store
-
-# DEBUG
-captures/
-</code></pre>
-
-      
-    </div>
-    
-    
-    
-    <ul class="pagination">
-        
-        <li>
-            <a href="/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-        </li>
-        
-        <li
-        >
-        <a href="/page/4/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-        </li>
-        
-        <li
-        ><a href="/">1</a></li>
-        
-        <li
-        ><a href="/page/2/">2</a></li>
-        
-        <li
-        ><a href="/page/3/">3</a></li>
-        
-        <li
-        ><a href="/page/4/">4</a></li>
-        
-        <li
-        class="active"><a href="/page/5/">5</a></li>
-        
-        <li
-        ><a href="/page/6/">6</a></li>
-        
-        <li
-        ><a href="/page/7/">7</a></li>
-        
-        <li
-        >
-        <a href="/page/6/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-        </li>
-        
-        <li>
-            <a href="/page/7/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-        </li>
-        
-    </ul>
-    
-  </div>
+<section class="aboutme">
+  <p>
+    我是一只小小鸟
+  </p>
+</section>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+			<a class="facebook" href='http://www.facebook.com/%e8%af%b8%e9%9a%86%e9%9a%86' title="Facebook">Facebook</a>
+		
+		
+		
+			<a class="twitter" href='http://twitter.com/%e8%af%b8%e9%9a%86%e9%9a%86' title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href='https://github.com/zllbird' title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+	</div>
+</nav>
+</header>
+			</div>
+		</div>
+		<div class="mid-col">
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+					
+					<div itemscope itemtype="http://schema.org/Blog">
+					
+				        <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="meta">
+		<div class="date"><time datetime='Wed, Nov 11, 2015' data-updated="true" itemprop="datePublished">Wed, Nov 11, 2015</time>
 </div>
+		<div class="tags">
 
 
+	
+	
+	    <a href="https://zllbird.github.io//categories/%E5%BC%80%E5%8F%91"> 开发 </a>
+	
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/" itemprop="url">Git清理误传的文件</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		Git清理误传的文件 ​ Git进行版本管理的时候，项目中很多文件(配置文件，自动生成文件，构建生成文件，依赖包等)是不需要同步上传到服务器。一方面，造成文件的多余，另一方面，如本地配置文件（local.properties），不同人员的来回提交，则会造成同步开发人员的版本混乱——不断地解决重复冲突，这是相当不值得的。 ​ Git提供了一种忽略机制——gitignore。本质上也是一种Git配置，类似于配置文件。将配置文件中相关文件忽略，写法与Android工程是熟悉的混淆配置文件（proguard-rules.pro）非常相似。功能也是将.gitignore里面配置好的文件忽略，或者说是剔除，不让此文件加入版本控制。 ​ 关于gitignore的详细介绍请参考这里,第二章基础 ​ 显然，对于我这种Git新手，很可能知道这些的时候，已经把配置文件都扔到服务器上了。然后，一阵胡搞乱搞…（都是满纸辛酸泪），其实根本原因还是对Git本身理解不够。接下来，简单介绍一下做法，以及远离。 ​ 解决步奏： 将配置文件文件名（如local.properties）放到.gitignore里。 检查工作空间里是否还有这个文件（如，在配置文件里随便改点，然后，git status检查工作空间里是否存在） 如果不存在，你可以关掉网页了。如果存在，备份，然后删除它！！！（直接在shell里rm） 然后 add , commit ,push 一套走下来。 查看远程git服务器端也没有这个文件。 然后，把刚才备份的文件拿回来。 写到这，突然觉得自己好无聊啊好无聊，这么特么的不就是删了就完了。好吧，我承认，这就是&hellip; 接下来说说我的理解，Git的版本控制其实本质上是对文件的操作跟踪。所以，一旦进入了版本控制，跟踪系统就会去记录它（这个文件）上发生的所有操作，即便把它放到忽略文件里也同样。因为忽略是晚于跟踪的，也就是说，只有未被跟踪的文件才有被忽略的权利。 下面是 git status 中对于修改的文件和刚刚加入的文件的显示 这个时候，上面两个文件是无法被忽略的，而add.txt，是可以被忽略的。 这也刚才我们必须先删除，再拿回来的原因。 附上Android常用的.gitgnore。 # built application files *.ap_ # files for the dex VM *.dex *.iml # Java class files *.class # generated files bin/ gen/ *target/ *build/ *build* .gradle/ .idea/ gen-external-apklibs/ # Local configuration file (sdk path, etc) /library_wheel/build local.properties
+		<a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/" class="more-link">Read on →</a>
+	</div>
+</article>
+
+				    
+				    </div>
+				    <nav id="pagenavi">
+					    
+					        <a href="/page/4/" class="prev">Prev</a>
+					    
+					    
+					        <a href="/page/6/" class="next">Next</a>
+					    
+					    <div class="center"><a href="https://zllbird.github.io//post/">Blog Archives</a></div>
+					</nav>
+				</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
+
+    诸隆隆
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+<script src="https://zllbird.github.io//js/slash.js"></script>
+<script src="https://zllbird.github.io//js/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
-var disqus_shortname = "ZllBird";
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script></footer>
+		</div>
+	</div>
+	
 
-<script src="https://zllbird.github.io/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 
+	
 </body>
 </html>
-

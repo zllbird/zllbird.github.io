@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>生活 on Coder-bird </title>
-      <generator uri="https://gohugo.io">Hugo</generator>
+    <title>生活 on Coder-bird</title>
     <link>https://zllbird.github.io/categories/%E7%94%9F%E6%B4%BB/</link>
+    <description>Recent content in 生活 on Coder-bird</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author>诸隆隆</author>
     <copyright>© 2015 Copyright Text</copyright>
-    <updated>Thu, 26 Nov 2015 12:57:43 CST</updated>
+    <lastBuildDate>Thu, 26 Nov 2015 12:57:43 +0800</lastBuildDate>
+    <atom:link href="https://zllbird.github.io/categories/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>日出</title>
       <link>https://zllbird.github.io/2015/11/26/%E6%97%A5%E5%87%BA/</link>
-      <pubDate>Thu, 26 Nov 2015 12:57:43 CST</pubDate>
-      <author>诸隆隆</author>
+      <pubDate>Thu, 26 Nov 2015 12:57:43 +0800</pubDate>
+      
       <guid>https://zllbird.github.io/2015/11/26/%E6%97%A5%E5%87%BA/</guid>
       <description>
 

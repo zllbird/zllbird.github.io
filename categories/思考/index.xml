@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>思考 on Coder-bird </title>
-      <generator uri="https://gohugo.io">Hugo</generator>
+    <title>思考 on Coder-bird</title>
     <link>https://zllbird.github.io/categories/%E6%80%9D%E8%80%83/</link>
+    <description>Recent content in 思考 on Coder-bird</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author>诸隆隆</author>
     <copyright>© 2015 Copyright Text</copyright>
-    <updated>Wed, 25 Nov 2015 09:25:11 CST</updated>
+    <lastBuildDate>Wed, 25 Nov 2015 09:25:11 +0800</lastBuildDate>
+    <atom:link href="https://zllbird.github.io/categories/%E6%80%9D%E8%80%83/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>感想 我该如何成长</title>
       <link>https://zllbird.github.io/2015/11/25/%E6%84%9F%E6%83%B3-%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E6%88%90%E9%95%BF/</link>
-      <pubDate>Wed, 25 Nov 2015 09:25:11 CST</pubDate>
-      <author>诸隆隆</author>
+      <pubDate>Wed, 25 Nov 2015 09:25:11 +0800</pubDate>
+      
       <guid>https://zllbird.github.io/2015/11/25/%E6%84%9F%E6%83%B3-%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E6%88%90%E9%95%BF/</guid>
       <description>
 

@@ -74,9 +74,9 @@
     
     <div class="post">
       <h1 class="post-title">
-        <a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">Android Transition 学习心得</a>
+        <a href="https://zllbird.github.io/2015/11/23/android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%BD%BF%E7%94%A8/">Android自定义属性使用</a>
       </h1>
-      <span class="post-date">Nov 12, 2015 &middot; 3 minute read &middot; <a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#disqus_thread">Comments</a>
+      <span class="post-date">Nov 23, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/23/android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%BD%BF%E7%94%A8/#disqus_thread">Comments</a>
       
       <br/>
       <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
@@ -84,265 +84,114 @@
       
       
 
-<h1 id="android-transition-学习心得:197eea1a2f41ae8a1e21912c062e6b04">Android Transition 学习心得</h1>
+<h1 id="android自定义属性使用以及注意事项:3bdf756234a6e48d25bbfd7dc8dacd4b">Android自定义属性使用以及注意事项</h1>
 
-<p>Android 5.0之后。Transition 被更多的应用起来，support也对其越来越多得支持。这种大背景下，各种动画的学习便是必不可少的了。而其中Transition便是其中的佼佼者。</p>
+<p>自定义控件和自定义属性是安卓开发过程中实现个性化的一个很好技巧，也是对sdk中UI部分的使用更加灵活的部分。这部分主要实现自定义属性，自定义控件的文档正在完善中。</p>
 
-<p>下面是比较详细的介绍和应用实践，我也是主要通过这个项目学习，但强烈建议，只先通看文档，别上来直接就照着写（还有看完后，记得回来啊！！！）：</p>
+<h3 id="如何实现:3bdf756234a6e48d25bbfd7dc8dacd4b">如何实现：</h3>
 
-<p><a href="https://github.com/lgvalle/Material-Animations">Material-Animations</a></p>
+<h4 id="a-在配置文件中声明:3bdf756234a6e48d25bbfd7dc8dacd4b">a) 在配置文件中声明。</h4>
 
-<p>看完后，我那叫一个心血澎湃。但按住心情，现在才是真正意义上的开始学习。</p>
+<p>虽说在value中哪个文件里都是一样（保证在resources标签下就行)，但作为一个有志向的开发者，良好的文件管理习惯是必须的，so，在values中创建一个名为：<code>attrs.xml</code>来统一管理自定义属性。</p>
 
-<p>我学习的过程，大概分以下几部分，可以做个参考，也非常欢迎大家的质疑和讨论。</p>
-
-<ol>
-<li>先运行Demo或者Examples代码，运行结果ok后，认真研读代码。<em>我始终认为，读一个轻量，但完整的工程代码，是快速学习的最有效的途径</em></li>
-<li>对关键API(类和方法)的学习。<em>知其然，也必须，知其所以然</em></li>
-<li>尝试代码。<em>写代码千万不要粘贴，千万不要忘记配置文件，android中千万不要忘记style等</em></li>
-</ol>
-
-<h3 id="activity跳转:197eea1a2f41ae8a1e21912c062e6b04">Activity跳转</h3>
-
-<h4 id="1-activity跳转都是需要添加-window-属性:197eea1a2f41ae8a1e21912c062e6b04">1)Activity跳转都是需要添加<code>window</code>属性。</h4>
-
-<p>配置文件：</p>
-
-<pre><code class="language-xml">&lt;style name=&quot;MaterialAnimations&quot; parent=&quot;@style/Theme.AppCompat.Light.NoActionBar&quot;&gt;
-  ...
-  //添加window开启Transtions动画属性
-  &lt;item name=&quot;android:windowContentTransitions&quot;&gt;true&lt;/item&gt; 
-
-  //是否覆盖执行，其实可以理解成是否同步执行还是顺序执行
-  &lt;item name=&quot;android:windowAllowEnterTransitionOverlap&quot;&gt;false&lt;/item&gt;
-  &lt;item name=&quot;android:windowAllowReturnTransitionOverlap&quot;&gt;false&lt;/item&gt;
-  ...
-&lt;/style&gt;
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+  &lt;declare-styleable name=&quot;ImageTextView&quot;&gt;
+        &lt;attr name=&quot;select_src&quot; format=&quot;reference&quot; /&gt;
+        &lt;attr name=&quot;normal_src&quot; format=&quot;reference&quot; /&gt;
+        &lt;attr name=&quot;select_text_color&quot; format=&quot;color&quot; /&gt;
+        &lt;attr name=&quot;normal_text_color&quot; format=&quot;color&quot; /&gt;
+        &lt;attr name=&quot;image_text_padding&quot; format=&quot;dimension&quot;/&gt;
+        &lt;attr name=&quot;android:textSize&quot;/&gt;
+        &lt;attr name=&quot;android:layout_gravity&quot; /&gt;
+        &lt;attr name=&quot;android:text&quot; /&gt;
+    &lt;/declare-styleable&gt;
+&lt;/resources&gt;
 </code></pre>
 
-<p>当然，也可以直接在代码里写</p>
+<p>自定义属性的声明是通过子标签<code>declare-styleable</code>声明了大的样式，具体的属性是通过<code>attr</code>来声明，声明包含属性名和格式（具体是属性值的格式，一般有reference，color，integer，float，dimension，boolean，string等，当然还有enum，如果是枚举的话要继续声明具体的枚举），如果对于自定义控件来说，某些属性就是已经android声明的属性，就可以在<code>name</code>后面直接写明使用android：声明的哪个属性（简单吧）。</p>
 
-<pre><code class="language-java"> getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+<h4 id="b-在自定义控件xml中使用:3bdf756234a6e48d25bbfd7dc8dacd4b">b) 在自定义控件xml中使用</h4>
+
+<p>（主要是讲解自定义属性，所以这里的自定义控件较为简单，就是一个imageview + textview的组合）</p>
+
+<pre><code class="language-xml">&lt;com.android.lesdo.view.UpImageTextView
+	//声明使用app来定义自定义属性名，当然这个命名是你确定的。
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    android:id=&quot;@+id/iv&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text = &quot;Hello&quot;
+    android:textSize = &quot;14sp&quot;
+    android:layout_marginRight=&quot;59dp&quot;
+    // 使用刚才已经在arrts里声明好的属性
+    app:select_src = &quot;@drawable/searchuser_t_pressed&quot; 
+    app:normal_src = &quot;@drawable/searchuser_t_normal&quot;
+    app:select_text_color = &quot;@color/green&quot;
+    app:normal_text_color = &quot;@color/content&quot;
+    app:image_text_padding = &quot;7dp&quot;
+    /&gt;
 </code></pre>
 
-<p>不过不建议在代码里写，因为现在使用Support v7 比较多，所以，不是直接原生的Activity，会又很多莫名其妙的错误。</p>
+<p>当然，你也可以声明android本来的属性，一样可以使用（具体在自定义控件里说明）。</p>
 
-<h4 id="2-配置进出动画:197eea1a2f41ae8a1e21912c062e6b04">2)配置进出动画</h4>
+<h4 id="c-在自定义控件-java类-中读取属性使用:3bdf756234a6e48d25bbfd7dc8dacd4b">c) 在自定义控件（java类）中读取属性使用</h4>
 
-<pre><code class="language-java">private void setupWindowAnimations() {
-    // Re-enter transition is executed when returning to this activity
-    Slide slideTransition = new Slide();
-    slideTransition.setSlideEdge(Gravity.LEFT);
- slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
-    getWindow().setReenterTransition(slideTransition); // 5.0以后的方法
-    getWindow().setExitTransition(slideTransition); // 5.0以后的方法
+<p>最后的使用。</p>
+
+<p>自定义控件大多数要继承原本的<code>Imageview</code> ，<code>TextView</code> ，<code>FrameLayout</code>等，当然直接继承View也是一样的，只不过直接继承View和ViewGroup的灵活性太高，一般用不到。</p>
+
+<pre><code class="language-java">public UpImageTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    super(context, attrs, defStyleAttr);
+    // 加载布局文件
+    LayoutInflater.from(context).inflate(R.layout.down_text_image,this);
+        imageView = (ImageView) findViewById(R.id.image);
+        textView = (TextView) findViewById(R.id.text);
+
+    // 获取属性集
+  	// 这里获取的就是我们再res 下value中声明的ImageTextView属性集
+  	// 当然是由IDE自动在R文件中生成的。
+        final TypedArray a = context.obtainStyledAttributes(
+                attrs, R.styleable.ImageTextView);
+
+    // 通过声明的format 就可以定向获取到属性
+  	// R.styleable 都是自动生成的，具体属性名都是跟在声明的style名字后面的
+  	// R.styleable.ImageTextView_normal_src对应的就是 arrts.xml中的
+  	// &lt;attr name=&quot;normal_src&quot; format=&quot;reference&quot; /&gt;
+
+       int selectRes = a.getResourceId(R.styleable.ImageTextView_select_src,0);
+       int normalRes = a.getResourceId(R.styleable.ImageTextView_normal_src,0);
+       int selectTextColor = a.getResourceId(R.styleable.ImageTextView_select_text_color,R.color.green);
+       int normalTextColor = a.getResourceId(R.styleable.ImageTextView_normal_text_color, R.color.title);
+      int textSize = a.getDimensionPixelSize(R.styleable.ImageTextView_android_textSize, 0);
+        int image_text_padding = a.getDimensionPixelOffset(R.styleable.ImageTextView_image_text_padding,0);
+        String text = a.getString(R.styleable.ImageTextView_android_text);
+
+        a.recycle();
+        imageView.setImageResource(normalRes);
+        textView.setTextColor(getResources().getColor(normalTextColor));
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+        textView.setText(text);
+        textView.setPadding(0,image_text_padding,0,0);
 }
 </code></pre>
 
-<h4 id="3-启动页面跳转:197eea1a2f41ae8a1e21912c062e6b04">3)启动页面跳转</h4>
+<p>依次获取属性，然后使用。弹药注意的是，获取完自定义或者本身的属性后，一定要将<code>final TypedArray a</code>返回到用之前的状态，可以看到<code>TypedArray</code>是context中获取的，它是一个环境中统一使用的，所以用完记得要还。</p>
 
-<p>这里需要注意的跳转的时候<strong>一定一定一定</strong>要配置ActivityOption。</p>
-
-<pre><code class="language-java">// 配置这个option必不可少
-ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity,view,shareName);
-startActivity(intent,options.toBundle());
+<pre><code class="language-java"> a.recycle();
 </code></pre>
 
-<p>当然，现在用support已经成为主流，下面是v4提供的支持类，用法相同</p>
+<p>注意的坑：</p>
 
-<pre><code class="language-java">// 配置这个option必不可少
-ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,view,shareName);
-startActivity(intent,options.toBundle());
+<pre><code class="language-java"> int textSize = a.getDimensionPixelSize(R.styleable.ImageTextView_android_textSize, 0);
 </code></pre>
 
-<p>好了，基本Activity的跳转就实现了。官方提供了三种实践，<strong>Explode</strong>, <strong>Slide</strong> 和<strong>Fade</strong>，分别是上下拉开，上下左右滑入滑出，以及淡出淡入等。</p>
+<p>这里获取的 ，单位是<strong>sp</strong>得值 ，单位是<strong>sp</strong>得值 ，单位是<strong>sp</strong>得值！！！</p>
 
-<h3 id="shareelement共享元素:197eea1a2f41ae8a1e21912c062e6b04">ShareElement共享元素</h3>
+<p>所以使用的时候记得加上<code>TypedValue</code>。</p>
 
-<p>不同界面的相同元素，进行跳转的时候，共联跳转，看起来简直是舒服到不行。也是我学习TransitionAnimation最大的动力。</p>
-
-<p><a href="https://github.com/lgvalle/Material-Animations">Material-Animations</a>中有非常详细的介绍实现。</p>
-
-<p>我整体试了一下，发觉使用<code>Fragment</code>比使用<code>Activity</code>动画不仅连贯很多，而且整体感更强。而且，<code>Fragment</code>的API对Transtion更加的亲善。</p>
-
-<pre><code class="language-java">// Transition for fragment1
-Slide slideTransition = new Slide(Gravity.LEFT); 
-slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
-// Create fragment and define some of it transitions
-SharedElementFragment1 sharedElementFragment1 = SharedElementFragment1.newInstance(sample);
-// 下面这几个方法都是Fragment的方法，可见Google已经建议使用Fragment，进行共享元素跳转是相当好的体验
-sharedElementFragment1.setReenterTransition(slideTransition); 
-sharedElementFragment1.setExitTransition(slideTransition);
-sharedElementFragment1.setSharedElementEnterTransition(new ChangeBounds());
-
-getSupportFragmentManager().beginTransaction()
-        .replace(R.id.sample2_content, sharedElementFragment1)
-        .commit();
+<pre><code class="language-java">textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
 </code></pre>
-
-<p>Google建议，使用Fragment去承载UI界面，Activity主要承载操作Fragment。因此，关于跳转，也强烈建议使用上面的实践。</p>
-
-<h3 id="view动画:197eea1a2f41ae8a1e21912c062e6b04">View动画</h3>
-
-<h4 id="scenes:197eea1a2f41ae8a1e21912c062e6b04">Scenes</h4>
-
-<p>在一个界面内（Activity or Fragment）实现动画，就需要<code>scenes</code>，这个scene，翻译成视图，结果图都觉得很别扭，我就这么解释，scene是一种静态或者结果状态，就是最后是啥样子的。如果是位移动画，相当于初始位置的图，和运动完后的位置图。然后由，<code>TransitionManager</code>最后调用，go方法，他就跑起来了。</p>
-
-<p>详细请看项目中的<code>AnimationsActivity2</code>类，核心代码是：</p>
-
-<pre><code class="language-java">cene1 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene1, this);
-scene2 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene2, this);
-scene3 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene3, this);
-scene4 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene4, this);
-
-View button1 = findViewById(R.id.sample3_button1);
-button1.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        TransitionManager.go(scene1, new ChangeBounds());
-    }
-});
-View button2 = findViewById(R.id.sample3_button2);
-button2.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        TransitionManager.go(scene2, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds));
-    }
-});
-
-View button3 = findViewById(R.id.sample3_button3);
-button3.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        TransitionManager.go(scene3, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds_sequential));
-    }
-});
-
-View button4 = findViewById(R.id.sample3_button4);
-button4.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        TransitionManager.go(scene4, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds_sequential_with_interpolators));
-    }
-});
-</code></pre>
-
-<h4 id="view-属性改变引起的动画:197eea1a2f41ae8a1e21912c062e6b04">View 属性改变引起的动画</h4>
-
-<p>这个就有点变态了，你更改了空间的layout属性，告诉Transtion一声，他就做成动画反馈在界面上。听起来就很叼！</p>
-
-<p>实现起来非常非常的简单，简单到想哭。</p>
-
-<pre><code class="language-java">private void changeLayout() {
-
-  // 声明，由Transition接管界面变化的意思，这里的viewRoot相当于根视图，
-  // 也就是说，想改变layout布局的view,父类要先被接管
-    TransitionManager.beginDelayedTransition(viewRoot);
-
-    ViewGroup.LayoutParams params = square.getLayoutParams();
-    if (sizeChanged) {
-        params.width = savedWidth;
-    } else {
-        savedWidth = params.width;
-        params.width = 200;
-    }
-    sizeChanged = !sizeChanged;
-    square.setLayoutParams(params);
-}
-
-private void changePosition() {
-    TransitionManager.beginDelayedTransition(viewRoot);
-
-    LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) square.getLayoutParams();
-    if (positionChanged) {
-        lp.gravity = Gravity.CENTER;
-    } else {
-        lp.gravity = Gravity.LEFT;
-    }
-    positionChanged = !positionChanged;
-    square.setLayoutParams(lp);
-}
-</code></pre>
-
-<p>相信，介于此，5.0后的android上很多用户体验能提升一大截。</p>
-
-<h3 id="reveal-揭示动画:197eea1a2f41ae8a1e21912c062e6b04">Reveal，揭示动画</h3>
-
-<p>这也是相当符合设计一种动画，通过一点引发触动（可以是接触点，也可以位移后触动），然后由点及面，揭示（展现）内容。</p>
-
-<p>一般都是通过shared elements一起组合使用，完成界面跳转。</p>
-
-<p>Circular Reveal 即通过原点，然后由点及面逐步揭示，而且还有一个弧度，视觉体验感非常好。</p>
-
-<p>这里要用到<code>ViewAnimationUtils</code>类（这个类里承载了很多动画，非常还用!）</p>
-
-<pre><code class="language-java">// 揭示原点，这里的点取的是控件的中点
-int cx = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
-int cy = (viewRoot.getTop() + viewRoot.getBottom()) / 2;
-int finalRadius = Math.max(viewRoot.getWidth(), viewRoot.getHeight()); // 揭示弧度
-
-// 获得动画
-Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, cx, cy, 0, finalRadius);
-
-// 这里更改动画，是为了看到的揭示能比较清楚
-viewRoot.setBackgroundColor(color);
-anim.addListener(new AnimatorListenerAdapter() {
-    @Override
-    public void onAnimationEnd(Animator animation) {
-        animateButtonsIn();
-    }
-});
-anim.start();
-</code></pre>
-
-<p>如果不是由控件引起的，而是由点击（其实就是触摸）引起的，只需要传入接触点的x,y坐标就好了。</p>
-
-<pre><code class="language-java">@Override
-public boolean onTouch(View view, MotionEvent motionEvent) {
-    if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-        if (view.getId() == R.id.square_yellow) {
-            revealFromCoordinates(motionEvent.getRawX(), motionEvent.getRawY());
-        }
-    }
-    return false;
-}
-</code></pre>
-
-<pre><code class="language-java">private Animator animateRevealColorFromCoordinates(int x, int y) {
-
-    float finalRadius = (float) Math.hypot(viewRoot.getWidth(), viewRoot.getHeight());
-
-    Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, x, y, 0, finalRadius);
-    viewRoot.setBackgroundColor(color);
-    anim.start();
-}
-</code></pre>
-
-<p>刚才提到的改变layout属性，就可以改变动画其实也是可以用到圆揭示：</p>
-
-<pre><code class="language-java">Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.changebounds_with_arcmotion);
-transition.addListener(new Transition.TransitionListener() {
-    @Override
-    public void onTransitionEnd(Transition transition) {
-        animateRevealColor(bgViewGroup, R.color.red);
-    }
-    (...)
-
-});
-//接管后，传入想要改变的动画
-TransitionManager.beginDelayedTransition(bgViewGroup, transition);
-RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
-btnRed.setLayoutParams(layoutParams);
-</code></pre>
-
-<h3 id="总结:197eea1a2f41ae8a1e21912c062e6b04">总结</h3>
-
-<p>写的比较简单，很多东西还是对API的熟悉和使用。</p>
-
-<p>Material 正在改变Android，相信以后的UI无论从实感还是物理感，都会更加贴合用户，贴近使用。</p>
-
-<hr />
 
       
     </div>
@@ -382,12 +231,15 @@ btnRed.setLayoutParams(layoutParams);
         ><a href="/page/7/">7</a></li>
         
         <li
+        ><a href="/page/8/">8</a></li>
+        
+        <li
         >
         <a href="/page/5/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/7/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/8/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

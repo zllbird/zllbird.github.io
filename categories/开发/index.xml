@@ -7,8 +7,216 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2015 Copyright Text</copyright>
-    <lastBuildDate>Mon, 30 Nov 2015 22:25:24 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 09 Jan 2016 14:59:57 +0800</lastBuildDate>
     <atom:link href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>CocoaLumberjack的集成和学习</title>
+      <link>https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Sat, 09 Jan 2016 14:59:57 +0800</pubDate>
+      
+      <guid>https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/</guid>
+      <description>
+
+&lt;h2 id=&#34;cocoalumberjack的集成和学习:43299706702588eefa55b6be9b7526b3&#34;&gt;CocoaLumberjack的集成和学习&lt;/h2&gt;
+
+&lt;h3 id=&#34;摘要:43299706702588eefa55b6be9b7526b3&#34;&gt;摘要：&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;介绍以及安装&lt;/li&gt;
+&lt;li&gt;集成&lt;/li&gt;
+&lt;li&gt;使用&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;介绍以及安装:43299706702588eefa55b6be9b7526b3&#34;&gt;介绍以及安装&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/CocoaLumberjack/CocoaLumberjack&#34;&gt;GitHub地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;强烈建议好好通过Github上的方式安装和使用，github是神器，好好使用，总会飞升。&lt;/p&gt;
+
+&lt;p&gt;CocoaLumberjack，简单说就是日志系统。对于我这种原来是java的工程师来说，就是log4j。之所以使用它，是我对于XCode的极大不满！（打印日志居然没有颜色，而且&amp;hellip;地方那么小，我有两个屏幕有个毛线用。）吐槽结束，说两句CocoaLumberjack特点。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;有分级。能分级打印的日志才叫日志，才能有选择的看嘛。&lt;/li&gt;
+&lt;li&gt;能通过插件配色。&lt;strong&gt;全是一个颜色的日志找起来，真的好辛苦&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;能自定义日志输出信息。&lt;strong&gt;有调用类，调用方法，调用行数的日志才是好的日志&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;安装:43299706702588eefa55b6be9b7526b3&#34;&gt;安装&lt;/h4&gt;
+
+&lt;p&gt;请先通过Github上的介绍安装。~&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;建议建议：&lt;/strong&gt; 使用CocoaPods来安装。只需要在&lt;code&gt;Podfile&lt;/code&gt;上填上两行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;platform :ios, &#39;7.0&#39;
+pod &#39;CocoaLumberjack&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后终端执行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pod install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;就完成了。&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;ok，ok，ok….这里肯定会有几个坑。简单说一下。&lt;/p&gt;
+
+&lt;h4 id=&#34;坑:43299706702588eefa55b6be9b7526b3&#34;&gt;坑：&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;请在翻墙的环境下安装。相信我，如果没有翻墙环境，你总会陷入莫名的长时间等待。&lt;/li&gt;
+&lt;li&gt;安装过程中，一旦出现以下情况。&lt;img src=&#34;https://zllbird.github.io/images/cocoaLumberjack/1.png&#34; alt=&#34;&#34; /&gt;说明安装并没有成功配置。原因是原来的项目由于各种原因，导致管理的包路径，源路径很有问题，需要根据上述提示进行更改。（这里会经常出问题，都是因为大家习惯了直接将问题放到google或者&lt;a href=&#34;http://stackoverflow.com/&#34;&gt;stackoverflow&lt;/a&gt;找寻答案，本人不建议如此做，先看日志输出，搞清楚到底啥问题才是最重要的），接下来截图是我的修改，本质上就是按照提示进行更改。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/cocoaLumberjack/2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/cocoaLumberjack/3.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CocoaPods本身对源码入侵是比较严重的，所以大家也可以使用Carthage。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;集成:43299706702588eefa55b6be9b7526b3&#34;&gt;集成&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;集成也很简单，仍然是建议大家先通过英文文档。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;因为我正在使用的工程还有&lt;code&gt;.pch&lt;/code&gt;预加载头文件的存在，所以我仍然是在这里配置了我的输入和输出等级。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-objective-c&#34;&gt;#ifdef DEBUG
+    static const DDLogLevel ddLogLevel = DDLogLevelDebug;
+#else
+    static const DDLogLevel ddLogLevel = DDLogLevelError;
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然，这种方式正在被淘汰，建议大家可以写到一个宏来配置。&lt;/p&gt;
+
+&lt;p&gt;然后在&lt;code&gt;AppDelegate&lt;/code&gt;中的&lt;code&gt;didFinishLaunchingWithOptions&lt;/code&gt;中初始化。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-objective-c&#34;&gt;#import &amp;lt;CocoaLumberjack/CocoaLumberjack.h&amp;gt;
+
+...
+...
+...
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+ 	[DDLog addLogger:[DDTTYLogger sharedInstance]];
+ 	[DDLog addLogger:[DDASLLogger sharedInstance]];
+
+    [[DDTTYLogger sharedInstance] setLogFormatter:[LDFormatter new]];
+    // And we also enable colors
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+
+    DDFileLogger *fileLogger = [[DDFileLogger alloc] init]; // File Logger
+    fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
+    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+
+    [DDLog addLogger:fileLogger];
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;完成初始化后，就可以在想要的敌方直接打印结果了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	DDLogVerbose(@&amp;quot;Verbose&amp;quot;);
+    DDLogDebug(@&amp;quot;Debug&amp;quot;);
+    DDLogInfo(@&amp;quot;Info&amp;quot;);
+    DDLogWarn(@&amp;quot;Warn&amp;quot;);
+    DDLogError(@&amp;quot;Error&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;使用:43299706702588eefa55b6be9b7526b3&#34;&gt;使用&lt;/h3&gt;
+
+&lt;p&gt;其实到上面为止，使用也已经是说完了。但对于工程来说，打印日志，只有日志信息是不够的。CocoaLumberjack对此做了非常好的优化，只需要简单地配置就基本可以打印出一个较为理想的日志输出。（也就是我开始讲的第3条）&lt;/p&gt;
+
+&lt;h4 id=&#34;配置自定义的formatter:43299706702588eefa55b6be9b7526b3&#34;&gt;&lt;strong&gt;配置自定义的Formatter&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;配置之前，可以先给大家看一下，CocoaLumberjack的日志到底包含了多少信息，有多强大。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@interface DDLogMessage : NSObject &amp;lt;NSCopying&amp;gt;
+{
+    // Direct accessors to be used only for performance
+    @public
+    NSString *_message;
+    DDLogLevel _level;
+    DDLogFlag _flag;
+    NSInteger _context;
+    NSString *_file;
+    NSString *_fileName;
+    NSString *_function;
+    NSUInteger _line;
+    id _tag;
+    DDLogMessageOptions _options;
+    NSDate *_timestamp;
+    NSString *_threadID;
+    NSString *_threadName;
+    NSString *_queueLabel;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以看到，无论是类（&lt;code&gt;_fileName&lt;/code&gt;），还是函数名（&lt;code&gt;_function&lt;/code&gt;）,还有所在的行数（&lt;code&gt;_line&lt;/code&gt;），还有时间，所在线程等等等等，都有。&lt;/p&gt;
+
+&lt;p&gt;接下来就可以自定义Formatter了。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;建议大家还是先看Github项目中的自定义&lt;a href=&#34;https://github.com/CocoaLumberjack/CocoaLumberjack/blob/master/Documentation/CustomFormatters.md&#34;&gt;Formatter文档&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;MyFormatter.h
+
+@interface MyFormatter : NSObject &amp;lt;DDLogFormatter&amp;gt; {
+    int loggerCount;
+    NSDateFormatter *threadUnsafeDateFormatter;
+}
+@end
+
+
+=======
+
+MyFormatter.m
+
+@implementation MyFormatter
+
+- (NSString *)formatLogMessage:(DDLogMessage *)logMessage {
+    NSString *logLevel;
+    switch (logMessage-&amp;gt;_flag) {
+        case DDLogFlagError    : logLevel = @&amp;quot;Error&amp;quot;; break;
+        case DDLogFlagWarning  : logLevel = @&amp;quot;W&amp;quot;; break;
+        case DDLogFlagInfo     : logLevel = @&amp;quot;Info&amp;quot;; break;
+        case DDLogFlagDebug    : logLevel = @&amp;quot;D&amp;quot;; break;
+        default                : logLevel = @&amp;quot;V&amp;quot;; break;
+    }
+
+    NSString *dateAndTime = [threadUnsafeDateFormatter stringFromDate:(logMessage-&amp;gt;_timestamp)];
+    NSString *logMsg = logMessage-&amp;gt;_message;
+    NSString *logFileNmae = logMessage -&amp;gt; _fileName;
+    NSString *logFuncation = logMessage -&amp;gt; _function;
+    long lineNum = logMessage -&amp;gt; _line;
+
+    return [NSString stringWithFormat:@&amp;quot;%@ %@ :%li %@ %@ :::\n %@ &amp;quot;,logFileNmae, logFuncation,lineNum, logLevel, dateAndTime, logMsg];
+
+}
+
+@end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;成果秀:43299706702588eefa55b6be9b7526b3&#34;&gt;成果秀&lt;/h3&gt;
+
+&lt;p&gt;最后放几张配置好的结果图秀&lt;/p&gt;
+
+&lt;h4 id=&#34;xcode-输出台的日志:43299706702588eefa55b6be9b7526b3&#34;&gt;xcode 输出台的日志&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/cocoaLumberjack/4.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;文件日志-模拟器可以直接进入文件然后用-tail-f-查看:43299706702588eefa55b6be9b7526b3&#34;&gt;文件日志（模拟器可以直接进入文件然后用&lt;code&gt;tail -f&lt;/code&gt; 查看）&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/cocoaLumberjack/5.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
     
     <item>
       <title>Android自动构建</title>

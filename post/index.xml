@@ -7,8 +7,119 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2015 Copyright Text</copyright>
-    <lastBuildDate>Sat, 09 Jan 2016 14:59:57 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 Jan 2016 20:43:23 +0800</lastBuildDate>
     <atom:link href="https://zllbird.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>关于苹果证书</title>
+      <link>https://zllbird.github.io/2016/01/11/%E5%85%B3%E4%BA%8E%E8%8B%B9%E6%9E%9C%E8%AF%81%E4%B9%A6/</link>
+      <pubDate>Mon, 11 Jan 2016 20:43:23 +0800</pubDate>
+      
+      <guid>https://zllbird.github.io/2016/01/11/%E5%85%B3%E4%BA%8E%E8%8B%B9%E6%9E%9C%E8%AF%81%E4%B9%A6/</guid>
+      <description>
+
+&lt;h2 id=&#34;关于苹果证书:e17706f6098990c313a029f4b1ce2f78&#34;&gt;关于苹果证书&lt;/h2&gt;
+
+&lt;h3 id=&#34;摘要:e17706f6098990c313a029f4b1ce2f78&#34;&gt;摘要：&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;苹果证书简介&lt;/li&gt;
+&lt;li&gt;具体解读&lt;/li&gt;
+&lt;li&gt;如何优雅地使用&lt;/li&gt;
+&lt;li&gt;关于苹果证书企业版的那些事儿&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;苹果证书简介:e17706f6098990c313a029f4b1ce2f78&#34;&gt;苹果证书简介&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;开发者证书（分为开发和发布两种，类型为&lt;strong&gt;ios Development,ios Distribution&lt;/strong&gt;），这个是最基础的，不论是真机调试，还是上传到appstore都是需要的，是一个基证书，用来证明自己开发者身份的。&lt;/li&gt;
+&lt;li&gt;appID,这是每一个应用的独立标识，在设置项中可以配置该应用的权限，比如是否用到了PassBook,GameCenter,以及更常见的push服务，如果选中了push服务，那么就可以创建生成下面第3条所提到的推送证书，所以，在所有和推送相关的配置中，首先要做的就是先开通支持推送服务的appID。&lt;/li&gt;
+&lt;li&gt;推送证书（分为开发和发布两种，类型分别为&lt;strong&gt;APNs Development ios,APNs Distribution ios&lt;/strong&gt;）,该证书在appID配置中创建生成，和开发者证书一样，安装到开发电脑上；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Provisioning Profiles&lt;/strong&gt;,这个东西是很有苹果特色的一个东西，我一般称之为PP文件，该文件将appID,开发者证书，硬件Device绑定到一块儿，在开发者中心配置好后可以添加到Xcode上，也可以直接在Xcode上连接开发者中心生成，真机调试时需要在PP文件中添加真机的udid；是真机调试和必架必备之珍品&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;具体解读:e17706f6098990c313a029f4b1ce2f78&#34;&gt;具体解读&lt;/h3&gt;
+
+&lt;p&gt;首先先说一下，苹果账号分两种，一种是$99 ,另一种是$299。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;$99&lt;/strong&gt;，个人或公司账号。可发布到App Store，这是最重要的。但不可以无限给设备分发，只能分发100个设备，根据UUID来唯一识别设备。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;$299&lt;/strong&gt;，企业账号。&lt;strong&gt;不可以发布到App Store&lt;/strong&gt;，这是最重要的。但可以无限分发，无限分发，无限分发。（但iOS的企业开发者信任调整了，所以虽可以任意分发，但需要安装后，手动在设置里先信任开发者，这点很讨厌）&lt;/p&gt;
+
+&lt;p&gt;然后开始解读上面提到的四种证书，先上图看一下，开发者中心的目录解读。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ok，基础了解之后。具体讲述一下，这堆乱起八糟的东西到底有什么用。&lt;/p&gt;
+
+&lt;p&gt;苹果为了保证开发者（就是交完钱的孩子），能安安全全的开发，开开心心的发布，而不交钱的孩子开发都比较困难，所以搞出了这一大套折腾的东西。&lt;/p&gt;
+
+&lt;h5 id=&#34;certificates-appid-bundle-id-provisioning-profiles-到底是怎么用的呢:e17706f6098990c313a029f4b1ce2f78&#34;&gt;Certificates，AppID(Bundle id)，Provisioning Profiles 。到底是怎么用的呢？&lt;/h5&gt;
+
+&lt;p&gt;Provisioning Profiles，可以理解为安装到苹果设备的认证，通俗讲就是能不能安装到苹果设备，就看Provisioning Profiles这把钥匙能不能用。能用，进门安装。不能，弹出一个提示&lt;strong&gt;无法安装&lt;/strong&gt;，就呵呵哒了。&lt;/p&gt;
+
+&lt;p&gt;既然如此，怎样才能生成一个Provisioning Profiles呢。看一下苹果这边生成Provisioning Profiles需要什么？&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_3.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_4.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_5.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;终于好了，将证书Certificates，AppID(Bundle id)，devices都选择完后，绑定到一起，成功召唤出神龙，帮你生成了这把钥匙。&lt;/p&gt;
+
+&lt;p&gt;那这把钥匙到底开的是哪扇门呢？&lt;strong&gt;是代码，是代码，是代码&lt;/strong&gt;！！！&lt;/p&gt;
+
+&lt;p&gt;看一下打包的时候，在哪里用到这个签名，在build setting 下。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_6.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注意左上角是代码签名，代码签名！&lt;/p&gt;
+
+&lt;p&gt;所以上面那个图告诉我们的是，谁（*iOS Developer 或者iPhone Distribution*）给这段代码签名了，然后并配上了一把钥匙（Provisioning Profiles 描述文件，可以打开app store上的app，或者 可以打开  XC:AD HOC 私下分发的app等），共同组合一起完成了一个叫扩张名为ipa的打包文件。&lt;/p&gt;
+
+&lt;h3 id=&#34;如何优雅地使用:e17706f6098990c313a029f4b1ce2f78&#34;&gt;如何优雅地使用&lt;/h3&gt;
+
+&lt;p&gt;有这段主要是由于本公司混乱和冗余的证书把整个开发者中心搞得&amp;hellip;简直就是乌烟瘴气。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Certificates 是一定要通过电脑生成证书，然后提交网页签名的。所以，命名一定要特别的长，长到把此证书是何用，用在何处的信息尽量多的写。&lt;/li&gt;
+&lt;li&gt;appID ，也是有备注名的，备注名的，备注名的。所以，还是尽量多的写，尽量多的写。&lt;/li&gt;
+&lt;li&gt;Provisioning Profiles，尽量不要在网页生成下载，建议直接用Xcode生成。&lt;/li&gt;
+&lt;li&gt;协同开发者，下载Provisioning Profiles一定要用Xcode的account管理，一键下载安装。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;（选择xcode —&amp;gt; prefenerces—&amp;gt;accounts—&amp;gt;view details）&lt;/p&gt;
+
+&lt;p&gt;这里就可以下载所有的profiles。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_7.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;关于苹果证书企业版的那些事儿:e17706f6098990c313a029f4b1ce2f78&#34;&gt;关于苹果证书企业版的那些事儿&lt;/h3&gt;
+
+&lt;p&gt;刚才提到过，企业版证书就是价值299美元的那个。&lt;/p&gt;
+
+&lt;p&gt;和普通版本没有什么大的区别，就是Provisioning Profiles的生成中多了一个叫做&lt;code&gt;in-house&lt;/code&gt;的发布类型。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_8.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;只有这一点区别。&lt;/p&gt;
+
+&lt;p&gt;看一下生成后的描述文件有哪里不一样。可以看到类型不一样！！！&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_10.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;当然，打包的时候，build setting 中也要同时选中这个版的Provisioning Profiles。&lt;/p&gt;
+
+&lt;p&gt;然后选择&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_9.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
     
     <item>
       <title>CocoaLumberjack的集成和学习</title>

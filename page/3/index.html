@@ -74,9 +74,9 @@
     
     <div class="post">
       <h1 class="post-title">
-        <a href="https://zllbird.github.io/2015/11/30/android%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/">Android自动构建</a>
+        <a href="https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/">CocoaLumberjack的集成和学习</a>
       </h1>
-      <span class="post-date">Nov 30, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/30/android%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/#disqus_thread">Comments</a>
+      <span class="post-date">Jan 9, 2016 &middot; 2 minute read &middot; <a href="https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/#disqus_thread">Comments</a>
       
       <br/>
       <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
@@ -84,212 +84,201 @@
       
       
 
-<h1 id="android自动构建发布实践:8595cf9f458882a0b67b0f8cac9fde62">Android自动构建发布实践</h1>
+<h2 id="cocoalumberjack的集成和学习:43299706702588eefa55b6be9b7526b3">CocoaLumberjack的集成和学习</h2>
 
-<p>首先声明。</p>
-
-<p><strong>这主要不是讲教程，这是集成过程中遇到的坑！</strong></p>
-
-<p><strong>这主要不是讲教程，这是集成过程中遇到的坑！</strong></p>
-
-<p><strong>这主要不是讲教程，这是集成过程中遇到的坑！</strong></p>
-
-<p>重要的事情说三遍。</p>
-
-<h3 id="集成工具:8595cf9f458882a0b67b0f8cac9fde62">集成工具</h3>
-
-<ul>
-<li>jenkins (CI)</li>
-<li>Git and GitLab(GitHub同理)</li>
-<li>Gradle (build 工具)</li>
-<li>fir （发布工具）</li>
-</ul>
-
-<p>工具简单介绍一下，</p>
-
-<p>jenkins是现在比较主流的CI，也正是因此，上面的插件丰富，涵盖面也很广，更为重要的是，非常容易安装和配置，自然是首选。</p>
-
-<p>Git 版本管理工具，就不用了讲解了。jenkins同时支持svn。（还是建议大家早点转到git上）公司现在的版本管理使用的是gitlab，类似github(github的迷你版)。</p>
-
-<p>Gradle是现任Android构建，很是强大。至于grade配置，网上教程很多也很杂乱，建议大家跟随谷歌原版[Gradle 用户指南]()</p>
-
-<p>这里再推荐一篇，个人认为对Gradle解读很到位的一篇文章。[深入理解gradle]()</p>
-
-<h3 id="开始集成:8595cf9f458882a0b67b0f8cac9fde62">开始集成</h3>
-
-<p>安装jenkins。</p>
-
-<p>如果你是mac或者Linux，可以直接通过shell安装（<strong>推荐</strong> ）</p>
-
-<pre><code>$ brew install jenkins 
-</code></pre>
-
-<p>如果没有brew，先安装Homebrew</p>
-
-<pre><code> $ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre>
-
-<p>如果没有ruby&hellip; 请自行google。</p>
-
-<p>启动 Jenkins</p>
-
-<pre><code>$ jenkins
-</code></pre>
-
-<h3 id="访问-jenkins:8595cf9f458882a0b67b0f8cac9fde62">访问 Jenkins</h3>
-
-<ul>
-<li>请在浏览器输入地址:</li>
-</ul>
-
-<pre><code>    http://localhost:8080/
-  
-</code></pre>
-
-<ul>
-<li>使用安装包安装后会自动打开，如果端口冲突那么请修改端口</li>
-</ul>
-
-<pre><code>    defaults write /Library/Preferences/org.jenkins-ci httpPort xxxx
-  
-</code></pre>
-
-<p>jenkins最基本的安装就完成了。然后，可以在浏览器输入地址查看一下。看到这样的画面，基本安装就完成了。</p>
-
-<p><img src="https://zllbird.github.io/images/jenkins/initjenkins.png" alt="initjenkins" /></p>
-
-<p>截图里包含两个，一个是通过web端浏览器访问得到的界面。另一个是shell的日志。</p>
-
-<p>jenkins到此结束。开始使用jenkins，Android的构建之旅吧。</p>
-
-<h3 id="jenkins的插件安装:8595cf9f458882a0b67b0f8cac9fde62">jenkins的插件安装</h3>
-
-<p>两种方式。这里以安装Git插件为例。</p>
+<h3 id="摘要:43299706702588eefa55b6be9b7526b3">摘要：</h3>
 
 <ol>
-<li>通过查询安装。</li>
-<li>通过自行下载*.hpi , 然后通过高级安装。</li>
+<li>介绍以及安装</li>
+<li>集成</li>
+<li>使用</li>
 </ol>
 
-<p>选择系统管理，然后选择管理插件。 <img src="https://zllbird.github.io/images/jenkins/initpulgin.png" alt="initpulgin" /></p>
+<h3 id="介绍以及安装:43299706702588eefa55b6be9b7526b3">介绍以及安装</h3>
 
-<h4 id="查询安装:8595cf9f458882a0b67b0f8cac9fde62">查询安装。</h4>
+<p><a href="https://github.com/CocoaLumberjack/CocoaLumberjack">GitHub地址</a></p>
 
-<p>在插件管理界面，选择可选插件，然后在右边过滤器里筛选Git或GIT plugin</p>
+<p>强烈建议好好通过Github上的方式安装和使用，github是神器，好好使用，总会飞升。</p>
 
-<p><img src="https://zllbird.github.io/images/jenkins/jenkinsgit.png" alt="jenkinsgit" /></p>
+<p>CocoaLumberjack，简单说就是日志系统。对于我这种原来是java的工程师来说，就是log4j。之所以使用它，是我对于XCode的极大不满！（打印日志居然没有颜色，而且&hellip;地方那么小，我有两个屏幕有个毛线用。）吐槽结束，说两句CocoaLumberjack特点。</p>
 
-<p>然后选择立刻安装。</p>
+<ol>
+<li>有分级。能分级打印的日志才叫日志，才能有选择的看嘛。</li>
+<li>能通过插件配色。<strong>全是一个颜色的日志找起来，真的好辛苦</strong></li>
+<li>能自定义日志输出信息。<strong>有调用类，调用方法，调用行数的日志才是好的日志</strong></li>
+</ol>
 
-<h4 id="自行下载-hpi-然后通过高级安装:8595cf9f458882a0b67b0f8cac9fde62">自行下载*.hpi , 然后通过高级安装</h4>
+<h4 id="安装:43299706702588eefa55b6be9b7526b3">安装</h4>
 
-<p><img src="https://zllbird.github.io/images/jenkins/jenkinscuston.png" alt="jenkinscuston" /></p>
+<p>请先通过Github上的介绍安装。~</p>
 
-<p>然后选择上传。</p>
+<p><strong>建议建议：</strong> 使用CocoaPods来安装。只需要在<code>Podfile</code>上填上两行</p>
 
-<h4 id="遇到的坑:8595cf9f458882a0b67b0f8cac9fde62">遇到的坑</h4>
-
-<p>可以说刚开始我是一只使用第一种方法来安装插件的。结果失败率非常高。如果不自备梯子，失败率会更高！</p>
-
-<p><em>折腾了很长时间，而且搞得自己心里憔悴。</em></p>
-
-<p>所以建议大家通过自己去jenkins的官网或镜像来下载hpi文件自行安装需要的插件。</p>
-
-<p>还有，自备梯子是一种好习惯。</p>
-
-<h4 id="需要安装的插件:8595cf9f458882a0b67b0f8cac9fde62">需要安装的插件</h4>
-
-<ul>
-<li>Git</li>
-<li>Gitlab</li>
-<li>Gitlab Hook (我一直安装不成功，所以自动push event 构建也还未成功)</li>
-<li>Gradle</li>
-<li>fir （官网有详尽的<a href="http://blog.fir.im/jenkins/">下载和安装教程</a>）</li>
-</ul>
-
-<p>到此为止，所有的环境都准备好了。终于可以开动了！</p>
-
-<h3 id="自动化构建实例:8595cf9f458882a0b67b0f8cac9fde62">自动化构建实例</h3>
-
-<p>jenkins中新建一个项目，命名后，选择 <code>构建一个自由风格的软件项目</code>。</p>
-
-<p>项目名称。<strong>跳过</strong></p>
-
-<p>描述。<strong>跳过</strong></p>
-
-<p>… 各种跳过，直接进入源码管理。</p>
-
-<h4 id="源码管理:8595cf9f458882a0b67b0f8cac9fde62">源码管理</h4>
-
-<p><img src="https://zllbird.github.io/images/jenkins/jenkinssource.png" alt="jenkinssource" /></p>
-
-<p>这里选的是Git，当然如果你只有现实svn的话，那就是你还没安装Git的插件，具体安装请看上文。</p>
-
-<p>记住选择构建的分支。（这里是一个只含一个界面调试的项目，所以我直接用了master。<strong>建议，创建一个deploy发布或者debug这样的分支</strong>，确保每次构建都是可控的。）</p>
-
-<p>注意到Credentials，这是身份验证。这里直接写了none，也就是说，没有直接验证身份。难道说，我的项目没加任何限制？？？</p>
-
-<p>当然，不是啦。Git的项目，无论是Github还是自己搭建的Gitlab，大多数都是通过ssh验证的。</p>
-
-<p>可以点击Credentials 后面的Add 。</p>
-
-<p><img src="https://zllbird.github.io/images/jenkins/jenkinsssh.png" alt="jenkinsssh" /></p>
-
-<p>这样保证jenkins部署的机器的ssh私钥在服务上。</p>
-
-<h4 id="构建触发器:8595cf9f458882a0b67b0f8cac9fde62">构建触发器</h4>
-
-<p>这就是传说中的<strong>自动构建</strong>。直接上图讲解。</p>
-
-<p><img src="https://zllbird.github.io/images/jenkins/jenkinsauto.png" alt="jenkinsauto" /></p>
-
-<p>这里有三种事件触发构建。</p>
-
-<ul>
-<li>Build periodically 。 即定时触发，这里我写的是<code>H 10 * * *</code>，指的就是每天10点触发构建，也就是说，每天10天无论有没有新的代码部署，都会进行构建。</li>
-</ul>
-
-<pre><code>  H 10 * * *
-  分 小时 天 月 年
-  
-  // 五位分别指向轮询事件，这里H 和 0 差不多意思，就是不顾及 分，每天10天构建。
-  // * 指忽视
+<pre><code>platform :ios, '7.0'
+pod 'CocoaLumberjack'
 </code></pre>
 
-<ul>
-<li><p>Build when a change is pushed to GitLab. GitLab CI Service UR… 。这是Gitlab的插件，是gitlab通过事件通知的形式发放。（我测试了很久，感觉这个插件时好时坏，不建议使用）</p></li>
+<p>然后终端执行</p>
 
-<li><p>Poll SCM。 即轮询查询仓库中的代码是否有更新，如果有更新，则进行构建。没有更新，则忽视。这里写的<code>H/5 * * * *</code>，指每五分钟进行代码扫描。</p></li>
-</ul>
-
-<pre><code>H/5  指每五分钟。 这种写法指每这段时间进行轮询
+<pre><code>pod install
 </code></pre>
 
-<h4 id="构建:8595cf9f458882a0b67b0f8cac9fde62">构建</h4>
+<p>就完成了。</p>
 
-<p>构建栏中，选增加构建步骤。选择<code>Invoke Gradle script</code>，当然，如果没有这个选项，就是未安装Gradle插件，然后具体的参数。</p>
+<p>&hellip;</p>
 
-<p><img src="https://zllbird.github.io/images/jenkins/jenkinsbuild.png" alt="jenkinsbuild" /></p>
+<p>&hellip;</p>
 
-<p>熟悉Gradle的，很容易看明白，只是执行了了gradle clean build 指令而已。不熟悉的也没关系，我会单独再写一篇关于优化Gradle在安卓上面的部署的 ，以及Gradle使用。</p>
+<p>ok，ok，ok….这里肯定会有几个坑。简单说一下。</p>
 
-<h4 id="构建后操作:8595cf9f458882a0b67b0f8cac9fde62">构建后操作</h4>
+<h4 id="坑:43299706702588eefa55b6be9b7526b3">坑：</h4>
 
-<p>我这里使用的是fir.im （做的还不错哦）。</p>
+<ul>
+<li>请在翻墙的环境下安装。相信我，如果没有翻墙环境，你总会陷入莫名的长时间等待。</li>
+<li>安装过程中，一旦出现以下情况。<img src="https://zllbird.github.io/images/cocoaLumberjack/1.png" alt="" />说明安装并没有成功配置。原因是原来的项目由于各种原因，导致管理的包路径，源路径很有问题，需要根据上述提示进行更改。（这里会经常出问题，都是因为大家习惯了直接将问题放到google或者<a href="http://stackoverflow.com/">stackoverflow</a>找寻答案，本人不建议如此做，先看日志输出，搞清楚到底啥问题才是最重要的），接下来截图是我的修改，本质上就是按照提示进行更改。</li>
+</ul>
 
-<p>选择增加构建后操作步奏，选择<code>Upload to fir.im</code>。 <img src="https://zllbird.github.io/images/jenkins/jenkinsfir.png" alt="jenkinsfir" /></p>
+<p><img src="https://zllbird.github.io/images/cocoaLumberjack/2.png" alt="" /></p>
 
-<p>Token 需要注册fir后生成。</p>
+<p><img src="https://zllbird.github.io/images/cocoaLumberjack/3.png" alt="" /></p>
 
-<p>IPA/APK Files ,是可选项。如果不填写，会直接从目录里找。如果填写了，则是会找到需要的目录。</p>
+<ul>
+<li>CocoaPods本身对源码入侵是比较严重的，所以大家也可以使用Carthage。</li>
+</ul>
 
-<p>其他的涉及到测试等方面。不是本文涉及的内容。</p>
+<h3 id="集成:43299706702588eefa55b6be9b7526b3">集成</h3>
 
-<p>以上全部内容都是在自己mac上执行完成的。</p>
+<p><strong>集成也很简单，仍然是建议大家先通过英文文档。</strong></p>
 
-<p>接下来在Linux上部署。</p>
+<p>因为我正在使用的工程还有<code>.pch</code>预加载头文件的存在，所以我仍然是在这里配置了我的输入和输出等级。</p>
 
-<p>到此构建基本完成。</p>
+<pre><code class="language-objective-c">#ifdef DEBUG
+    static const DDLogLevel ddLogLevel = DDLogLevelDebug;
+#else
+    static const DDLogLevel ddLogLevel = DDLogLevelError;
+#endif
+</code></pre>
+
+<p>当然，这种方式正在被淘汰，建议大家可以写到一个宏来配置。</p>
+
+<p>然后在<code>AppDelegate</code>中的<code>didFinishLaunchingWithOptions</code>中初始化。</p>
+
+<pre><code class="language-objective-c">#import &lt;CocoaLumberjack/CocoaLumberjack.h&gt;
+
+...
+...
+...
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+ 	[DDLog addLogger:[DDTTYLogger sharedInstance]];
+ 	[DDLog addLogger:[DDASLLogger sharedInstance]];
+
+    [[DDTTYLogger sharedInstance] setLogFormatter:[LDFormatter new]];
+    // And we also enable colors
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+
+    DDFileLogger *fileLogger = [[DDFileLogger alloc] init]; // File Logger
+    fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
+    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+
+    [DDLog addLogger:fileLogger];
+}
+</code></pre>
+
+<p>完成初始化后，就可以在想要的敌方直接打印结果了。</p>
+
+<pre><code>	DDLogVerbose(@&quot;Verbose&quot;);
+    DDLogDebug(@&quot;Debug&quot;);
+    DDLogInfo(@&quot;Info&quot;);
+    DDLogWarn(@&quot;Warn&quot;);
+    DDLogError(@&quot;Error&quot;);
+</code></pre>
+
+<h3 id="使用:43299706702588eefa55b6be9b7526b3">使用</h3>
+
+<p>其实到上面为止，使用也已经是说完了。但对于工程来说，打印日志，只有日志信息是不够的。CocoaLumberjack对此做了非常好的优化，只需要简单地配置就基本可以打印出一个较为理想的日志输出。（也就是我开始讲的第3条）</p>
+
+<h4 id="配置自定义的formatter:43299706702588eefa55b6be9b7526b3"><strong>配置自定义的Formatter</strong></h4>
+
+<p>配置之前，可以先给大家看一下，CocoaLumberjack的日志到底包含了多少信息，有多强大。</p>
+
+<pre><code>@interface DDLogMessage : NSObject &lt;NSCopying&gt;
+{
+    // Direct accessors to be used only for performance
+    @public
+    NSString *_message;
+    DDLogLevel _level;
+    DDLogFlag _flag;
+    NSInteger _context;
+    NSString *_file;
+    NSString *_fileName;
+    NSString *_function;
+    NSUInteger _line;
+    id _tag;
+    DDLogMessageOptions _options;
+    NSDate *_timestamp;
+    NSString *_threadID;
+    NSString *_threadName;
+    NSString *_queueLabel;
+}
+</code></pre>
+
+<p>可以看到，无论是类（<code>_fileName</code>），还是函数名（<code>_function</code>）,还有所在的行数（<code>_line</code>），还有时间，所在线程等等等等，都有。</p>
+
+<p>接下来就可以自定义Formatter了。</p>
+
+<p><strong>建议大家还是先看Github项目中的自定义<a href="https://github.com/CocoaLumberjack/CocoaLumberjack/blob/master/Documentation/CustomFormatters.md">Formatter文档</a></strong></p>
+
+<pre><code>MyFormatter.h
+
+@interface MyFormatter : NSObject &lt;DDLogFormatter&gt; {
+    int loggerCount;
+    NSDateFormatter *threadUnsafeDateFormatter;
+}
+@end
+
+
+=======
+
+MyFormatter.m
+
+@implementation MyFormatter
+
+- (NSString *)formatLogMessage:(DDLogMessage *)logMessage {
+    NSString *logLevel;
+    switch (logMessage-&gt;_flag) {
+        case DDLogFlagError    : logLevel = @&quot;Error&quot;; break;
+        case DDLogFlagWarning  : logLevel = @&quot;W&quot;; break;
+        case DDLogFlagInfo     : logLevel = @&quot;Info&quot;; break;
+        case DDLogFlagDebug    : logLevel = @&quot;D&quot;; break;
+        default                : logLevel = @&quot;V&quot;; break;
+    }
+
+    NSString *dateAndTime = [threadUnsafeDateFormatter stringFromDate:(logMessage-&gt;_timestamp)];
+    NSString *logMsg = logMessage-&gt;_message;
+    NSString *logFileNmae = logMessage -&gt; _fileName;
+    NSString *logFuncation = logMessage -&gt; _function;
+    long lineNum = logMessage -&gt; _line;
+
+    return [NSString stringWithFormat:@&quot;%@ %@ :%li %@ %@ :::\n %@ &quot;,logFileNmae, logFuncation,lineNum, logLevel, dateAndTime, logMsg];
+
+}
+
+@end
+</code></pre>
+
+<h3 id="成果秀:43299706702588eefa55b6be9b7526b3">成果秀</h3>
+
+<p>最后放几张配置好的结果图秀</p>
+
+<h4 id="xcode-输出台的日志:43299706702588eefa55b6be9b7526b3">xcode 输出台的日志</h4>
+
+<p><img src="https://zllbird.github.io/images/cocoaLumberjack/4.png" alt="" /></p>
+
+<h4 id="文件日志-模拟器可以直接进入文件然后用-tail-f-查看:43299706702588eefa55b6be9b7526b3">文件日志（模拟器可以直接进入文件然后用<code>tail -f</code> 查看）</h4>
+
+<p><img src="https://zllbird.github.io/images/cocoaLumberjack/5.png" alt="" /></p>
 
 <hr />
 
@@ -340,12 +329,15 @@
         ><a href="/page/10/">10</a></li>
         
         <li
+        ><a href="/page/11/">11</a></li>
+        
+        <li
         >
         <a href="/page/4/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/10/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/11/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

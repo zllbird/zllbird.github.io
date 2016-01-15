@@ -29,7 +29,7 @@
   <link href="https://zllbird.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Coder-bird &middot; 诸隆隆" />
 
   <meta name="description" content="我是一只小小鸟">
-  <meta name="keywords" content="">
+  <meta name="keywords" content="开发,生活">
   
 </head>
 <body>
@@ -42,19 +42,21 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/">Blog</a></li>
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/">blog</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/blog/">This is the blog section</a></li>
       
     </ul>
 
     <ul class="sidebar-nav">
       <li class="sidebar-nav-item">
-      <a href="zllbird"><i class="fa fa-github-square fa-3x"></i></a>
       
       
       
       
-      <a href="%e8%af%b8%e9%9a%86%e9%9a%86"><i class="fa fa-facebook-square fa-3x"></i></a>
-      <a href="%e8%af%b8%e9%9a%86%e9%9a%86"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      
       
       
       </li>
@@ -87,6 +89,126 @@
       
     </div>
     
+    <div class="post">
+      <h1 class="post-title">
+        <a href="https://zllbird.github.io/2016/01/11/%E5%85%B3%E4%BA%8E%E8%8B%B9%E6%9E%9C%E8%AF%81%E4%B9%A6/">关于苹果证书</a>
+      </h1>
+      <span class="post-date">Jan 11, 2016 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2016/01/11/%E5%85%B3%E4%BA%8E%E8%8B%B9%E6%9E%9C%E8%AF%81%E4%B9%A6/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+      </span>
+      
+      <p>关于苹果证书</p>
+      <a href="https://zllbird.github.io/2016/01/11/%E5%85%B3%E4%BA%8E%E8%8B%B9%E6%9E%9C%E8%AF%81%E4%B9%A6/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/">CocoaLumberjack的集成和学习</a>
+      </h1>
+      <span class="post-date">Jan 9, 2016 &middot; 2 minute read &middot; <a href="https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+      </span>
+      
+      <p>CocoaLumberjack的集成和学习</p>
+      <a href="https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="https://zllbird.github.io/2015/11/30/android%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/">Android自动构建</a>
+      </h1>
+      <span class="post-date">Nov 30, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/30/android%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+      </span>
+      
+      Android自动构建发布实践 首先声明。 这主要不是讲教程，这是集成过程中遇到的坑！ 这主要不是讲教程，这是集成过程中遇到的坑！ 这主要不是讲教程，这是集成过程中遇到的坑！ 重要的事情说三遍。 集成工具 jenkins (CI) Git and GitLab(GitHub同理) Gradle (build 工具) fir （发布工具） 工具简单介绍一下， jenkins是现在比较主流的CI，也正是因此，上面的插件丰富，涵盖面也很广，更为重要的是，非常容易安装和配置，自然是首选。 Git 版本管理工具，就不用了讲解了。jenkins同时支持svn。（还是建议大家早点转到git上）公司现在的版本管理使用的是gitlab，类似github(github的迷你版)。 Gradle是现任Android构建，很是强大。至于grade配置，网上教程很多也很杂乱，建议大家跟随谷歌原版[Gradle 用户指南]() 这里再推荐一篇，个人认为对Gradle解读很到位的一篇文章。[深入理解gradle]() 开始集成 安装jenkins。 如果你是mac或者Linux，可以直接通过shell安装（推荐 ） $ brew install jenkins 如果没有brew，先安装Homebrew $ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 如果没有ruby&hellip; 请自行google。 启动 Jenkins $ jenkins 访问 Jenkins 请在浏览器输入地址: http://localhost:8080/ 使用安装包安装后会自动打开，如果端口冲突那么请修改端口 defaults write /Library/Preferences/org.jenkins-ci httpPort xxxx jenkins最基本的安装就完成了。然后，可以在浏览器输入地址查看一下。看到这样的画面，基本安装就完成了。 截图里包含两个，一个是通过web端浏览器访问得到的界面。另一个是shell的日志。 jenkins到此结束。开始使用jenkins，Android的构建之旅吧。 jenkins的插件安装 两种方式。这里以安装Git插件为例。 通过查询安装。 通过自行下载*.hpi , 然后通过高级安装。 选择系统管理，然后选择管理插件。 查询安装。 在插件管理界面，选择可选插件，然后在右边过滤器里筛选Git或GIT plugin 然后选择立刻安装。 自行下载*.hpi , 然后通过高级安装 然后选择上传。 遇到的坑 可以说刚开始我是一只使用第一种方法来安装插件的。结果失败率非常高。如果不自备梯子，失败率会更高！ 折腾了很长时间，而且搞得自己心里憔悴。 所以建议大家通过自己去jenkins的官网或镜像来下载hpi文件自行安装需要的插件。 还有，自备梯子是一种好习惯。 需要安装的插件 Git Gitlab Gitlab Hook (我一直安装不成功，所以自动push event 构建也还未成功) Gradle fir （官网有详尽的下载和安装教程） 到此为止，所有的环境都准备好了。终于可以开动了！ 自动化构建实例 jenkins中新建一个项目，命名后，选择 构建一个自由风格的软件项目。 项目名称。跳过 描述。跳过 … 各种跳过，直接进入源码管理。 源码管理 这里选的是Git，当然如果你只有现实svn的话，那就是你还没安装Git的插件，具体安装请看上文。 记住选择构建的分支。（这里是一个只含一个界面调试的项目，所以我直接用了master。建议，创建一个deploy发布或者debug这样的分支，确保每次构建都是可控的。） 注意到Credentials，这是身份验证。这里直接写了none，也就是说，没有直接验证身份。难道说，我的项目没加任何限制？？？ 当然，不是啦。Git的项目，无论是Github还是自己搭建的Gitlab，大多数都是通过ssh验证的。 可以点击Credentials 后面的Add 。 这样保证jenkins部署的机器的ssh私钥在服务上。 构建触发器 这就是传说中的自动构建。直接上图讲解。 这里有三种事件触发构建。 Build periodically 。 即定时触发，这里我写的是H 10 * * *，指的就是每天10点触发构建，也就是说，每天10天无论有没有新的代码部署，都会进行构建。 H 10 * * * 分 小时 天 月 年 // 五位分别指向轮询事件，这里H 和 0 差不多意思，就是不顾及 分，每天10天构建。 // * 指忽视 Build when a change is pushed to GitLab.
+      <a href="https://zllbird.github.io/2015/11/30/android%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="https://zllbird.github.io/2015/11/26/%E6%97%A5%E5%87%BA/">日出</a>
+      </h1>
+      <span class="post-date">Nov 26, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/26/%E6%97%A5%E5%87%BA/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E7%94%9F%E6%B4%BB">生活</a>
+      </span>
+      
+      <p>日出，让你的脚步停一下</p>
+      <a href="https://zllbird.github.io/2015/11/26/%E6%97%A5%E5%87%BA/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="https://zllbird.github.io/2015/11/25/%E6%84%9F%E6%83%B3-%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E6%88%90%E9%95%BF/">感想 我该如何成长</a>
+      </h1>
+      <span class="post-date">Nov 25, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/25/%E6%84%9F%E6%83%B3-%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E6%88%90%E9%95%BF/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E6%80%9D%E8%80%83">思考</a>
+      </span>
+      
+      感想-我该如何成长 我始终相信，优秀归根到底是自己的事儿，所以成长，归根到底，也是要靠自己。 ——飞鸟 几天前和一个朋友聊起学习，又被一阵吐槽。说是被老板压榨，没有时间学习，等等巴拉巴拉&hellip;又突然想起一个同事，总是感慨总是被公司的业务羁绊，向业务妥协。便有了这篇感慨。 然后，我很认真的问自己，我该如何成长？ 想明白这个问题之前，应该先想明白另一个问题。 我到底想成为一个什么样子的人？ 相信自己而不是相信依靠 有个同事说起这么一番话，我直接抄过来了。 在思路上, 技术大牛确实给了很多启发, 甚至可以说不是技术细节的启发, 对我来说都是颠覆性的想法, 这些思路靠自己研究, 并且又在业务迭代的压力下几乎是不可能的。 我其实很承认这句话的。尤其是和一些优秀和专研的人聊天，往往听完后，第一感觉就是听君一席话，胜读十年书啊。（当然，不仅仅局限技术大牛。） 可惜的是，倾听我准备好了，求教我也准备好了，该准备的都准备好了。正所谓万事俱备，只缺一个技术大牛。 好吧，有能指点的技术大牛是幸运的。但如果没有，其实也没那么糟糕。因为这个时代不仅不缺技术大牛，而且大牛们都还很喜欢分享。想想中国古代的老师傅们，总要留一手，不让本事全被徒弟学去了，而如今的大牛们，恨不得把自己的会的全都拿出来让你看看。（我一直庆幸自己能在这样一个时代里去拼搏。） 所以金山银山颜如玉神马的都有，只不过那些让你醍醐灌顶的指点都散落在网络上各处，只不过这次是需要你自己去找。 我想说的是，不要去依赖，如果非要依赖，也只能依赖自己，相信自己。 有捷径请走捷径，如果没有，请更加努力 不得不承认，有人带着学习或者成长，会比自己摸石过河要快很多，少犯错，少走路。我是一个捷径主义者，所以，那些所谓打基础啊，吃亏是福啊，这是一种锻炼啊之类的话，我都认为是扯淡。 聊点题外话，中学化学有一种推断ABCDEF是什么物质的题，大概是下面这个样子。每次做这种题，我都直接把出现最多的字母当成O，氧气。或者遇到无色透明液体，我直接就写成水。然后再一推断，一两分钟就能解决这个题。这个方法我从初三一路用到高考都不带失手的。捷径这么好用，为啥不用呢。 聊完题外。回来说说，如果真没有人带，需要自己摸黑，走一步算一步的时候，我只能说。请更加努力，请更加劳苦，虽没有捷径可走，但至少还可以多付出。 完美这个伪命题 从小在做生意的人堆里长大，所以听到被人说： 只是单纯而简单的钻研技术, 把每个模块每个函数写到自己觉得完美. 这样的话。我就很不舒服。在我心里大概有这么一个评级，不足，足够，优秀，完美。而我呢，是一个追求优秀，但忌惮完美的人。我潜意识里，完美等于巨大的物力，人力，财力，以及时间，一句话——高额成本！一旦遇到高额成本，我就会吓得慌。 也怪我太贪心，不够专注。或者猎奇心太重，总想着尝试新的技术，新的东西，新的领域。所以，在我看来去追求完美，真的太浪费了。不是有句名言这么说的 不追求完美，何尝不是一种放下。 刚开始学习JAVA的时候，对各种设计模式学习，那叫一个如此如醉，奉若神技。但随着时间慢慢过去，现在反倒觉得那么多设计模式，何尝不是一种累赘。一方面，写出的代码怎么看都觉得有那么点相似，另一方面，有一种变相的冗长。再后来，接触了javascript，python等后，（现在学习Go中），越发着发觉，所谓的设计模式，本质上是Java语言本身的内建不够啊。 想明白这点后，设计模式就再也不神秘了。好像又写的有点跑题了，回到完美这个梗。Java本身是有缺陷的，所以已阻止了完美的步伐，或者这样说：用Java写了一个完美的方法，模块。但这种完美却很脆弱。脆弱到，一不小心，被时代淘汰了。 时代太快了，快的让我不敢只专注于一项技巧与一种语言。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="https://zllbird.github.io/2015/11/23/android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%BD%BF%E7%94%A8/">Android自定义属性使用</a>
+      </h1>
+      <span class="post-date">Nov 23, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/23/android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%BD%BF%E7%94%A8/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+      </span>
+      
+      Android自定义属性使用以及注意事项 自定义控件和自定义属性是安卓开发过程中实现个性化的一个很好技巧，也是对sdk中UI部分的使用更加灵活的部分。这部分主要实现自定义属性，自定义控件的文档正在完善中。 如何实现： a) 在配置文件中声明。 虽说在value中哪个文件里都是一样（保证在resources标签下就行)，但作为一个有志向的开发者，良好的文件管理习惯是必须的，so，在values中创建一个名为：attrs.xml来统一管理自定义属性。 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; &lt;resources&gt; &lt;declare-styleable name=&quot;ImageTextView&quot;&gt; &lt;attr name=&quot;select_src&quot; format=&quot;reference&quot; /&gt; &lt;attr name=&quot;normal_src&quot; format=&quot;reference&quot; /&gt; &lt;attr name=&quot;select_text_color&quot; format=&quot;color&quot; /&gt; &lt;attr name=&quot;normal_text_color&quot; format=&quot;color&quot; /&gt; &lt;attr name=&quot;image_text_padding&quot; format=&quot;dimension&quot;/&gt; &lt;attr name=&quot;android:textSize&quot;/&gt; &lt;attr name=&quot;android:layout_gravity&quot; /&gt; &lt;attr name=&quot;android:text&quot; /&gt; &lt;/declare-styleable&gt; &lt;/resources&gt; 自定义属性的声明是通过子标签declare-styleable声明了大的样式，具体的属性是通过attr来声明，声明包含属性名和格式（具体是属性值的格式，一般有reference，color，integer，float，dimension，boolean，string等，当然还有enum，如果是枚举的话要继续声明具体的枚举），如果对于自定义控件来说，某些属性就是已经android声明的属性，就可以在name后面直接写明使用android：声明的哪个属性（简单吧）。 b) 在自定义控件xml中使用 （主要是讲解自定义属性，所以这里的自定义控件较为简单，就是一个imageview + textview的组合） &lt;com.android.lesdo.view.UpImageTextView //声明使用app来定义自定义属性名，当然这个命名是你确定的。 xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot; android:id=&quot;@+id/iv&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:text = &quot;Hello&quot; android:textSize = &quot;14sp&quot; android:layout_marginRight=&quot;59dp&quot; // 使用刚才已经在arrts里声明好的属性 app:select_src = &quot;@drawable/searchuser_t_pressed&quot; app:normal_src = &quot;@drawable/searchuser_t_normal&quot; app:select_text_color =
+      <a href="https://zllbird.github.io/2015/11/23/android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%BD%BF%E7%94%A8/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">Android Transition 学习心得</a>
+      </h1>
+      <span class="post-date">Nov 12, 2015 &middot; 3 minute read &middot; <a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+      </span>
+      
+      <p>开发,android,transtion</p>
+      <a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/">Git清理误传的文件</a>
+      </h1>
+      <span class="post-date">Nov 11, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+      </span>
+      
+      Git清理误传的文件 ​ Git进行版本管理的时候，项目中很多文件(配置文件，自动生成文件，构建生成文件，依赖包等)是不需要同步上传到服务器。一方面，造成文件的多余，另一方面，如本地配置文件（local.properties），不同人员的来回提交，则会造成同步开发人员的版本混乱——不断地解决重复冲突，这是相当不值得的。 ​ Git提供了一种忽略机制——gitignore。本质上也是一种Git配置，类似于配置文件。将配置文件中相关文件忽略，写法与Android工程是熟悉的混淆配置文件（proguard-rules.pro）非常相似。功能也是将.gitignore里面配置好的文件忽略，或者说是剔除，不让此文件加入版本控制。 ​ 关于gitignore的详细介绍请参考这里,第二章基础 ​ 显然，对于我这种Git新手，很可能知道这些的时候，已经把配置文件都扔到服务器上了。然后，一阵胡搞乱搞…（都是满纸辛酸泪），其实根本原因还是对Git本身理解不够。接下来，简单介绍一下做法，以及远离。 ​ 解决步奏： 将配置文件文件名（如local.properties）放到.gitignore里。 检查工作空间里是否还有这个文件（如，在配置文件里随便改点，然后，git status检查工作空间里是否存在） 如果不存在，你可以关掉网页了。如果存在，备份，然后删除它！！！（直接在shell里rm） 然后 add , commit ,push 一套走下来。 查看远程git服务器端也没有这个文件。 然后，把刚才备份的文件拿回来。 写到这，突然觉得自己好无聊啊好无聊，这么特么的不就是删了就完了。好吧，我承认，这就是&hellip; 接下来说说我的理解，Git的版本控制其实本质上是对文件的操作跟踪。所以，一旦进入了版本控制，跟踪系统就会去记录它（这个文件）上发生的所有操作，即便把它放到忽略文件里也同样。因为忽略是晚于跟踪的，也就是说，只有未被跟踪的文件才有被忽略的权利。 下面是 git status 中对于修改的文件和刚刚加入的文件的显示 这个时候，上面两个文件是无法被忽略的，而add.txt，是可以被忽略的。 这也刚才我们必须先删除，再拿回来的原因。 附上Android常用的.gitgnore。 # built application files *.ap_ # files for the dex VM *.dex *.iml # Java class files *.class # generated files bin/ gen/ *target/ *build/ *build* .gradle/ .idea/ gen-external-apklibs/ # Local configuration file (sdk path, etc) /library_wheel/build local.properties
+      <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/">Read On &rarr;</a>
+      
+    </div>
+    
     
     
     <ul class="pagination">
@@ -107,39 +229,12 @@
         ><a href="/page/2/">2</a></li>
         
         <li
-        ><a href="/page/3/">3</a></li>
-        
-        <li
-        ><a href="/page/4/">4</a></li>
-        
-        <li
-        ><a href="/page/5/">5</a></li>
-        
-        <li
-        ><a href="/page/6/">6</a></li>
-        
-        <li
-        ><a href="/page/7/">7</a></li>
-        
-        <li
-        ><a href="/page/8/">8</a></li>
-        
-        <li
-        ><a href="/page/9/">9</a></li>
-        
-        <li
-        ><a href="/page/10/">10</a></li>
-        
-        <li
-        ><a href="/page/11/">11</a></li>
-        
-        <li
         >
         <a href="/page/2/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/11/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/2/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

@@ -7,8 +7,224 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2015 Copyright Text</copyright>
-    <lastBuildDate>Thu, 14 Jan 2016 18:20:35 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 Jan 2016 13:30:51 +0800</lastBuildDate>
     <atom:link href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>闭包，编程思考</title>
+      <link>https://zllbird.github.io/2016/01/20/%E9%97%AD%E5%8C%85%E7%BC%96%E7%A8%8B%E6%80%9D%E8%80%83/</link>
+      <pubDate>Wed, 20 Jan 2016 13:30:51 +0800</pubDate>
+      
+      <guid>https://zllbird.github.io/2016/01/20/%E9%97%AD%E5%8C%85%E7%BC%96%E7%A8%8B%E6%80%9D%E8%80%83/</guid>
+      <description>
+
+&lt;h2 id=&#34;闭包-编程思考:9832bcef4d84f38f7ad4bc607eea0d15&#34;&gt;闭包，编程思考&lt;/h2&gt;
+
+&lt;p&gt;缘由：经常会文章里看到闭包，对闭包有种感念，但有时候会绕进去。正好加上，android端的构建使用了gradle，gradle脚本基本上都是由闭包构成和撰写的，便研究了一番。更加巧合的是，参与iOS问题讨论的时候，发现了Block这种编写方式，越发觉得这些都是速途同归的玩意。&lt;/p&gt;
+
+&lt;h3 id=&#34;摘要:9832bcef4d84f38f7ad4bc607eea0d15&#34;&gt;摘要：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;闭包定义&lt;/li&gt;
+&lt;li&gt;解读闭包&lt;/li&gt;
+&lt;li&gt;闭包的意义&lt;/li&gt;
+&lt;li&gt;不同语言对于闭包的另类实现&lt;/li&gt;
+&lt;li&gt;思考&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;闭包定义:9832bcef4d84f38f7ad4bc607eea0d15&#34;&gt;闭包定义&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Closure_(computer_programming&#34;&gt;Wiki上闭包的解读（很精彩）&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;闭包的定义：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;closures&lt;/strong&gt; (also &lt;strong&gt;lexical closures&lt;/strong&gt; or &lt;strong&gt;function closures&lt;/strong&gt;) are a technique for implementing &lt;a href=&#34;https://en.wikipedia.org/wiki/Lexically_scoped&#34;&gt;lexically scoped&lt;/a&gt; &lt;a href=&#34;https://en.wikipedia.org/wiki/Name_binding&#34;&gt;name binding&lt;/a&gt; in languages with &lt;a href=&#34;https://en.wikipedia.org/wiki/First-class_function&#34;&gt;first-class functions&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;可以给个中文版本的：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;闭包，是引用了自由变量的函数。这个被引用的自由变量将和这个函数一同存在，即使已经离开了创造它的环境也不例外。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解读闭包:9832bcef4d84f38f7ad4bc607eea0d15&#34;&gt;解读闭包&lt;/h3&gt;
+
+&lt;p&gt;好吧好吧，无论是英文还是中文，读起来感觉都特别的绕口，理解起来就更绕口了。&lt;/p&gt;
+
+&lt;p&gt;还是直接暴力点吧，直接来代码吧：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;function startAt(x)
+   function incrementBy(y)
+       return x + y
+   return incrementBy
+
+variable closure1 = startAt(1)
+variable closure2 = startAt(5)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;这是基于python的闭包的写法。&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;（在我的接触中，python语言是较为简单的，入门比较低，即便没有入门，看代码也不是困难，所以拿python举例，当然，建议大家都学学这个语言，一般一个星期写简单的程序就没问题了）&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;（python中，缩进代表 {} 符号）&lt;/em&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;解读:9832bcef4d84f38f7ad4bc607eea0d15&#34;&gt;解读：&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;startAt&lt;/code&gt;是一个函数，或者叫方法。它的返回值也是一个函数，或者叫，它返回一个函数类型的值。&lt;/p&gt;
+
+&lt;p&gt;那么有意思的来了：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;closure1(3) = 4
+closure2(3) = 8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;那么，&lt;code&gt;startAt&lt;/code&gt;到底是什么？&lt;/p&gt;
+
+&lt;p&gt;解释它之前，先解释一下变量closure1 和变量 closure2&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;closure1 = 1 + 参数
+closure2 = 5 + 参数
+//所以 closure2(3) = 5 + 3 = 8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以发觉，&lt;code&gt;startAt&lt;/code&gt;是定义了一种加法。但属于它的变量&lt;code&gt;x&lt;/code&gt;却离开了&lt;code&gt;startAt&lt;/code&gt;一直和&lt;code&gt;closure1&lt;/code&gt;和&lt;code&gt;closure2&lt;/code&gt;存在，赶紧回去看一下刚才最初的定义。&lt;/p&gt;
+
+&lt;p&gt;下面是我最喜欢的一段对于闭包的解读：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Closures are typically implemented with a special &lt;a href=&#34;https://en.wikipedia.org/wiki/Data_structure&#34;&gt;data structure&lt;/a&gt; that contains a &lt;a href=&#34;https://en.wikipedia.org/wiki/Function_pointer&#34;&gt;pointer to the function code&lt;/a&gt;, plus a representation of the function&amp;rsquo;s lexical environment (i.e., the set of available variables) at the time when the closure was created. The referencing environment &lt;a href=&#34;https://en.wikipedia.org/wiki/Name_binding&#34;&gt;binds&lt;/a&gt; the non-local names to the corresponding variables in the lexical environment at the time the closure is created, additionally extending their lifetime to at least as long as the lifetime of the closure itself. When the closure is *entered* at a later time, possibly with a different lexical environment, the function is executed with its non-local variables referring to the ones captured by the closure, not the current environment.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;闭包的意义:9832bcef4d84f38f7ad4bc607eea0d15&#34;&gt;闭包的意义&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;因为闭包只有在被调用时才执行操作，即“&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E6%83%B0%E6%80%A7%E6%B1%82%E5%80%BC&#34;&gt;惰性求值&lt;/a&gt;”，所以它可以被用来定义控制结构。例如：在&lt;a href=&#34;https://zh.wikipedia.org/wiki/Smalltalk&#34;&gt;Smalltalk&lt;/a&gt;语言中，所有的控制结构，包括分歧条件(if/then/else)和循环(while和for)，都是通过闭包实现的。用户也可以使用闭包定义自己的控制结构。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;感受一下，一会儿看到各个语言的实现，就能有那种醍醐灌顶的感觉了。&lt;/p&gt;
+
+&lt;h3 id=&#34;不同语言对于闭包的另类实现:9832bcef4d84f38f7ad4bc607eea0d15&#34;&gt;不同语言对于闭包的另类实现&lt;/h3&gt;
+
+&lt;p&gt;解读完闭包了，聊一下，这个玩意最大的问题是什么？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;作用域&lt;/strong&gt; &amp;ndash;&amp;gt; 自由变量的作用域，导致自由变量的混乱管理。&lt;/p&gt;
+
+&lt;p&gt;我将先以&lt;code&gt;javascript&lt;/code&gt;为例，介绍最大的问题。&lt;/p&gt;
+
+&lt;p&gt;然后，我再会分别介绍一下&lt;code&gt;java&lt;/code&gt;以及&lt;code&gt;Object-C&lt;/code&gt;为例子，解释一下其他语言是如何另类实现闭包，并怎么处理作用域的问题。&lt;/p&gt;
+
+&lt;h4 id=&#34;javascript-的闭包:9832bcef4d84f38f7ad4bc607eea0d15&#34;&gt;&lt;code&gt;javascript&lt;/code&gt;的闭包&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// ECMAScript , javascript
+var f, g;
+function foo() {
+  var x; // 
+  f = function() { x = x + 1 ; return x; }; //
+  g = function() { x = x +5 ; return x; };	//
+  x = 1;
+  alert(&#39;inside foo, call to f(): &#39; + f()); // 2
+}
+foo();
+alert(&#39;call to g(): &#39; + g());  // 7
+alert(&#39;call to f(): &#39; + f());  // 8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以看到结果为。&lt;/p&gt;
+
+&lt;p&gt;如果我将输出顺序换一下呢？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;alert(&#39;call to f(): &#39; + f()); // 3
+alert(&#39;call to g(): &#39; + g()); // 8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;给你们两分钟时间，再想一下。&lt;/p&gt;
+
+&lt;p&gt;可以看到。在&lt;code&gt;foo&lt;/code&gt;中声明的变量&lt;code&gt;x&lt;/code&gt;，由于闭包的存在，导致&lt;code&gt;x&lt;/code&gt;的作用域一直扩展到程序的底部，在&lt;code&gt;foo&lt;/code&gt;函数结束后还一直坚挺的活着。（这是我们刚才已经知道了的。）&lt;/p&gt;
+
+&lt;p&gt;不仅活着，还可以被更改，然后再使用！&lt;/p&gt;
+
+&lt;p&gt;那么问题到底是什么呢？&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;难以管理。&lt;/li&gt;
+&lt;li&gt;持有。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;所以&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;java-以及-object-c-对闭包的-实现:9832bcef4d84f38f7ad4bc607eea0d15&#34;&gt;&lt;code&gt;JAVA&lt;/code&gt; 以及&lt;code&gt;Object-C&lt;/code&gt;对闭包的‘实现’&lt;/h3&gt;
+
+&lt;p&gt;直接说，&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;java&lt;/code&gt;中是 匿名内部类&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;object-c&lt;/code&gt;中是 Block运用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;所以基于这点来讲，&lt;code&gt;java&lt;/code&gt;更加面向对象一点，真的是很努力做到一切都是对象了。&lt;/p&gt;
+
+&lt;p&gt;先看一下&lt;code&gt;java&lt;/code&gt;代码吧：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void foo(){
+   final int x = 1 ; //
+
+  //f(lambda (x) -&amp;gt; person.setAge(x));
+
+  f(new OnChangListner(){
+  		void onChang(){
+  			person.setAge(x);
+		}
+	});
+
+  // 当然方法f必须事先定义好
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后再看一下&lt;code&gt;object-c&lt;/code&gt;的BLOCK:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-objective-c&#34;&gt;- (void)foo {
+    NSInteger x = 1;
+
+    void (^f) (NSInteger *) = ^(NSInteger *x)
+    {
+      x = 4; // 异常  
+      NSLog(@&amp;quot;foodname:%@&amp;quot;, x);
+    };
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;有意思吧。&lt;/p&gt;
+
+&lt;p&gt;这样既能完成传值，又成功的避开了作用域的问题。&lt;/p&gt;
+
+&lt;p&gt;当然，本质上来讲，这已经不是闭包了。&lt;code&gt;java&lt;/code&gt;里&lt;code&gt;onChang&lt;/code&gt;中的&lt;code&gt;x&lt;/code&gt;和定义的&lt;code&gt;x&lt;/code&gt;其实已经不是一个内存了，而我们需要的不是一个内存，而是一个相同的值。&lt;/p&gt;
+
+&lt;p&gt;这也是我为什么将实现两个字打上了引号。&lt;/p&gt;
+
+&lt;p&gt;贴一下对于其他语言对于‘类’闭包的结构或者设计：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Callbacks (C)
+Local classes and Lambda functions (Java)
+Blocks (C, C++, Objective-C 2.0)
+Delegates (C#, D)
+Function objects (C++)
+Inline agents (Eiffel)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;思考:9832bcef4d84f38f7ad4bc607eea0d15&#34;&gt;思考&lt;/h3&gt;
+
+&lt;p&gt;说两句感悟，大家随便感受一下。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;所谓的设计模式也好，这种和闭包语法类似的东西也好。原因大多不是语言设计者要装x而搞出来的，大多数都是因为，内建不够。一个语言设计模式越多，或者说，为了一种实现折腾的过程越多，其实越代表语言的局限性越大。&lt;/li&gt;
+&lt;li&gt;因为同时兼顾Android和iOS开发，所以可以明显感觉到，&lt;code&gt;object-c&lt;/code&gt;的限制太多，或者说内建较差。所以才有swift，我也简单学习了swift的基础语法，可以说内建相当的不错。当然，java也不怎么样，新兴的很多语言对于设计要比java优秀很多（比如，方法可以多个返回）。&lt;/li&gt;
+&lt;li&gt;学习其他语言。比我们想象的要简单的多。（抽空单独出文章）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
     
     <item>
       <title>【Android】使用Gradle进行配置</title>

@@ -80,6 +80,21 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="https://zllbird.github.io/2016/01/20/%E9%97%AD%E5%8C%85%E7%BC%96%E7%A8%8B%E6%80%9D%E8%80%83/">闭包，编程思考</a>
+      </h1>
+      <span class="post-date">Jan 20, 2016 &middot; 2 minute read &middot; <a href="https://zllbird.github.io/2016/01/20/%E9%97%AD%E5%8C%85%E7%BC%96%E7%A8%8B%E6%80%9D%E8%80%83/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a><a class="label" href="https://zllbird.github.io/categories/%E6%80%9D%E8%80%83">思考</a>
+      </span>
+      
+      闭包，编程思考 缘由：经常会文章里看到闭包，对闭包有种感念，但有时候会绕进去。正好加上，android端的构建使用了gradle，gradle脚本基本上都是由闭包构成和撰写的，便研究了一番。更加巧合的是，参与iOS问题讨论的时候，发现了Block这种编写方式，越发觉得这些都是速途同归的玩意。 摘要： 闭包定义 解读闭包 闭包的意义 不同语言对于闭包的另类实现 思考 闭包定义 Wiki上闭包的解读（很精彩）) 闭包的定义： closures (also lexical closures or function closures) are a technique for implementing lexically scoped name binding in languages with first-class functions. 可以给个中文版本的： 闭包，是引用了自由变量的函数。这个被引用的自由变量将和这个函数一同存在，即使已经离开了创造它的环境也不例外。 解读闭包 好吧好吧，无论是英文还是中文，读起来感觉都特别的绕口，理解起来就更绕口了。 还是直接暴力点吧，直接来代码吧： function startAt(x) function incrementBy(y) return x + y return incrementBy variable closure1 = startAt(1) variable closure2 = startAt(5) 这是基于python的闭包的写法。 （在我的接触中，python语言是较为简单的，入门比较低，即便没有入门，看代码也不是困难，所以拿python举例，当然，建议大家都学学这个语言，一般一个星期写简单的程序就没问题了） （python中，缩进代表 {} 符号） 解读： startAt是一个函数，或者叫方法。它的返回值也是一个函数，或者叫，它返回一个函数类型的值。 那么有意思的来了： closure1(3) = 4 closure2(3) = 8 那么，startAt到底是什么？ 解释它之前，先解释一下变量closure1 和变量 closure2 closure1 = 1 + 参数 closure2 = 5 + 参数 //所以 closure2(3) = 5 + 3 = 8 可以发觉，startAt是定义了一种加法。但属于它的变量x却离开了startAt一直和closure1和closure2存在，赶紧回去看一下刚才最初的定义。 下面是我最喜欢的一段对于闭包的解读： Closures are typically implemented with a special data structure that contains a pointer to the function code, plus a representation of the function&rsquo;s lexical environment (i.e., the set of available variables) at the time when the closure was created.
+      <a href="https://zllbird.github.io/2016/01/20/%E9%97%AD%E5%8C%85%E7%BC%96%E7%A8%8B%E6%80%9D%E8%80%83/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="https://zllbird.github.io/2016/01/14/android%E4%BD%BF%E7%94%A8gradle%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE/">【Android】使用Gradle进行配置</a>
       </h1>
       <span class="post-date">Jan 14, 2016 &middot; 3 minute read &middot; <a href="https://zllbird.github.io/2016/01/14/android%E4%BD%BF%E7%94%A8gradle%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE/#disqus_thread">Comments</a>
@@ -195,21 +210,6 @@
       
       <p>开发,android,transtion</p>
       <a href="https://zllbird.github.io/2015/11/12/android-transition-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/">Git清理误传的文件</a>
-      </h1>
-      <span class="post-date">Nov 11, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/#disqus_thread">Comments</a>
-      
-      <br/>
-      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
-      </span>
-      
-      Git清理误传的文件 ​ Git进行版本管理的时候，项目中很多文件(配置文件，自动生成文件，构建生成文件，依赖包等)是不需要同步上传到服务器。一方面，造成文件的多余，另一方面，如本地配置文件（local.properties），不同人员的来回提交，则会造成同步开发人员的版本混乱——不断地解决重复冲突，这是相当不值得的。 ​ Git提供了一种忽略机制——gitignore。本质上也是一种Git配置，类似于配置文件。将配置文件中相关文件忽略，写法与Android工程是熟悉的混淆配置文件（proguard-rules.pro）非常相似。功能也是将.gitignore里面配置好的文件忽略，或者说是剔除，不让此文件加入版本控制。 ​ 关于gitignore的详细介绍请参考这里,第二章基础 ​ 显然，对于我这种Git新手，很可能知道这些的时候，已经把配置文件都扔到服务器上了。然后，一阵胡搞乱搞…（都是满纸辛酸泪），其实根本原因还是对Git本身理解不够。接下来，简单介绍一下做法，以及远离。 ​ 解决步奏： 将配置文件文件名（如local.properties）放到.gitignore里。 检查工作空间里是否还有这个文件（如，在配置文件里随便改点，然后，git status检查工作空间里是否存在） 如果不存在，你可以关掉网页了。如果存在，备份，然后删除它！！！（直接在shell里rm） 然后 add , commit ,push 一套走下来。 查看远程git服务器端也没有这个文件。 然后，把刚才备份的文件拿回来。 写到这，突然觉得自己好无聊啊好无聊，这么特么的不就是删了就完了。好吧，我承认，这就是&hellip; 接下来说说我的理解，Git的版本控制其实本质上是对文件的操作跟踪。所以，一旦进入了版本控制，跟踪系统就会去记录它（这个文件）上发生的所有操作，即便把它放到忽略文件里也同样。因为忽略是晚于跟踪的，也就是说，只有未被跟踪的文件才有被忽略的权利。 下面是 git status 中对于修改的文件和刚刚加入的文件的显示 这个时候，上面两个文件是无法被忽略的，而add.txt，是可以被忽略的。 这也刚才我们必须先删除，再拿回来的原因。 附上Android常用的.gitgnore。 # built application files *.ap_ # files for the dex VM *.dex *.iml # Java class files *.class # generated files bin/ gen/ *target/ *build/ *build* .gradle/ .idea/ gen-external-apklibs/ # Local configuration file (sdk path, etc) /library_wheel/build local.properties
-      <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/">Read On &rarr;</a>
       
     </div>
     

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>闭包，编程思考 &middot; 诸隆隆</title>
+
+  
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://zllbird.github.io/touch-icon-144-precomposed.png">
+  <link href="https://zllbird.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="我是一只小小鸟">
+  <meta name="keywords" content="开发,思考">
+  
+</head>
+<body>
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>诸隆隆</h1>
+      <p class="lead">我要飞的更高</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/">主页</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91/">开发（Android &#43; iOS）</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E6%80%9D%E8%80%83/">思考</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E7%94%9F%E6%B4%BB/">生活</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2016 <a href="https://zllbird.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>闭包，编程思考</h1>
+    <span class="post-date">Jan 20, 2016 &middot; 2 minute read &middot; <a href="https://zllbird.github.io/2016/01/20/%E9%97%AD%E5%8C%85%E7%BC%96%E7%A8%8B%E6%80%9D%E8%80%83/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a><a class="label" href="https://zllbird.github.io/categories/%E6%80%9D%E8%80%83">思考</a>
+    </span>
+    
+
+<h2 id="闭包-编程思考:9832bcef4d84f38f7ad4bc607eea0d15">闭包，编程思考</h2>
+
+<p>缘由：经常会文章里看到闭包，对闭包有种感念，但有时候会绕进去。正好加上，android端的构建使用了gradle，gradle脚本基本上都是由闭包构成和撰写的，便研究了一番。更加巧合的是，参与iOS问题讨论的时候，发现了Block这种编写方式，越发觉得这些都是速途同归的玩意。</p>
+
+<h3 id="摘要:9832bcef4d84f38f7ad4bc607eea0d15">摘要：</h3>
+
+<ul>
+<li>闭包定义</li>
+<li>解读闭包</li>
+<li>闭包的意义</li>
+<li>不同语言对于闭包的另类实现</li>
+<li>思考</li>
+</ul>
+
+<h3 id="闭包定义:9832bcef4d84f38f7ad4bc607eea0d15">闭包定义</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/Closure_(computer_programming">Wiki上闭包的解读（很精彩）</a>)</p>
+
+<p>闭包的定义：</p>
+
+<blockquote>
+<p><strong>closures</strong> (also <strong>lexical closures</strong> or <strong>function closures</strong>) are a technique for implementing <a href="https://en.wikipedia.org/wiki/Lexically_scoped">lexically scoped</a> <a href="https://en.wikipedia.org/wiki/Name_binding">name binding</a> in languages with <a href="https://en.wikipedia.org/wiki/First-class_function">first-class functions</a>.</p>
+</blockquote>
+
+<p>可以给个中文版本的：</p>
+
+<blockquote>
+<p>闭包，是引用了自由变量的函数。这个被引用的自由变量将和这个函数一同存在，即使已经离开了创造它的环境也不例外。</p>
+</blockquote>
+
+<h3 id="解读闭包:9832bcef4d84f38f7ad4bc607eea0d15">解读闭包</h3>
+
+<p>好吧好吧，无论是英文还是中文，读起来感觉都特别的绕口，理解起来就更绕口了。</p>
+
+<p>还是直接暴力点吧，直接来代码吧：</p>
+
+<pre><code class="language-python">function startAt(x)
+   function incrementBy(y)
+       return x + y
+   return incrementBy
+
+variable closure1 = startAt(1)
+variable closure2 = startAt(5)
+</code></pre>
+
+<p><em>这是基于python的闭包的写法。</em></p>
+
+<p><em>（在我的接触中，python语言是较为简单的，入门比较低，即便没有入门，看代码也不是困难，所以拿python举例，当然，建议大家都学学这个语言，一般一个星期写简单的程序就没问题了）</em></p>
+
+<p><em>（python中，缩进代表 {} 符号）</em></p>
+
+<h5 id="解读:9832bcef4d84f38f7ad4bc607eea0d15">解读：</h5>
+
+<p><code>startAt</code>是一个函数，或者叫方法。它的返回值也是一个函数，或者叫，它返回一个函数类型的值。</p>
+
+<p>那么有意思的来了：</p>
+
+<pre><code>closure1(3) = 4
+closure2(3) = 8
+</code></pre>
+
+<p>那么，<code>startAt</code>到底是什么？</p>
+
+<p>解释它之前，先解释一下变量closure1 和变量 closure2</p>
+
+<pre><code>closure1 = 1 + 参数
+closure2 = 5 + 参数
+//所以 closure2(3) = 5 + 3 = 8
+</code></pre>
+
+<p>可以发觉，<code>startAt</code>是定义了一种加法。但属于它的变量<code>x</code>却离开了<code>startAt</code>一直和<code>closure1</code>和<code>closure2</code>存在，赶紧回去看一下刚才最初的定义。</p>
+
+<p>下面是我最喜欢的一段对于闭包的解读：</p>
+
+<blockquote>
+<p>Closures are typically implemented with a special <a href="https://en.wikipedia.org/wiki/Data_structure">data structure</a> that contains a <a href="https://en.wikipedia.org/wiki/Function_pointer">pointer to the function code</a>, plus a representation of the function&rsquo;s lexical environment (i.e., the set of available variables) at the time when the closure was created. The referencing environment <a href="https://en.wikipedia.org/wiki/Name_binding">binds</a> the non-local names to the corresponding variables in the lexical environment at the time the closure is created, additionally extending their lifetime to at least as long as the lifetime of the closure itself. When the closure is *entered* at a later time, possibly with a different lexical environment, the function is executed with its non-local variables referring to the ones captured by the closure, not the current environment.</p>
+</blockquote>
+
+<h3 id="闭包的意义:9832bcef4d84f38f7ad4bc607eea0d15">闭包的意义</h3>
+
+<blockquote>
+<p>因为闭包只有在被调用时才执行操作，即“<a href="https://zh.wikipedia.org/wiki/%E6%83%B0%E6%80%A7%E6%B1%82%E5%80%BC">惰性求值</a>”，所以它可以被用来定义控制结构。例如：在<a href="https://zh.wikipedia.org/wiki/Smalltalk">Smalltalk</a>语言中，所有的控制结构，包括分歧条件(if/then/else)和循环(while和for)，都是通过闭包实现的。用户也可以使用闭包定义自己的控制结构。</p>
+</blockquote>
+
+<p>感受一下，一会儿看到各个语言的实现，就能有那种醍醐灌顶的感觉了。</p>
+
+<h3 id="不同语言对于闭包的另类实现:9832bcef4d84f38f7ad4bc607eea0d15">不同语言对于闭包的另类实现</h3>
+
+<p>解读完闭包了，聊一下，这个玩意最大的问题是什么？</p>
+
+<p><strong>作用域</strong> &ndash;&gt; 自由变量的作用域，导致自由变量的混乱管理。</p>
+
+<p>我将先以<code>javascript</code>为例，介绍最大的问题。</p>
+
+<p>然后，我再会分别介绍一下<code>java</code>以及<code>Object-C</code>为例子，解释一下其他语言是如何另类实现闭包，并怎么处理作用域的问题。</p>
+
+<h4 id="javascript-的闭包:9832bcef4d84f38f7ad4bc607eea0d15"><code>javascript</code>的闭包</h4>
+
+<pre><code class="language-javascript">// ECMAScript , javascript
+var f, g;
+function foo() {
+  var x; // 
+  f = function() { x = x + 1 ; return x; }; //
+  g = function() { x = x +5 ; return x; };	//
+  x = 1;
+  alert('inside foo, call to f(): ' + f()); // 2
+}
+foo();
+alert('call to g(): ' + g());  // 7
+alert('call to f(): ' + f());  // 8
+</code></pre>
+
+<p>可以看到结果为。</p>
+
+<p>如果我将输出顺序换一下呢？</p>
+
+<pre><code class="language-javascript">alert('call to f(): ' + f()); // 3
+alert('call to g(): ' + g()); // 8
+</code></pre>
+
+<p>给你们两分钟时间，再想一下。</p>
+
+<p>可以看到。在<code>foo</code>中声明的变量<code>x</code>，由于闭包的存在，导致<code>x</code>的作用域一直扩展到程序的底部，在<code>foo</code>函数结束后还一直坚挺的活着。（这是我们刚才已经知道了的。）</p>
+
+<p>不仅活着，还可以被更改，然后再使用！</p>
+
+<p>那么问题到底是什么呢？</p>
+
+<ol>
+<li>难以管理。</li>
+<li>持有。</li>
+</ol>
+
+<p>所以&hellip;</p>
+
+<h3 id="java-以及-object-c-对闭包的-实现:9832bcef4d84f38f7ad4bc607eea0d15"><code>JAVA</code> 以及<code>Object-C</code>对闭包的‘实现’</h3>
+
+<p>直接说，</p>
+
+<ul>
+<li><code>java</code>中是 匿名内部类</li>
+<li><code>object-c</code>中是 Block运用</li>
+</ul>
+
+<p>所以基于这点来讲，<code>java</code>更加面向对象一点，真的是很努力做到一切都是对象了。</p>
+
+<p>先看一下<code>java</code>代码吧：</p>
+
+<pre><code class="language-java">public void foo(){
+   final int x = 1 ; //
+
+  //f(lambda (x) -&gt; person.setAge(x));
+
+  f(new OnChangListner(){
+  		void onChang(){
+  			person.setAge(x);
+		}
+	});
+
+  // 当然方法f必须事先定义好
+}
+</code></pre>
+
+<p>然后再看一下<code>object-c</code>的BLOCK:</p>
+
+<pre><code class="language-objective-c">- (void)foo {
+    NSInteger x = 1;
+
+    void (^f) (NSInteger *) = ^(NSInteger *x)
+    {
+      x = 4; // 异常  
+      NSLog(@&quot;foodname:%@&quot;, x);
+    };
+}
+</code></pre>
+
+<p>有意思吧。</p>
+
+<p>这样既能完成传值，又成功的避开了作用域的问题。</p>
+
+<p>当然，本质上来讲，这已经不是闭包了。<code>java</code>里<code>onChang</code>中的<code>x</code>和定义的<code>x</code>其实已经不是一个内存了，而我们需要的不是一个内存，而是一个相同的值。</p>
+
+<p>这也是我为什么将实现两个字打上了引号。</p>
+
+<p>贴一下对于其他语言对于‘类’闭包的结构或者设计：</p>
+
+<pre><code>Callbacks (C)
+Local classes and Lambda functions (Java)
+Blocks (C, C++, Objective-C 2.0)
+Delegates (C#, D)
+Function objects (C++)
+Inline agents (Eiffel)
+</code></pre>
+
+<h3 id="思考:9832bcef4d84f38f7ad4bc607eea0d15">思考</h3>
+
+<p>说两句感悟，大家随便感受一下。</p>
+
+<ul>
+<li>所谓的设计模式也好，这种和闭包语法类似的东西也好。原因大多不是语言设计者要装x而搞出来的，大多数都是因为，内建不够。一个语言设计模式越多，或者说，为了一种实现折腾的过程越多，其实越代表语言的局限性越大。</li>
+<li>因为同时兼顾Android和iOS开发，所以可以明显感觉到，<code>object-c</code>的限制太多，或者说内建较差。所以才有swift，我也简单学习了swift的基础语法，可以说内建相当的不错。当然，java也不怎么样，新兴的很多语言对于设计要比java优秀很多（比如，方法可以多个返回）。</li>
+<li>学习其他语言。比我们想象的要简单的多。（抽空单独出文章）</li>
+</ul>
+
+<hr />
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "ZllBird";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "ZllBird";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="https://zllbird.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

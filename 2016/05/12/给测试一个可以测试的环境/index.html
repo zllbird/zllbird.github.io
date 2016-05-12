@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>给测试一个可以‘测试’的环境 &middot; 诸隆隆</title>
+
+  
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://zllbird.github.io/touch-icon-144-precomposed.png">
+  <link href="https://zllbird.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="我是一只小小鸟">
+  <meta name="keywords" content="开发">
+  
+</head>
+<body>
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>诸隆隆</h1>
+      <p class="lead">我要飞的更高</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/">主页</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91/">开发（Android &#43; iOS）</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E6%80%9D%E8%80%83/">思考</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E7%94%9F%E6%B4%BB/">生活</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2016 <a href="https://zllbird.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>给测试一个可以‘测试’的环境</h1>
+    <span class="post-date">May 12, 2016 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2016/05/12/%E7%BB%99%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%B5%8B%E8%AF%95%E7%9A%84%E7%8E%AF%E5%A2%83/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+    </span>
+    
+
+<h2 id="给测试一个可以-测试-的环境:58aa416285a8b6da672fedefb2540a53">给测试一个可以‘测试’的环境</h2>
+
+<hr />
+
+<p>也算是一点心得。随便聊几句，感受下。</p>
+
+<pre><code>现在的软件开发，至少有两个环境，一个是测试环境，用来开发、更改、调整代码，只提供给内部使用的环境。另一个是正式环境（线上环境），提供给外部使用的环境。当然，一般还有一个灰度测试环境，用于从测试环境到正式环境的缓冲带，给内部使用真实的环境。
+</code></pre>
+
+<p>废话说完。
+说实情，也是我准备更改的一件事情。<strong>不能给测试提供一个，可以有效用来进行测试的环境。</strong>
+测试本身，是存在大量重复和冗余工作，这点无法消除。但的确也存在，不必要的重复和冗余，导致测试的工作即便和饱和，但产品的质量却仍然得不到一个很好的保证。<em>（加上，我们的测试比较嫩，更容易被开发忽悠）。</em></p>
+
+<ol>
+<li><strong>提供给测试的环境不完整！</strong>对于测试来说，这是一个相当大的拖累，对于项目来说，这是一个非常错误的信息，会让项目的所以协作者都误以为达到了某种节点或者里程碑，但事实上，这本就应该是未达到测试标准。偷换了概念，用不完整掩盖未达标，从而将工作转移到了修复和维护上，自然加重了测试的工作量。可怜的是，包括工程师在内，都不是有意为之，因为工程师在这个环节中，也是受害者——提测后的压力本就大于开发期的压力。</li>
+<li><strong>提供给测试可以调控状况的能力！</strong>在阶段性测试中，经常会遇到，由于这样那样的原因，导致测试频繁的（过度频繁的）要求开发提供响应的状况，双方都在这过程中产生大量的相互等待和相互影响，这是一种高额成本的损耗，而且相当没有意义。（简单举例说明，测试经常需要开发更改标志性时间戳，更改对应账号的参数，更改客户端请求不同服务器等）事实上，这不仅仅是损耗，还有可能在相互的更改中，忽略其他相关的问题。这点颇有心得，开发总会忽略一些调控状态的输出，但如果发生一个测试经常会要求更改的状况的话，开发本就应该提供相应的输出。</li>
+<li><strong>给测试足够的否决权！</strong>说完两个硬环境，说一个软环境。测试本身有否决开发的权利，当然这点我们团队做的有些缺陷，仍然在补全中，但毋庸置疑。而我这次想说的却是，测试也有相当一部分否决<strong>产品</strong>的权利。这点我想了很久，对于小团队来说，测试是项目输出的第一道守护，很大程度上，测试对于项目输出的具体形态有着相当大影响，如此，否决<strong>产品</strong>很大程度上能制约乱改乱加现象，同时也能维护住成本。</li>
+</ol>
+
+<p>所以，尽早构建CI，绝对是测试的福音。自动构建系统，至少满足两点。
+1. <strong>不依赖开发，只需要开发做不定时的维护就可以。</strong>
+2. <strong>可以提供多种环境的构建。</strong>
+3. <strong>可以自动发布。</strong></p>
+
+<hr />
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "ZllBird";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "ZllBird";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="https://zllbird.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

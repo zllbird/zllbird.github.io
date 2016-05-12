@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>CI &middot; 诸隆隆</title>
+
+  
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://zllbird.github.io/touch-icon-144-precomposed.png">
+  <link href="https://zllbird.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="我是一只小小鸟">
+  <meta name="keywords" content="开发">
+  
+</head>
+<body>
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>诸隆隆</h1>
+      <p class="lead">我要飞的更高</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/">主页</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91/">开发（Android &#43; iOS）</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E6%80%9D%E8%80%83/">思考</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E7%94%9F%E6%B4%BB/">生活</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2016 <a href="https://zllbird.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>CI</h1>
+    <span class="post-date">May 12, 2016 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2016/05/12/ci/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+    </span>
+    
+
+<h2 id="android-ios-双平台搭建ci心得-jenkins-gitlab-gradle-android-xcode-ios-fir-im-分发:fdf16477251a83f9aa87d6f1a4ff3aeb">Android,iOS 双平台搭建CI心得（Jenkins + GitLab + Gradle(android)/Xcode(iOS) + fir.im(分发) ）</h2>
+
+<hr />
+
+<h3 id="概述:fdf16477251a83f9aa87d6f1a4ff3aeb">概述</h3>
+
+<p>由于上一篇写到想尽早搭建移动端的CI，这两天便一直折腾。总算有点结果，至于细致下来，还需要一些时间去专门调整后，再移交个QA。
+<em>去年写过一篇，关于使用jenkins如何为安卓搭建自动生成分发的平台，左边目录点击就能找到。</em></p>
+
+<p>自动构建平台：<code>jenkins</code>
+版本控制：<code>git</code>
+编译工具：<code>Gradle(android)</code>/<code>Xcode(iOS)</code>
+分发工具：<code>fir.im - fir-cl</code></p>
+
+<p>选择<code>jenkins</code>主要考虑到它比较稳定，另外一点是可以兼顾两个平台，别的平台大多数都是偏向<code>android</code>或者<code>iOS</code>中一个。别的不用说，分发工具选择<code>fir</code>,在实践中发觉fir平台很稳定，非常适合做分发平台，而且重要的是，<strong>免费</strong>。</p>
+
+<h3 id="android:fdf16477251a83f9aa87d6f1a4ff3aeb">Android</h3>
+
+<p><a href="https://zllbird.github.io/2015/11/30/android%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/">Android自动构建</a>
+这篇是我以前写的，是完全可行的。这里做一点改造。
+为满足，不同构建生成不同环境的APK包，而减少QA与开发之间沟通，并同时满足后台需要特定环境调试。所以构建平台要能提供相应的项目，释放开发的压力。
+具体改造：
+1. 为<code>Gradle</code>配置全局变量，然后方便管理启用环境。因为我是使用Gradle进行配置，所以也同样使用Gradle属性赋值直接进行环境的更改。</p>
+
+<pre><code># 在Gradle文件中，比如在我的项目中是 config.gradle
+
+task serverName {
+	println &quot;SEVER IS ${SEVER_CONFIG_CI}&quot;
+}
+
+# 配置 SEVER_CONFIG_CI 可以通过Gradle自定义属性，也可以通过JVM配置等，这里使用比较偷懒的方法，直接定义gradle中的属性配置,但要在前面添加ORG_GRADLE_PROJECT_作为前缀
+export ORG_GRADLE_PROJECT_SEVER_CONFIG_CI = 2
+
+#这个时候就可以直接在命令行里运行 gradle serverName ，就能看到 结果为SEVER IS 2
+
+</code></pre>
+
+<p>配置完后，只需要在编译前，运行一次这个命令，就能提供相应的服务器环境了。
+<img src="https://zllbird.github.io/images/auto-ci/3.png" alt="" />
+1. 将Gradle配置部署到jenkins上，一个项目对应一个环境，便于管理。具体步奏，在项目的配置中的&gt;构建&gt;增加构建步奏&gt;Execute shell ,输入刚才提到的配置。
+2. fir分发，用命令工具替换插件。原先用的插件支持并不友好（对我来说，命令行比较友好），所以这次fir提供了fir-cl工具后，便毅然决然的替换了原来的插件。步骤和2一样，只不过命令变成了</p>
+
+<pre><code>fir publish ${WORKSPACE}/app/build/outputs/apk/app-baidu-debug.apk -T {firToken}
+</code></pre>
+
+<p>当然，我是直接在构建中使用了，也可以选择构建后。如果选择构建后运操作&gt;增加构建后操作步奏&gt;Excute a set of scripts&gt;Build steps （或者Add a shell 将写好的脚本上传）
+<img src="https://zllbird.github.io/images/auto-ci/2.png" alt="" />
+最后立即构建，享受吧~~~</p>
+
+<h3 id="ios:fdf16477251a83f9aa87d6f1a4ff3aeb">iOS</h3>
+
+<p>iOS 由于编译软件的限制，所以只能有苹果系统，包含Xcode的机器才能集成这套CI。
+对于jenkins的安装这里不重复了，想了解的仍然是点击左边目录，Android自动构建里有。
+由于我的项目中有Cocopods，所以具体配置中有些坑要注意。</p>
+
+<ol>
+<li>Git拉去源码时可能会出现。十分钟就断开，导致项目拉去始终失败的可能。这里需要在项目配置中源码管理&gt;Additional Behaviours&gt;Advanced clone behaviours&gt;Timeout for clone and fetch operations 中填入一个较大的值，防止timeout。
+<img src="https://zllbird.github.io/images/auto-ci/4.png" alt="" /></li>
+<li>构建中，选择Xcode。具体配置实例如下：</li>
+</ol>
+
+<pre><code>Target: JenkinsCI
+Clean before build? YES
+Generate Archive? YES
+Pack application and build .ipa? YES
+.ipa filename pattern: ${VERSION}
+Output directory: ${workspace}/Builds/${BUILD_NUMBER}/${BUILD_ID}
+Unlock Keychain? YES
+Keychain path: ${HOME}/Library/Keychains/login.keychain
+Keychain password: your administrator user password
+Xcode Schema File: JenkinsCI
+Xcode Workspace File: ${WORKSPACE}/JenkinsCI
+Xcode Project Directory: ${WORKSPACE}
+Xcode Project File: ${WORKSPACE}/JenkinsCI
+Build output directory: ${WORKSPACE}/Build
+Provide version number and run avgtool? YES
+Technical version: ${BUILD_ID}
+</code></pre>
+
+<p>特别要注意xcode workspace file 。由于pod使用时是通过workspace而不是project，所以不配置这个，构建始终不会成功。
+1. fir分发。与android一样，这里我用了上面提到的第二种方法。
+   <img src="https://zllbird.github.io/images/auto-ci/1.png" alt="" /></p>
+
+<h3 id="未解决的问题:fdf16477251a83f9aa87d6f1a4ff3aeb">未解决的问题</h3>
+
+<p>iOS如何构建脚本生成不同环境。</p>
+
+<hr />
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "ZllBird";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "ZllBird";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="https://zllbird.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

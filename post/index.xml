@@ -7,8 +7,188 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2015 Copyright Text</copyright>
-    <lastBuildDate>Sat, 20 Feb 2016 16:33:44 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 May 2016 10:13:20 +0800</lastBuildDate>
     <atom:link href="https://zllbird.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>给测试一个可以‘测试’的环境</title>
+      <link>https://zllbird.github.io/2016/05/12/%E7%BB%99%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%B5%8B%E8%AF%95%E7%9A%84%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Thu, 12 May 2016 10:13:20 +0800</pubDate>
+      
+      <guid>https://zllbird.github.io/2016/05/12/%E7%BB%99%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%B5%8B%E8%AF%95%E7%9A%84%E7%8E%AF%E5%A2%83/</guid>
+      <description>
+
+&lt;h2 id=&#34;给测试一个可以-测试-的环境:58aa416285a8b6da672fedefb2540a53&#34;&gt;给测试一个可以‘测试’的环境&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;也算是一点心得。随便聊几句，感受下。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;现在的软件开发，至少有两个环境，一个是测试环境，用来开发、更改、调整代码，只提供给内部使用的环境。另一个是正式环境（线上环境），提供给外部使用的环境。当然，一般还有一个灰度测试环境，用于从测试环境到正式环境的缓冲带，给内部使用真实的环境。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;废话说完。
+说实情，也是我准备更改的一件事情。&lt;strong&gt;不能给测试提供一个，可以有效用来进行测试的环境。&lt;/strong&gt;
+测试本身，是存在大量重复和冗余工作，这点无法消除。但的确也存在，不必要的重复和冗余，导致测试的工作即便和饱和，但产品的质量却仍然得不到一个很好的保证。&lt;em&gt;（加上，我们的测试比较嫩，更容易被开发忽悠）。&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;提供给测试的环境不完整！&lt;/strong&gt;对于测试来说，这是一个相当大的拖累，对于项目来说，这是一个非常错误的信息，会让项目的所以协作者都误以为达到了某种节点或者里程碑，但事实上，这本就应该是未达到测试标准。偷换了概念，用不完整掩盖未达标，从而将工作转移到了修复和维护上，自然加重了测试的工作量。可怜的是，包括工程师在内，都不是有意为之，因为工程师在这个环节中，也是受害者——提测后的压力本就大于开发期的压力。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;提供给测试可以调控状况的能力！&lt;/strong&gt;在阶段性测试中，经常会遇到，由于这样那样的原因，导致测试频繁的（过度频繁的）要求开发提供响应的状况，双方都在这过程中产生大量的相互等待和相互影响，这是一种高额成本的损耗，而且相当没有意义。（简单举例说明，测试经常需要开发更改标志性时间戳，更改对应账号的参数，更改客户端请求不同服务器等）事实上，这不仅仅是损耗，还有可能在相互的更改中，忽略其他相关的问题。这点颇有心得，开发总会忽略一些调控状态的输出，但如果发生一个测试经常会要求更改的状况的话，开发本就应该提供相应的输出。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;给测试足够的否决权！&lt;/strong&gt;说完两个硬环境，说一个软环境。测试本身有否决开发的权利，当然这点我们团队做的有些缺陷，仍然在补全中，但毋庸置疑。而我这次想说的却是，测试也有相当一部分否决&lt;strong&gt;产品&lt;/strong&gt;的权利。这点我想了很久，对于小团队来说，测试是项目输出的第一道守护，很大程度上，测试对于项目输出的具体形态有着相当大影响，如此，否决&lt;strong&gt;产品&lt;/strong&gt;很大程度上能制约乱改乱加现象，同时也能维护住成本。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;所以，尽早构建CI，绝对是测试的福音。自动构建系统，至少满足两点。
+1. &lt;strong&gt;不依赖开发，只需要开发做不定时的维护就可以。&lt;/strong&gt;
+2. &lt;strong&gt;可以提供多种环境的构建。&lt;/strong&gt;
+3. &lt;strong&gt;可以自动发布。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>对于项目维护的思考</title>
+      <link>https://zllbird.github.io/2016/05/12/%E5%AF%B9%E4%BA%8E%E9%A1%B9%E7%9B%AE%E7%BB%B4%E6%8A%A4%E7%9A%84%E6%80%9D%E8%80%83/</link>
+      <pubDate>Thu, 12 May 2016 10:11:31 +0800</pubDate>
+      
+      <guid>https://zllbird.github.io/2016/05/12/%E5%AF%B9%E4%BA%8E%E9%A1%B9%E7%9B%AE%E7%BB%B4%E6%8A%A4%E7%9A%84%E6%80%9D%E8%80%83/</guid>
+      <description>
+
+&lt;h2 id=&#34;对于项目维护的思考:864c5fb8efa8298af296d9c83121ecb7&#34;&gt;对于项目维护的思考&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;漫谈。
+程序写多了，对于一个项目的维护久了，产生了一些特别不一样的想法，写下来，与人念叨念叨。&lt;/p&gt;
+
+&lt;h3 id=&#34;实际开发:864c5fb8efa8298af296d9c83121ecb7&#34;&gt;实际开发&lt;/h3&gt;
+
+&lt;p&gt;说维护，自然要从&lt;strong&gt;实际&lt;/strong&gt;开发说起。
+特别的聊一下加粗的这两个字，&lt;strong&gt;实际&lt;/strong&gt;。
+实际开发中，总是会有状况发生的，这是定律，所以，对于实际开发来说，我第一个想法就是短，准确说，别做太多事让整个开发周期拉长。短是方便控制，同时也便与紧急处理。实际落实过程中，总是会出现这样或者那样的妥协，我们尝试了很多办法去减少状况的发生，刚开始还不错，但随着这样或者那样制度的复杂度加深，效果却越来越小，甚至反弹。只能说，通过外力去减少异常状况的发生，有用，但没有那么有用。
+所以，把目光转回来。
+&lt;strong&gt;如何紧急处理紧急问题，成了实际开发中的最大的问题。&lt;/strong&gt;就如我刚才所说的那样，这其中总会掺杂着这样或者那样的妥协，这篇是技术文，暂时抛开产品的专业性，就技术而言。如何紧急处理问题？
+1. 减少复杂度。（&lt;strong&gt;这是最最重要的一条&lt;/strong&gt;）在绝大多数情况下，我们处理的问题本身的复杂度，不会超越技术本身的承受力。（相信我，超过的问题，一般都会有更牛的人在前面帮你开拓了）所以，大多数看起来复杂到不可控的问题，都是由于我们的认知不够，有可能是认知缺失，也有可能是疏忽，所以看起来很复杂。但实际却经不起推敲。所以，减少复杂度，我给的建议很简单，找到相关的人，坐下来，重新梳理之后，做减法，减掉不必要的复杂选项后，再做修复。减少复杂，不代表肯定是减少功能，这几年和产品的博弈过程中，每次找产品，产品都觉得是我在减功能，囧。&lt;strong&gt;重申一遍，梳理逻辑才是重中之重。&lt;/strong&gt;
+2. 解耦。紧急问题的处理，总会有那么一种‘写死’的方案，或者说，总有那么一种成本低但耦合度高的方案可以勉强解决问题。千万不要这么做，这就是‘泥石坑’（人月神话），除非你不考虑下个版本，否则，这只能让你下个月的工作大大增加。因为，你不得不用一个很高昂的成本来弥补你这个时候偷的懒。
+3. 尽早寻求帮助。紧急的问题加上时间的压榨，很容易让身处‘局里’的人盲目或者过激。不理智是留下遗留问题的根源，这里我自身也犯下了好几次错误。不得不说，坦诚承认，然后及时向他人寻求帮助是最好的对策，保证项目是首要，至于那一点点羞耻心真的不重要。因为纸包不住火，维护的时候终究还是要面对的。&lt;/p&gt;
+
+&lt;p&gt;其实，说了这么多，感觉都跑题了。其实，我想说，项目维护时流的汗水，都是开发时，你处理紧急问题时脑子进的水。
+&lt;strong&gt;不顾以后的维护，只图解决眼下的问题，终究是要偿还的。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;实际维护:864c5fb8efa8298af296d9c83121ecb7&#34;&gt;实际维护&lt;/h3&gt;
+
+&lt;p&gt;维护或者优化。最重要的是：&lt;strong&gt;千万改完一个bug，又改出来一个。&lt;/strong&gt;
+然后，这个事情基本上是我所见到的实际维护过程中最高频率出现的事情之一。而其中大多数原因，就是缺少思考的修改了原来的代码。这么讲的话，难道维护或者优化的时候修复一个bug，要来来回回的思考和判断逻辑才能改原来的代码吗？全部这么做的话，成本岂不是太过于高昂了。
+&lt;strong&gt;不好意思，的确是这样的。维护时期修复一个问题，要比开发时期困难很多很多。&lt;/strong&gt;在一个勉强称得上稳定的系统上（默认上线的版本是较为稳定的版本），是它变得更加稳定和可靠是一件很难得事情。因为任何的修改的前提是，不能破坏原来的稳定。一句，不能破坏原来的稳定，就是最大的成本。
+同时，维护还要尽量保证后来的维护或者优化能顺利进行，所以刚才的123点同时也是要注意。
+也再说几点我的心得。
+1. 时间是最大的成本。相信没有真正的维护时期，都是或多或少掺杂着新的开发，所以所谓的维护时间，并没有想象中的那么长。同时，人们总有种倾向，会认为新开发的优先级会高于旧维护的，毕竟，一个已经有了只是存在问题，另一个还没有。这种倾向会传染，让我们不自主的给维护更少的时间。
+2. 拒绝拖延。程序开发里有一个不成名的定律，但凡说，以后改的问题，最终也没有改。说下一次就修复的事情，再也没有出现过下一次。这是个很伤心的事情，人始终不断的尝试或者做新的事情，的确能获得很多，同样，在修复和更改中，也能获得同样多，但却很少有人这么做。鸡汤说完，说实情。如果旧的问题始终不处理，会导致新的功能的不完整，连带出来很多新的问题。很少有功能或者说需求是完全和旧版本脱离的，自然使用也要不断使用旧版本中已经完成的功能，所以，拖延只能导致不断前进的步伐陷入‘坑’，举步维艰。&lt;/p&gt;
+
+&lt;p&gt;随便写点，先写这么多吧。&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>CI</title>
+      <link>https://zllbird.github.io/2016/05/12/ci/</link>
+      <pubDate>Thu, 12 May 2016 10:09:32 +0800</pubDate>
+      
+      <guid>https://zllbird.github.io/2016/05/12/ci/</guid>
+      <description>
+
+&lt;h2 id=&#34;android-ios-双平台搭建ci心得-jenkins-gitlab-gradle-android-xcode-ios-fir-im-分发:fdf16477251a83f9aa87d6f1a4ff3aeb&#34;&gt;Android,iOS 双平台搭建CI心得（Jenkins + GitLab + Gradle(android)/Xcode(iOS) + fir.im(分发) ）&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;概述:fdf16477251a83f9aa87d6f1a4ff3aeb&#34;&gt;概述&lt;/h3&gt;
+
+&lt;p&gt;由于上一篇写到想尽早搭建移动端的CI，这两天便一直折腾。总算有点结果，至于细致下来，还需要一些时间去专门调整后，再移交个QA。
+&lt;em&gt;去年写过一篇，关于使用jenkins如何为安卓搭建自动生成分发的平台，左边目录点击就能找到。&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;自动构建平台：&lt;code&gt;jenkins&lt;/code&gt;
+版本控制：&lt;code&gt;git&lt;/code&gt;
+编译工具：&lt;code&gt;Gradle(android)&lt;/code&gt;/&lt;code&gt;Xcode(iOS)&lt;/code&gt;
+分发工具：&lt;code&gt;fir.im - fir-cl&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;选择&lt;code&gt;jenkins&lt;/code&gt;主要考虑到它比较稳定，另外一点是可以兼顾两个平台，别的平台大多数都是偏向&lt;code&gt;android&lt;/code&gt;或者&lt;code&gt;iOS&lt;/code&gt;中一个。别的不用说，分发工具选择&lt;code&gt;fir&lt;/code&gt;,在实践中发觉fir平台很稳定，非常适合做分发平台，而且重要的是，&lt;strong&gt;免费&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;android:fdf16477251a83f9aa87d6f1a4ff3aeb&#34;&gt;Android&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://zllbird.github.io/2015/11/30/android%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/&#34;&gt;Android自动构建&lt;/a&gt;
+这篇是我以前写的，是完全可行的。这里做一点改造。
+为满足，不同构建生成不同环境的APK包，而减少QA与开发之间沟通，并同时满足后台需要特定环境调试。所以构建平台要能提供相应的项目，释放开发的压力。
+具体改造：
+1. 为&lt;code&gt;Gradle&lt;/code&gt;配置全局变量，然后方便管理启用环境。因为我是使用Gradle进行配置，所以也同样使用Gradle属性赋值直接进行环境的更改。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 在Gradle文件中，比如在我的项目中是 config.gradle
+
+task serverName {
+	println &amp;quot;SEVER IS ${SEVER_CONFIG_CI}&amp;quot;
+}
+
+# 配置 SEVER_CONFIG_CI 可以通过Gradle自定义属性，也可以通过JVM配置等，这里使用比较偷懒的方法，直接定义gradle中的属性配置,但要在前面添加ORG_GRADLE_PROJECT_作为前缀
+export ORG_GRADLE_PROJECT_SEVER_CONFIG_CI = 2
+
+#这个时候就可以直接在命令行里运行 gradle serverName ，就能看到 结果为SEVER IS 2
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;配置完后，只需要在编译前，运行一次这个命令，就能提供相应的服务器环境了。
+&lt;img src=&#34;https://zllbird.github.io/images/auto-ci/3.png&#34; alt=&#34;&#34; /&gt;
+1. 将Gradle配置部署到jenkins上，一个项目对应一个环境，便于管理。具体步奏，在项目的配置中的&amp;gt;构建&amp;gt;增加构建步奏&amp;gt;Execute shell ,输入刚才提到的配置。
+2. fir分发，用命令工具替换插件。原先用的插件支持并不友好（对我来说，命令行比较友好），所以这次fir提供了fir-cl工具后，便毅然决然的替换了原来的插件。步骤和2一样，只不过命令变成了&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fir publish ${WORKSPACE}/app/build/outputs/apk/app-baidu-debug.apk -T {firToken}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然，我是直接在构建中使用了，也可以选择构建后。如果选择构建后运操作&amp;gt;增加构建后操作步奏&amp;gt;Excute a set of scripts&amp;gt;Build steps （或者Add a shell 将写好的脚本上传）
+&lt;img src=&#34;https://zllbird.github.io/images/auto-ci/2.png&#34; alt=&#34;&#34; /&gt;
+最后立即构建，享受吧~~~&lt;/p&gt;
+
+&lt;h3 id=&#34;ios:fdf16477251a83f9aa87d6f1a4ff3aeb&#34;&gt;iOS&lt;/h3&gt;
+
+&lt;p&gt;iOS 由于编译软件的限制，所以只能有苹果系统，包含Xcode的机器才能集成这套CI。
+对于jenkins的安装这里不重复了，想了解的仍然是点击左边目录，Android自动构建里有。
+由于我的项目中有Cocopods，所以具体配置中有些坑要注意。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Git拉去源码时可能会出现。十分钟就断开，导致项目拉去始终失败的可能。这里需要在项目配置中源码管理&amp;gt;Additional Behaviours&amp;gt;Advanced clone behaviours&amp;gt;Timeout for clone and fetch operations 中填入一个较大的值，防止timeout。
+&lt;img src=&#34;https://zllbird.github.io/images/auto-ci/4.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;构建中，选择Xcode。具体配置实例如下：&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;Target: JenkinsCI
+Clean before build? YES
+Generate Archive? YES
+Pack application and build .ipa? YES
+.ipa filename pattern: ${VERSION}
+Output directory: ${workspace}/Builds/${BUILD_NUMBER}/${BUILD_ID}
+Unlock Keychain? YES
+Keychain path: ${HOME}/Library/Keychains/login.keychain
+Keychain password: your administrator user password
+Xcode Schema File: JenkinsCI
+Xcode Workspace File: ${WORKSPACE}/JenkinsCI
+Xcode Project Directory: ${WORKSPACE}
+Xcode Project File: ${WORKSPACE}/JenkinsCI
+Build output directory: ${WORKSPACE}/Build
+Provide version number and run avgtool? YES
+Technical version: ${BUILD_ID}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;特别要注意xcode workspace file 。由于pod使用时是通过workspace而不是project，所以不配置这个，构建始终不会成功。
+1. fir分发。与android一样，这里我用了上面提到的第二种方法。
+   &lt;img src=&#34;https://zllbird.github.io/images/auto-ci/1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;未解决的问题:fdf16477251a83f9aa87d6f1a4ff3aeb&#34;&gt;未解决的问题&lt;/h3&gt;
+
+&lt;p&gt;iOS如何构建脚本生成不同环境。&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
     
     <item>
       <title>iOS实践：一次失败的重构记实</title>
@@ -2027,115 +2207,6 @@ btnRed.setLayoutParams(layoutParams);
 &lt;p&gt;Material 正在改变Android，相信以后的UI无论从实感还是物理感，都会更加贴合用户，贴近使用。&lt;/p&gt;
 
 &lt;hr /&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Git清理误传的文件</title>
-      <link>https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/</link>
-      <pubDate>Wed, 11 Nov 2015 09:53:37 +0800</pubDate>
-      
-      <guid>https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/</guid>
-      <description>
-
-&lt;h1 id=&#34;git清理误传的文件:2c3299dc152aba749c72550a3d365541&#34;&gt;Git清理误传的文件&lt;/h1&gt;
-
-&lt;p&gt;​   Git进行版本管理的时候，项目中很多文件(配置文件，自动生成文件，构建生成文件，依赖包等)是不需要同步上传到服务器。一方面，造成文件的多余，另一方面，如本地配置文件（&lt;code&gt;local.properties&lt;/code&gt;），不同人员的来回提交，则会造成同步开发人员的版本混乱——不断地解决重复冲突，这是相当不值得的。&lt;/p&gt;
-
-&lt;p&gt;​   Git提供了一种忽略机制——gitignore。本质上也是一种Git配置，类似于配置文件。将配置文件中相关文件忽略，写法与Android工程是熟悉的混淆配置文件（&lt;code&gt;proguard-rules.pro&lt;/code&gt;）非常相似。功能也是将&lt;code&gt;.gitignore&lt;/code&gt;里面配置好的文件忽略，或者说是剔除，不让此文件加入版本控制。&lt;/p&gt;
-
-&lt;p&gt;​   关于gitignore的详细介绍请&lt;a href=&#34;http://git.oschina.net/progit/&#34;&gt;参考这里,第二章基础&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;​   显然，对于我这种Git新手，很可能知道这些的时候，已经把配置文件都扔到服务器上了。然后，一阵胡搞乱搞…（都是满纸辛酸泪），其实根本原因还是对Git本身理解不够。接下来，简单介绍一下做法，以及远离。&lt;/p&gt;
-
-&lt;p&gt;​   解决步奏：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;将配置文件文件名（如&lt;code&gt;local.properties&lt;/code&gt;）放到.gitignore里。&lt;/li&gt;
-&lt;li&gt;检查工作空间里是否还有这个文件（如，在配置文件里随便改点，然后，git status检查工作空间里是否存在）&lt;/li&gt;
-&lt;li&gt;如果不存在，你可以关掉网页了。如果存在，备份，然后删除它！！！（直接在shell里rm）&lt;/li&gt;
-&lt;li&gt;然后 add , commit ,push 一套走下来。&lt;/li&gt;
-&lt;li&gt;查看远程git服务器端也没有这个文件。&lt;/li&gt;
-&lt;li&gt;然后，把刚才备份的文件拿回来。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;写到这，突然觉得自己好无聊啊好无聊，这么特么的不就是删了就完了。好吧，我承认，这就是&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;接下来说说我的理解，Git的版本控制其实本质上是对文件的操作跟踪。所以，一旦进入了版本控制，跟踪系统就会去记录它（这个文件）上发生的所有操作，即便把它放到忽略文件里也同样。因为忽略是晚于跟踪的，也就是说，只有未被跟踪的文件才有被忽略的权利。&lt;/p&gt;
-
-&lt;p&gt;下面是 git status 中对于修改的文件和刚刚加入的文件的显示&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/git-untruck.png&#34; alt=&#34;git-untruck&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这个时候，上面两个文件是无法被忽略的，而add.txt，是可以被忽略的。&lt;/p&gt;
-
-&lt;p&gt;这也刚才我们必须先删除，再拿回来的原因。&lt;/p&gt;
-
-&lt;p&gt;附上Android常用的.gitgnore。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# built application files
-*.ap_
-
-# files for the dex VM
-*.dex
-*.iml
-
-# Java class files
-*.class
-
-# generated files
-bin/
-gen/
-*target/
-*build/
-*build*
-.gradle/
-.idea/
-
-gen-external-apklibs/
-
-# Local configuration file (sdk path, etc)
-/library_wheel/build
-local.properties
-
-# Eclipse project files
-.classpath
-.project
-
-# Mac os
-.DS_Store
-
-# DEBUG
-captures/
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>second</title>
-      <link>https://zllbird.github.io/2015/11/03/second/</link>
-      <pubDate>Tue, 03 Nov 2015 15:08:38 +0800</pubDate>
-      
-      <guid>https://zllbird.github.io/2015/11/03/second/</guid>
-      <description>
-
-&lt;h1 id=&#34;想试一下自动部署脚本:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;想试一下自动部署脚本&lt;/h1&gt;
-
-&lt;p&gt;还有大师傅的歌真的很不好听~~~&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>执着</title>
-      <link>https://zllbird.github.io/2015/11/02/%E6%89%A7%E7%9D%80/</link>
-      <pubDate>Mon, 02 Nov 2015 16:35:33 +0800</pubDate>
-      
-      <guid>https://zllbird.github.io/2015/11/02/%E6%89%A7%E7%9D%80/</guid>
-      <description>
-
-&lt;h2 id=&#34;只是执着而已:c569c2cd856bd99d2e5fbc2283c59759&#34;&gt;只是执着而已&lt;/h2&gt;
-
-&lt;p&gt;最近，&lt;/p&gt;
 </description>
     </item>
     

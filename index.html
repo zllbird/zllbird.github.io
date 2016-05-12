@@ -80,6 +80,51 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="https://zllbird.github.io/2016/05/12/%E7%BB%99%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%B5%8B%E8%AF%95%E7%9A%84%E7%8E%AF%E5%A2%83/">给测试一个可以‘测试’的环境</a>
+      </h1>
+      <span class="post-date">May 12, 2016 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2016/05/12/%E7%BB%99%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%B5%8B%E8%AF%95%E7%9A%84%E7%8E%AF%E5%A2%83/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+      </span>
+      
+      给测试一个可以‘测试’的环境 也算是一点心得。随便聊几句，感受下。 现在的软件开发，至少有两个环境，一个是测试环境，用来开发、更改、调整代码，只提供给内部使用的环境。另一个是正式环境（线上环境），提供给外部使用的环境。当然，一般还有一个灰度测试环境，用于从测试环境到正式环境的缓冲带，给内部使用真实的环境。 废话说完。 说实情，也是我准备更改的一件事情。不能给测试提供一个，可以有效用来进行测试的环境。 测试本身，是存在大量重复和冗余工作，这点无法消除。但的确也存在，不必要的重复和冗余，导致测试的工作即便和饱和，但产品的质量却仍然得不到一个很好的保证。（加上，我们的测试比较嫩，更容易被开发忽悠）。 提供给测试的环境不完整！对于测试来说，这是一个相当大的拖累，对于项目来说，这是一个非常错误的信息，会让项目的所以协作者都误以为达到了某种节点或者里程碑，但事实上，这本就应该是未达到测试标准。偷换了概念，用不完整掩盖未达标，从而将工作转移到了修复和维护上，自然加重了测试的工作量。可怜的是，包括工程师在内，都不是有意为之，因为工程师在这个环节中，也是受害者——提测后的压力本就大于开发期的压力。 提供给测试可以调控状况的能力！在阶段性测试中，经常会遇到，由于这样那样的原因，导致测试频繁的（过度频繁的）要求开发提供响应的状况，双方都在这过程中产生大量的相互等待和相互影响，这是一种高额成本的损耗，而且相当没有意义。（简单举例说明，测试经常需要开发更改标志性时间戳，更改对应账号的参数，更改客户端请求不同服务器等）事实上，这不仅仅是损耗，还有可能在相互的更改中，忽略其他相关的问题。这点颇有心得，开发总会忽略一些调控状态的输出，但如果发生一个测试经常会要求更改的状况的话，开发本就应该提供相应的输出。 给测试足够的否决权！说完两个硬环境，说一个软环境。测试本身有否决开发的权利，当然这点我们团队做的有些缺陷，仍然在补全中，但毋庸置疑。而我这次想说的却是，测试也有相当一部分否决产品的权利。这点我想了很久，对于小团队来说，测试是项目输出的第一道守护，很大程度上，测试对于项目输出的具体形态有着相当大影响，如此，否决产品很大程度上能制约乱改乱加现象，同时也能维护住成本。 所以，尽早构建CI，绝对是测试的福音。自动构建系统，至少满足两点。 1. 不依赖开发，只需要开发做不定时的维护就可以。 2. 可以提供多种环境的构建。 3. 可以自动发布。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="https://zllbird.github.io/2016/05/12/%E5%AF%B9%E4%BA%8E%E9%A1%B9%E7%9B%AE%E7%BB%B4%E6%8A%A4%E7%9A%84%E6%80%9D%E8%80%83/">对于项目维护的思考</a>
+      </h1>
+      <span class="post-date">May 12, 2016 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2016/05/12/%E5%AF%B9%E4%BA%8E%E9%A1%B9%E7%9B%AE%E7%BB%B4%E6%8A%A4%E7%9A%84%E6%80%9D%E8%80%83/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+      </span>
+      
+      对于项目维护的思考 漫谈。 程序写多了，对于一个项目的维护久了，产生了一些特别不一样的想法，写下来，与人念叨念叨。 实际开发 说维护，自然要从实际开发说起。 特别的聊一下加粗的这两个字，实际。 实际开发中，总是会有状况发生的，这是定律，所以，对于实际开发来说，我第一个想法就是短，准确说，别做太多事让整个开发周期拉长。短是方便控制，同时也便与紧急处理。实际落实过程中，总是会出现这样或者那样的妥协，我们尝试了很多办法去减少状况的发生，刚开始还不错，但随着这样或者那样制度的复杂度加深，效果却越来越小，甚至反弹。只能说，通过外力去减少异常状况的发生，有用，但没有那么有用。 所以，把目光转回来。 如何紧急处理紧急问题，成了实际开发中的最大的问题。就如我刚才所说的那样，这其中总会掺杂着这样或者那样的妥协，这篇是技术文，暂时抛开产品的专业性，就技术而言。如何紧急处理问题？ 1. 减少复杂度。（这是最最重要的一条）在绝大多数情况下，我们处理的问题本身的复杂度，不会超越技术本身的承受力。（相信我，超过的问题，一般都会有更牛的人在前面帮你开拓了）所以，大多数看起来复杂到不可控的问题，都是由于我们的认知不够，有可能是认知缺失，也有可能是疏忽，所以看起来很复杂。但实际却经不起推敲。所以，减少复杂度，我给的建议很简单，找到相关的人，坐下来，重新梳理之后，做减法，减掉不必要的复杂选项后，再做修复。减少复杂，不代表肯定是减少功能，这几年和产品的博弈过程中，每次找产品，产品都觉得是我在减功能，囧。重申一遍，梳理逻辑才是重中之重。 2. 解耦。紧急问题的处理，总会有那么一种‘写死’的方案，或者说，总有那么一种成本低但耦合度高的方案可以勉强解决问题。千万不要这么做，这就是‘泥石坑’（人月神话），除非你不考虑下个版本，否则，这只能让你下个月的工作大大增加。因为，你不得不用一个很高昂的成本来弥补你这个时候偷的懒。 3. 尽早寻求帮助。紧急的问题加上时间的压榨，很容易让身处‘局里’的人盲目或者过激。不理智是留下遗留问题的根源，这里我自身也犯下了好几次错误。不得不说，坦诚承认，然后及时向他人寻求帮助是最好的对策，保证项目是首要，至于那一点点羞耻心真的不重要。因为纸包不住火，维护的时候终究还是要面对的。 其实，说了这么多，感觉都跑题了。其实，我想说，项目维护时流的汗水，都是开发时，你处理紧急问题时脑子进的水。 不顾以后的维护，只图解决眼下的问题，终究是要偿还的。 实际维护 维护或者优化。最重要的是：千万改完一个bug，又改出来一个。 然后，这个事情基本上是我所见到的实际维护过程中最高频率出现的事情之一。而其中大多数原因，就是缺少思考的修改了原来的代码。这么讲的话，难道维护或者优化的时候修复一个bug，要来来回回的思考和判断逻辑才能改原来的代码吗？全部这么做的话，成本岂不是太过于高昂了。 不好意思，的确是这样的。维护时期修复一个问题，要比开发时期困难很多很多。在一个勉强称得上稳定的系统上（默认上线的版本是较为稳定的版本），是它变得更加稳定和可靠是一件很难得事情。因为任何的修改的前提是，不能破坏原来的稳定。一句，不能破坏原来的稳定，就是最大的成本。 同时，维护还要尽量保证后来的维护或者优化能顺利进行，所以刚才的123点同时也是要注意。 也再说几点我的心得。 1. 时间是最大的成本。相信没有真正的维护时期，都是或多或少掺杂着新的开发，所以所谓的维护时间，并没有想象中的那么长。同时，人们总有种倾向，会认为新开发的优先级会高于旧维护的，毕竟，一个已经有了只是存在问题，另一个还没有。这种倾向会传染，让我们不自主的给维护更少的时间。 2. 拒绝拖延。程序开发里有一个不成名的定律，但凡说，以后改的问题，最终也没有改。说下一次就修复的事情，再也没有出现过下一次。这是个很伤心的事情，人始终不断的尝试或者做新的事情，的确能获得很多，同样，在修复和更改中，也能获得同样多，但却很少有人这么做。鸡汤说完，说实情。如果旧的问题始终不处理，会导致新的功能的不完整，连带出来很多新的问题。很少有功能或者说需求是完全和旧版本脱离的，自然使用也要不断使用旧版本中已经完成的功能，所以，拖延只能导致不断前进的步伐陷入‘坑’，举步维艰。 随便写点，先写这么多吧。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="https://zllbird.github.io/2016/05/12/ci/">CI</a>
+      </h1>
+      <span class="post-date">May 12, 2016 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2016/05/12/ci/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+      </span>
+      
+      Android,iOS 双平台搭建CI心得（Jenkins + GitLab + Gradle(android)/Xcode(iOS) + fir.im(分发) ） 概述 由于上一篇写到想尽早搭建移动端的CI，这两天便一直折腾。总算有点结果，至于细致下来，还需要一些时间去专门调整后，再移交个QA。 去年写过一篇，关于使用jenkins如何为安卓搭建自动生成分发的平台，左边目录点击就能找到。 自动构建平台：jenkins 版本控制：git 编译工具：Gradle(android)/Xcode(iOS) 分发工具：fir.im - fir-cl 选择jenkins主要考虑到它比较稳定，另外一点是可以兼顾两个平台，别的平台大多数都是偏向android或者iOS中一个。别的不用说，分发工具选择fir,在实践中发觉fir平台很稳定，非常适合做分发平台，而且重要的是，免费。 Android Android自动构建 这篇是我以前写的，是完全可行的。这里做一点改造。 为满足，不同构建生成不同环境的APK包，而减少QA与开发之间沟通，并同时满足后台需要特定环境调试。所以构建平台要能提供相应的项目，释放开发的压力。 具体改造： 1. 为Gradle配置全局变量，然后方便管理启用环境。因为我是使用Gradle进行配置，所以也同样使用Gradle属性赋值直接进行环境的更改。 # 在Gradle文件中，比如在我的项目中是 config.gradle task serverName { println &quot;SEVER IS ${SEVER_CONFIG_CI}&quot; } # 配置 SEVER_CONFIG_CI 可以通过Gradle自定义属性，也可以通过JVM配置等，这里使用比较偷懒的方法，直接定义gradle中的属性配置,但要在前面添加ORG_GRADLE_PROJECT_作为前缀 export ORG_GRADLE_PROJECT_SEVER_CONFIG_CI = 2 #这个时候就可以直接在命令行里运行 gradle serverName ，就能看到 结果为SEVER IS 2 配置完后，只需要在编译前，运行一次这个命令，就能提供相应的服务器环境了。 1. 将Gradle配置部署到jenkins上，一个项目对应一个环境，便于管理。具体步奏，在项目的配置中的&gt;构建&gt;增加构建步奏&gt;Execute shell ,输入刚才提到的配置。 2. fir分发，用命令工具替换插件。原先用的插件支持并不友好（对我来说，命令行比较友好），所以这次fir提供了fir-cl工具后，便毅然决然的替换了原来的插件。步骤和2一样，只不过命令变成了 fir publish ${WORKSPACE}/app/build/outputs/apk/app-baidu-debug.apk -T {firToken} 当然，我是直接在构建中使用了，也可以选择构建后。如果选择构建后运操作&gt;增加构建后操作步奏&gt;Excute a set of scripts&gt;Build steps （或者Add a shell 将写好的脚本上传） 最后立即构建，享受吧~~~ iOS iOS 由于编译软件的限制，所以只能有苹果系统，包含Xcode的机器才能集成这套CI。 对于jenkins的安装这里不重复了，想了解的仍然是点击左边目录，Android自动构建里有。 由于我的项目中有Cocopods，所以具体配置中有些坑要注意。 Git拉去源码时可能会出现。十分钟就断开，导致项目拉去始终失败的可能。这里需要在项目配置中源码管理&gt;Additional Behaviours&gt;Advanced clone behaviours&gt;Timeout for clone and fetch operations 中填入一个较大的值，防止timeout。 构建中，选择Xcode。具体配置实例如下： Target: JenkinsCI Clean before build?
+      <a href="https://zllbird.github.io/2016/05/12/ci/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="https://zllbird.github.io/2016/02/20/ios%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%AC%A1%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%87%8D%E6%9E%84%E8%AE%B0%E5%AE%9E/">iOS实践：一次失败的重构记实</a>
       </h1>
       <span class="post-date">Feb 20, 2016 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2016/02/20/ios%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%AC%A1%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%87%8D%E6%9E%84%E8%AE%B0%E5%AE%9E/#disqus_thread">Comments</a>
@@ -165,51 +210,6 @@
       
       <p>关于苹果证书</p>
       <a href="https://zllbird.github.io/2016/01/11/%E5%85%B3%E4%BA%8E%E8%8B%B9%E6%9E%9C%E8%AF%81%E4%B9%A6/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/">CocoaLumberjack的集成和学习</a>
-      </h1>
-      <span class="post-date">Jan 9, 2016 &middot; 2 minute read &middot; <a href="https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/#disqus_thread">Comments</a>
-      
-      <br/>
-      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
-      </span>
-      
-      <p>CocoaLumberjack的集成和学习</p>
-      <a href="https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="https://zllbird.github.io/2015/11/30/android%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/">Android自动构建</a>
-      </h1>
-      <span class="post-date">Nov 30, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/30/android%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/#disqus_thread">Comments</a>
-      
-      <br/>
-      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
-      </span>
-      
-      Android自动构建发布实践 首先声明。 这主要不是讲教程，这是集成过程中遇到的坑！ 这主要不是讲教程，这是集成过程中遇到的坑！ 这主要不是讲教程，这是集成过程中遇到的坑！ 重要的事情说三遍。 集成工具 jenkins (CI) Git and GitLab(GitHub同理) Gradle (build 工具) fir （发布工具） 工具简单介绍一下， jenkins是现在比较主流的CI，也正是因此，上面的插件丰富，涵盖面也很广，更为重要的是，非常容易安装和配置，自然是首选。 Git 版本管理工具，就不用了讲解了。jenkins同时支持svn。（还是建议大家早点转到git上）公司现在的版本管理使用的是gitlab，类似github(github的迷你版)。 Gradle是现任Android构建，很是强大。至于grade配置，网上教程很多也很杂乱，建议大家跟随谷歌原版[Gradle 用户指南]() 这里再推荐一篇，个人认为对Gradle解读很到位的一篇文章。[深入理解gradle]() 开始集成 安装jenkins。 如果你是mac或者Linux，可以直接通过shell安装（推荐 ） $ brew install jenkins 如果没有brew，先安装Homebrew $ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 如果没有ruby&hellip; 请自行google。 启动 Jenkins $ jenkins 访问 Jenkins 请在浏览器输入地址: http://localhost:8080/ 使用安装包安装后会自动打开，如果端口冲突那么请修改端口 defaults write /Library/Preferences/org.jenkins-ci httpPort xxxx jenkins最基本的安装就完成了。然后，可以在浏览器输入地址查看一下。看到这样的画面，基本安装就完成了。 截图里包含两个，一个是通过web端浏览器访问得到的界面。另一个是shell的日志。 jenkins到此结束。开始使用jenkins，Android的构建之旅吧。 jenkins的插件安装 两种方式。这里以安装Git插件为例。 通过查询安装。 通过自行下载*.hpi , 然后通过高级安装。 选择系统管理，然后选择管理插件。 查询安装。 在插件管理界面，选择可选插件，然后在右边过滤器里筛选Git或GIT plugin 然后选择立刻安装。 自行下载*.hpi , 然后通过高级安装 然后选择上传。 遇到的坑 可以说刚开始我是一只使用第一种方法来安装插件的。结果失败率非常高。如果不自备梯子，失败率会更高！ 折腾了很长时间，而且搞得自己心里憔悴。 所以建议大家通过自己去jenkins的官网或镜像来下载hpi文件自行安装需要的插件。 还有，自备梯子是一种好习惯。 需要安装的插件 Git Gitlab Gitlab Hook (我一直安装不成功，所以自动push event 构建也还未成功) Gradle fir （官网有详尽的下载和安装教程） 到此为止，所有的环境都准备好了。终于可以开动了！ 自动化构建实例 jenkins中新建一个项目，命名后，选择 构建一个自由风格的软件项目。 项目名称。跳过 描述。跳过 … 各种跳过，直接进入源码管理。 源码管理 这里选的是Git，当然如果你只有现实svn的话，那就是你还没安装Git的插件，具体安装请看上文。 记住选择构建的分支。（这里是一个只含一个界面调试的项目，所以我直接用了master。建议，创建一个deploy发布或者debug这样的分支，确保每次构建都是可控的。） 注意到Credentials，这是身份验证。这里直接写了none，也就是说，没有直接验证身份。难道说，我的项目没加任何限制？？？ 当然，不是啦。Git的项目，无论是Github还是自己搭建的Gitlab，大多数都是通过ssh验证的。 可以点击Credentials 后面的Add 。 这样保证jenkins部署的机器的ssh私钥在服务上。 构建触发器 这就是传说中的自动构建。直接上图讲解。 这里有三种事件触发构建。 Build periodically 。 即定时触发，这里我写的是H 10 * * *，指的就是每天10点触发构建，也就是说，每天10天无论有没有新的代码部署，都会进行构建。 H 10 * * * 分 小时 天 月 年 // 五位分别指向轮询事件，这里H 和 0 差不多意思，就是不顾及 分，每天10天构建。 // * 指忽视 Build when a change is pushed to GitLab.
-      <a href="https://zllbird.github.io/2015/11/30/android%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="https://zllbird.github.io/2015/11/26/%E6%97%A5%E5%87%BA/">日出</a>
-      </h1>
-      <span class="post-date">Nov 26, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/26/%E6%97%A5%E5%87%BA/#disqus_thread">Comments</a>
-      
-      <br/>
-      <a class="label" href="https://zllbird.github.io/categories/%E7%94%9F%E6%B4%BB">生活</a>
-      </span>
-      
-      <p>日出，让你的脚步停一下</p>
-      <a href="https://zllbird.github.io/2015/11/26/%E6%97%A5%E5%87%BA/">Read On &rarr;</a>
       
     </div>
     

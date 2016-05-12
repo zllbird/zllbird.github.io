@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>对于项目维护的思考 &middot; 诸隆隆</title>
+
+  
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://zllbird.github.io/touch-icon-144-precomposed.png">
+  <link href="https://zllbird.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="我是一只小小鸟">
+  <meta name="keywords" content="开发">
+  
+</head>
+<body>
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>诸隆隆</h1>
+      <p class="lead">我要飞的更高</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/">主页</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91/">开发（Android &#43; iOS）</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E6%80%9D%E8%80%83/">思考</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E7%94%9F%E6%B4%BB/">生活</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2016 <a href="https://zllbird.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>对于项目维护的思考</h1>
+    <span class="post-date">May 12, 2016 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2016/05/12/%E5%AF%B9%E4%BA%8E%E9%A1%B9%E7%9B%AE%E7%BB%B4%E6%8A%A4%E7%9A%84%E6%80%9D%E8%80%83/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+    </span>
+    
+
+<h2 id="对于项目维护的思考:864c5fb8efa8298af296d9c83121ecb7">对于项目维护的思考</h2>
+
+<hr />
+
+<p>漫谈。
+程序写多了，对于一个项目的维护久了，产生了一些特别不一样的想法，写下来，与人念叨念叨。</p>
+
+<h3 id="实际开发:864c5fb8efa8298af296d9c83121ecb7">实际开发</h3>
+
+<p>说维护，自然要从<strong>实际</strong>开发说起。
+特别的聊一下加粗的这两个字，<strong>实际</strong>。
+实际开发中，总是会有状况发生的，这是定律，所以，对于实际开发来说，我第一个想法就是短，准确说，别做太多事让整个开发周期拉长。短是方便控制，同时也便与紧急处理。实际落实过程中，总是会出现这样或者那样的妥协，我们尝试了很多办法去减少状况的发生，刚开始还不错，但随着这样或者那样制度的复杂度加深，效果却越来越小，甚至反弹。只能说，通过外力去减少异常状况的发生，有用，但没有那么有用。
+所以，把目光转回来。
+<strong>如何紧急处理紧急问题，成了实际开发中的最大的问题。</strong>就如我刚才所说的那样，这其中总会掺杂着这样或者那样的妥协，这篇是技术文，暂时抛开产品的专业性，就技术而言。如何紧急处理问题？
+1. 减少复杂度。（<strong>这是最最重要的一条</strong>）在绝大多数情况下，我们处理的问题本身的复杂度，不会超越技术本身的承受力。（相信我，超过的问题，一般都会有更牛的人在前面帮你开拓了）所以，大多数看起来复杂到不可控的问题，都是由于我们的认知不够，有可能是认知缺失，也有可能是疏忽，所以看起来很复杂。但实际却经不起推敲。所以，减少复杂度，我给的建议很简单，找到相关的人，坐下来，重新梳理之后，做减法，减掉不必要的复杂选项后，再做修复。减少复杂，不代表肯定是减少功能，这几年和产品的博弈过程中，每次找产品，产品都觉得是我在减功能，囧。<strong>重申一遍，梳理逻辑才是重中之重。</strong>
+2. 解耦。紧急问题的处理，总会有那么一种‘写死’的方案，或者说，总有那么一种成本低但耦合度高的方案可以勉强解决问题。千万不要这么做，这就是‘泥石坑’（人月神话），除非你不考虑下个版本，否则，这只能让你下个月的工作大大增加。因为，你不得不用一个很高昂的成本来弥补你这个时候偷的懒。
+3. 尽早寻求帮助。紧急的问题加上时间的压榨，很容易让身处‘局里’的人盲目或者过激。不理智是留下遗留问题的根源，这里我自身也犯下了好几次错误。不得不说，坦诚承认，然后及时向他人寻求帮助是最好的对策，保证项目是首要，至于那一点点羞耻心真的不重要。因为纸包不住火，维护的时候终究还是要面对的。</p>
+
+<p>其实，说了这么多，感觉都跑题了。其实，我想说，项目维护时流的汗水，都是开发时，你处理紧急问题时脑子进的水。
+<strong>不顾以后的维护，只图解决眼下的问题，终究是要偿还的。</strong></p>
+
+<h3 id="实际维护:864c5fb8efa8298af296d9c83121ecb7">实际维护</h3>
+
+<p>维护或者优化。最重要的是：<strong>千万改完一个bug，又改出来一个。</strong>
+然后，这个事情基本上是我所见到的实际维护过程中最高频率出现的事情之一。而其中大多数原因，就是缺少思考的修改了原来的代码。这么讲的话，难道维护或者优化的时候修复一个bug，要来来回回的思考和判断逻辑才能改原来的代码吗？全部这么做的话，成本岂不是太过于高昂了。
+<strong>不好意思，的确是这样的。维护时期修复一个问题，要比开发时期困难很多很多。</strong>在一个勉强称得上稳定的系统上（默认上线的版本是较为稳定的版本），是它变得更加稳定和可靠是一件很难得事情。因为任何的修改的前提是，不能破坏原来的稳定。一句，不能破坏原来的稳定，就是最大的成本。
+同时，维护还要尽量保证后来的维护或者优化能顺利进行，所以刚才的123点同时也是要注意。
+也再说几点我的心得。
+1. 时间是最大的成本。相信没有真正的维护时期，都是或多或少掺杂着新的开发，所以所谓的维护时间，并没有想象中的那么长。同时，人们总有种倾向，会认为新开发的优先级会高于旧维护的，毕竟，一个已经有了只是存在问题，另一个还没有。这种倾向会传染，让我们不自主的给维护更少的时间。
+2. 拒绝拖延。程序开发里有一个不成名的定律，但凡说，以后改的问题，最终也没有改。说下一次就修复的事情，再也没有出现过下一次。这是个很伤心的事情，人始终不断的尝试或者做新的事情，的确能获得很多，同样，在修复和更改中，也能获得同样多，但却很少有人这么做。鸡汤说完，说实情。如果旧的问题始终不处理，会导致新的功能的不完整，连带出来很多新的问题。很少有功能或者说需求是完全和旧版本脱离的，自然使用也要不断使用旧版本中已经完成的功能，所以，拖延只能导致不断前进的步伐陷入‘坑’，举步维艰。</p>
+
+<p>随便写点，先写这么多吧。</p>
+
+<hr />
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "ZllBird";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "ZllBird";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="https://zllbird.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

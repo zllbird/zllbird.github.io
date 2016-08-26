@@ -79,6 +79,82 @@
     </item>
     
     <item>
+      <title>VPN</title>
+      <link>https://zllbird.github.io/2016/06/22/vpn/</link>
+      <pubDate>Wed, 22 Jun 2016 01:46:13 +0800</pubDate>
+      
+      <guid>https://zllbird.github.io/2016/06/22/vpn/</guid>
+      <description>
+
+&lt;h2 id=&#34;vpn:8b802a07289a50a309ec4f2889b43c33&#34;&gt;VPN&lt;/h2&gt;
+
+&lt;h3 id=&#34;自己安装配置客户端:8b802a07289a50a309ec4f2889b43c33&#34;&gt;自己安装配置客户端&lt;/h3&gt;
+
+&lt;p&gt;这是我（诸隆隆）自己搭建的vps，提供给我的朋友使用，请勿转给其他人使用，每月的流量有15G，过后非常昂贵，如果流量预警，我会关闭服务器，所以请节约使用!&lt;/p&gt;
+
+&lt;p&gt;网页浏览不会有问题，玩游戏和看视频会有卡顿，高清视频必定卡。&lt;/p&gt;
+
+&lt;p&gt;我搭建的 VPN 系统不同于常见的 PPTP L2TP 等隧道技术, 而是使用加密的 Socket 通信, 不容易被墙, 但是需要自己安装客户端使用.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;我的 Shadowsocks 帐号:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;服务器 IP : 54.199.227.151&lt;/p&gt;
+
+&lt;p&gt;端口号 : 8333&lt;/p&gt;
+
+&lt;p&gt;加密方式 : aes-256-cfb&lt;/p&gt;
+
+&lt;p&gt;密码 : （下面的是密码，注意前后端没有空格）&lt;/p&gt;
+
+&lt;p&gt;zll!@#vps$%^mm&amp;amp;*&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;如果服务器都不能正常使用，可能被防火墙封住等原因。可以直接联系我(诸隆隆，qq:784537229)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;mac-下的配置方式:8b802a07289a50a309ec4f2889b43c33&#34;&gt;&lt;strong&gt;Mac 下的配置方式&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;下载并安装 ShadowsocksX, 在 QQ 群共享文件中, 文件名为 ShadowsocksX-2.6.3.dmg&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装后运行, 在弹出窗口，点击&lt;code&gt;+&lt;/code&gt;新增服务器配置, 按照上面提供的信息完成配置并保存&lt;/li&gt;
+&lt;li&gt;系统右上角会出现一个飞机图标, 点击该图标, 确保服务器选中刚才配置好的(前面打对勾), 代理策略选择自动代理(前面打对勾). 这样即完成 vpn 的配置.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;该工具的自动代理使用了 gfwlist, 可以自动判断访问的地址是否需要翻墙. 配置完成后可以尝试打开 &lt;a href=&#34;https://www.facebook.com/&#34;&gt;facebook&lt;/a&gt; 和 &lt;a href=&#34;http://www.xiami.com/&#34;&gt;虾米音乐&lt;/a&gt;, 如果二者都能正常打开, 说明可以成功翻墙.&lt;/p&gt;
+
+&lt;h3 id=&#34;windows-下的配置方式:8b802a07289a50a309ec4f2889b43c33&#34;&gt;&lt;strong&gt;Windows 下的配置方式&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;下载并安装 shadowsocks-win, 在 QQ 群共享文件中.&lt;/p&gt;
+
+&lt;p&gt;Win 7 及以下 下载  Shadowsocks-win-2.4.zip&lt;/p&gt;
+
+&lt;p&gt;Win 8 / 10及以上 下载  Shadowsocks-win-dotnet4.0-2.5.2.zip&lt;/p&gt;
+
+&lt;p&gt;下载解压后可直接运行. 配置大致流程参考上一节中 Mac 下的配置方式. 如果有问题可以联系我&lt;/p&gt;
+
+&lt;h3 id=&#34;iphone-下的配置-已失效-iphone用户我正在想办法:8b802a07289a50a309ec4f2889b43c33&#34;&gt;&lt;strong&gt;iPhone 下的配置 （已失效，iPhone用户我正在想办法）&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;在苹果商店下载 Shadowsocks.&lt;/p&gt;
+
+&lt;p&gt;安装后的配置参考&lt;a href=&#34;https://github.com/shadowsocks/shadowsocks-iOS&#34;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;注意在 iPhone 下, 配置全局翻墙并将 shadowsocks 切到后台后, 只能保持链接十分钟左右, 之后需要重新切到 shadowsocks 将其唤醒, 就能自动链接上了. 这是 &lt;strong&gt;iOS系统&lt;/strong&gt; 的限制.&lt;/p&gt;
+
+&lt;p&gt;如果是使用 Shadowsocks 工具中自带的浏览器翻墙浏览网页, 则不会有这个问题.&lt;/p&gt;
+
+&lt;h3 id=&#34;android-下的配置:8b802a07289a50a309ec4f2889b43c33&#34;&gt;&lt;strong&gt;Android 下的配置&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;下载并安装 Shadowsocks-android.（用googleplay可以直接下，我正在做安装包，预计下个周能和大家见面）&lt;/p&gt;
+
+&lt;p&gt;安装后填写服务器配置, 路由设置为 全局,  打开服务即可使用了.&lt;/p&gt;
+
+&lt;p&gt;安卓不会存在 IOS 那样的链接时间限制.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>夏至</title>
       <link>https://zllbird.github.io/2016/06/22/%E5%A4%8F%E8%87%B3/</link>
       <pubDate>Wed, 22 Jun 2016 01:46:13 +0800</pubDate>
@@ -1402,117 +1478,6 @@ android {
 &lt;p&gt;在代码中可以直接使用&lt;code&gt;BuildConfig&lt;/code&gt;进行相关使用。&lt;/p&gt;
 
 &lt;p&gt;当然，更改&lt;code&gt;config.gradle&lt;/code&gt;不会进行重新构建，是不是棒棒哒！！！&lt;/p&gt;
-
-&lt;hr /&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>关于苹果证书</title>
-      <link>https://zllbird.github.io/2016/01/11/%E5%85%B3%E4%BA%8E%E8%8B%B9%E6%9E%9C%E8%AF%81%E4%B9%A6/</link>
-      <pubDate>Mon, 11 Jan 2016 20:43:23 +0800</pubDate>
-      
-      <guid>https://zllbird.github.io/2016/01/11/%E5%85%B3%E4%BA%8E%E8%8B%B9%E6%9E%9C%E8%AF%81%E4%B9%A6/</guid>
-      <description>
-
-&lt;h2 id=&#34;关于苹果证书:e17706f6098990c313a029f4b1ce2f78&#34;&gt;关于苹果证书&lt;/h2&gt;
-
-&lt;h3 id=&#34;摘要:e17706f6098990c313a029f4b1ce2f78&#34;&gt;摘要：&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;苹果证书简介&lt;/li&gt;
-&lt;li&gt;具体解读&lt;/li&gt;
-&lt;li&gt;如何优雅地使用&lt;/li&gt;
-&lt;li&gt;关于苹果证书企业版的那些事儿&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;苹果证书简介:e17706f6098990c313a029f4b1ce2f78&#34;&gt;苹果证书简介&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;开发者证书（分为开发和发布两种，类型为&lt;strong&gt;ios Development,ios Distribution&lt;/strong&gt;），这个是最基础的，不论是真机调试，还是上传到appstore都是需要的，是一个基证书，用来证明自己开发者身份的。&lt;/li&gt;
-&lt;li&gt;appID,这是每一个应用的独立标识，在设置项中可以配置该应用的权限，比如是否用到了PassBook,GameCenter,以及更常见的push服务，如果选中了push服务，那么就可以创建生成下面第3条所提到的推送证书，所以，在所有和推送相关的配置中，首先要做的就是先开通支持推送服务的appID。&lt;/li&gt;
-&lt;li&gt;推送证书（分为开发和发布两种，类型分别为&lt;strong&gt;APNs Development ios,APNs Distribution ios&lt;/strong&gt;）,该证书在appID配置中创建生成，和开发者证书一样，安装到开发电脑上；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Provisioning Profiles&lt;/strong&gt;,这个东西是很有苹果特色的一个东西，我一般称之为PP文件，该文件将appID,开发者证书，硬件Device绑定到一块儿，在开发者中心配置好后可以添加到Xcode上，也可以直接在Xcode上连接开发者中心生成，真机调试时需要在PP文件中添加真机的udid；是真机调试和必架必备之珍品&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;具体解读:e17706f6098990c313a029f4b1ce2f78&#34;&gt;具体解读&lt;/h3&gt;
-
-&lt;p&gt;首先先说一下，苹果账号分两种，一种是$99 ,另一种是$299。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;$99&lt;/strong&gt;，个人或公司账号。可发布到App Store，这是最重要的。但不可以无限给设备分发，只能分发100个设备，根据UUID来唯一识别设备。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;$299&lt;/strong&gt;，企业账号。&lt;strong&gt;不可以发布到App Store&lt;/strong&gt;，这是最重要的。但可以无限分发，无限分发，无限分发。（但iOS的企业开发者信任调整了，所以虽可以任意分发，但需要安装后，手动在设置里先信任开发者，这点很讨厌）&lt;/p&gt;
-
-&lt;p&gt;然后开始解读上面提到的四种证书，先上图看一下，开发者中心的目录解读。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ok，基础了解之后。具体讲述一下，这堆乱起八糟的东西到底有什么用。&lt;/p&gt;
-
-&lt;p&gt;苹果为了保证开发者（就是交完钱的孩子），能安安全全的开发，开开心心的发布，而不交钱的孩子开发都比较困难，所以搞出了这一大套折腾的东西。&lt;/p&gt;
-
-&lt;h5 id=&#34;certificates-appid-bundle-id-provisioning-profiles-到底是怎么用的呢:e17706f6098990c313a029f4b1ce2f78&#34;&gt;Certificates，AppID(Bundle id)，Provisioning Profiles 。到底是怎么用的呢？&lt;/h5&gt;
-
-&lt;p&gt;Provisioning Profiles，可以理解为安装到苹果设备的认证，通俗讲就是能不能安装到苹果设备，就看Provisioning Profiles这把钥匙能不能用。能用，进门安装。不能，弹出一个提示&lt;strong&gt;无法安装&lt;/strong&gt;，就呵呵哒了。&lt;/p&gt;
-
-&lt;p&gt;既然如此，怎样才能生成一个Provisioning Profiles呢。看一下苹果这边生成Provisioning Profiles需要什么？&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_3.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_4.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_5.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;终于好了，将证书Certificates，AppID(Bundle id)，devices都选择完后，绑定到一起，成功召唤出神龙，帮你生成了这把钥匙。&lt;/p&gt;
-
-&lt;p&gt;那这把钥匙到底开的是哪扇门呢？&lt;strong&gt;是代码，是代码，是代码&lt;/strong&gt;！！！&lt;/p&gt;
-
-&lt;p&gt;看一下打包的时候，在哪里用到这个签名，在build setting 下。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_6.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;注意左上角是代码签名，代码签名！&lt;/p&gt;
-
-&lt;p&gt;所以上面那个图告诉我们的是，谁（*iOS Developer 或者iPhone Distribution*）给这段代码签名了，然后并配上了一把钥匙（Provisioning Profiles 描述文件，可以打开app store上的app，或者 可以打开  XC:AD HOC 私下分发的app等），共同组合一起完成了一个叫扩张名为ipa的打包文件。&lt;/p&gt;
-
-&lt;h3 id=&#34;如何优雅地使用:e17706f6098990c313a029f4b1ce2f78&#34;&gt;如何优雅地使用&lt;/h3&gt;
-
-&lt;p&gt;有这段主要是由于本公司混乱和冗余的证书把整个开发者中心搞得&amp;hellip;简直就是乌烟瘴气。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Certificates 是一定要通过电脑生成证书，然后提交网页签名的。所以，命名一定要特别的长，长到把此证书是何用，用在何处的信息尽量多的写。&lt;/li&gt;
-&lt;li&gt;appID ，也是有备注名的，备注名的，备注名的。所以，还是尽量多的写，尽量多的写。&lt;/li&gt;
-&lt;li&gt;Provisioning Profiles，尽量不要在网页生成下载，建议直接用Xcode生成。&lt;/li&gt;
-&lt;li&gt;协同开发者，下载Provisioning Profiles一定要用Xcode的account管理，一键下载安装。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;（选择xcode —&amp;gt; prefenerces—&amp;gt;accounts—&amp;gt;view details）&lt;/p&gt;
-
-&lt;p&gt;这里就可以下载所有的profiles。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_7.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;关于苹果证书企业版的那些事儿:e17706f6098990c313a029f4b1ce2f78&#34;&gt;关于苹果证书企业版的那些事儿&lt;/h3&gt;
-
-&lt;p&gt;刚才提到过，企业版证书就是价值299美元的那个。&lt;/p&gt;
-
-&lt;p&gt;和普通版本没有什么大的区别，就是Provisioning Profiles的生成中多了一个叫做&lt;code&gt;in-house&lt;/code&gt;的发布类型。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_8.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;只有这一点区别。&lt;/p&gt;
-
-&lt;p&gt;看一下生成后的描述文件有哪里不一样。可以看到类型不一样！！！&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_10.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;当然，打包的时候，build setting 中也要同时选中这个版的Provisioning Profiles。&lt;/p&gt;
-
-&lt;p&gt;然后选择&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://zllbird.github.io/images/apple_cerreq/apple_cerreq_9.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 </description>

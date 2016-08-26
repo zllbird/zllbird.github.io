@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>VPN &middot; 诸隆隆</title>
+
+  
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://zllbird.github.io/touch-icon-144-precomposed.png">
+  <link href="https://zllbird.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="我是一只小小鸟">
+  <meta name="keywords" content="生活,思考">
+  
+</head>
+<body>
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>诸隆隆</h1>
+      <p class="lead">我要飞的更高</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/">主页</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91/">开发（Android &#43; iOS）</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E6%80%9D%E8%80%83/">思考</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E7%94%9F%E6%B4%BB/">生活</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2016 <a href="https://zllbird.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>VPN</h1>
+    <span class="post-date">Jun 22, 2016 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2016/06/22/vpn/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="https://zllbird.github.io/categories/%E7%94%9F%E6%B4%BB">生活</a><a class="label" href="https://zllbird.github.io/categories/%E6%80%9D%E8%80%83">思考</a>
+    </span>
+    
+
+<h2 id="vpn:8b802a07289a50a309ec4f2889b43c33">VPN</h2>
+
+<h3 id="自己安装配置客户端:8b802a07289a50a309ec4f2889b43c33">自己安装配置客户端</h3>
+
+<p>这是我（诸隆隆）自己搭建的vps，提供给我的朋友使用，请勿转给其他人使用，每月的流量有15G，过后非常昂贵，如果流量预警，我会关闭服务器，所以请节约使用!</p>
+
+<p>网页浏览不会有问题，玩游戏和看视频会有卡顿，高清视频必定卡。</p>
+
+<p>我搭建的 VPN 系统不同于常见的 PPTP L2TP 等隧道技术, 而是使用加密的 Socket 通信, 不容易被墙, 但是需要自己安装客户端使用.</p>
+
+<p><strong>我的 Shadowsocks 帐号:</strong></p>
+
+<blockquote>
+<p>服务器 IP : 54.199.227.151</p>
+
+<p>端口号 : 8333</p>
+
+<p>加密方式 : aes-256-cfb</p>
+
+<p>密码 : （下面的是密码，注意前后端没有空格）</p>
+
+<p>zll!@#vps$%^mm&amp;*</p>
+</blockquote>
+
+<pre><code>如果服务器都不能正常使用，可能被防火墙封住等原因。可以直接联系我(诸隆隆，qq:784537229)
+</code></pre>
+
+<h3 id="mac-下的配置方式:8b802a07289a50a309ec4f2889b43c33"><strong>Mac 下的配置方式</strong></h3>
+
+<p>下载并安装 ShadowsocksX, 在 QQ 群共享文件中, 文件名为 ShadowsocksX-2.6.3.dmg</p>
+
+<ul>
+<li>安装后运行, 在弹出窗口，点击<code>+</code>新增服务器配置, 按照上面提供的信息完成配置并保存</li>
+<li>系统右上角会出现一个飞机图标, 点击该图标, 确保服务器选中刚才配置好的(前面打对勾), 代理策略选择自动代理(前面打对勾). 这样即完成 vpn 的配置.</li>
+</ul>
+
+<p>该工具的自动代理使用了 gfwlist, 可以自动判断访问的地址是否需要翻墙. 配置完成后可以尝试打开 <a href="https://www.facebook.com/">facebook</a> 和 <a href="http://www.xiami.com/">虾米音乐</a>, 如果二者都能正常打开, 说明可以成功翻墙.</p>
+
+<h3 id="windows-下的配置方式:8b802a07289a50a309ec4f2889b43c33"><strong>Windows 下的配置方式</strong></h3>
+
+<p>下载并安装 shadowsocks-win, 在 QQ 群共享文件中.</p>
+
+<p>Win 7 及以下 下载  Shadowsocks-win-2.4.zip</p>
+
+<p>Win 8 / 10及以上 下载  Shadowsocks-win-dotnet4.0-2.5.2.zip</p>
+
+<p>下载解压后可直接运行. 配置大致流程参考上一节中 Mac 下的配置方式. 如果有问题可以联系我</p>
+
+<h3 id="iphone-下的配置-已失效-iphone用户我正在想办法:8b802a07289a50a309ec4f2889b43c33"><strong>iPhone 下的配置 （已失效，iPhone用户我正在想办法）</strong></h3>
+
+<p>在苹果商店下载 Shadowsocks.</p>
+
+<p>安装后的配置参考<a href="https://github.com/shadowsocks/shadowsocks-iOS">官方文档</a></p>
+
+<p>注意在 iPhone 下, 配置全局翻墙并将 shadowsocks 切到后台后, 只能保持链接十分钟左右, 之后需要重新切到 shadowsocks 将其唤醒, 就能自动链接上了. 这是 <strong>iOS系统</strong> 的限制.</p>
+
+<p>如果是使用 Shadowsocks 工具中自带的浏览器翻墙浏览网页, 则不会有这个问题.</p>
+
+<h3 id="android-下的配置:8b802a07289a50a309ec4f2889b43c33"><strong>Android 下的配置</strong></h3>
+
+<p>下载并安装 Shadowsocks-android.（用googleplay可以直接下，我正在做安装包，预计下个周能和大家见面）</p>
+
+<p>安装后填写服务器配置, 路由设置为 全局,  打开服务即可使用了.</p>
+
+<p>安卓不会存在 IOS 那样的链接时间限制.</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "ZllBird";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "ZllBird";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="https://zllbird.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

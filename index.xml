@@ -99,15 +99,13 @@
 &lt;p&gt;&lt;strong&gt;我的 Shadowsocks 帐号:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;服务器 IP : 54.199.227.151&lt;/p&gt;
+&lt;p&gt;服务器 IP :&lt;/p&gt;
 
 &lt;p&gt;端口号 : 8333&lt;/p&gt;
 
 &lt;p&gt;加密方式 : aes-256-cfb&lt;/p&gt;
 
 &lt;p&gt;密码 : （下面的是密码，注意前后端没有空格）&lt;/p&gt;
-
-&lt;p&gt;zll!@#vps$%^mm&amp;amp;*&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;pre&gt;&lt;code&gt;如果服务器都不能正常使用，可能被防火墙封住等原因。可以直接联系我(诸隆隆，qq:784537229)

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>切换IM方案以及流程 &middot; 诸隆隆</title>
+
+  
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="https://zllbird.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://zllbird.github.io/touch-icon-144-precomposed.png">
+  <link href="https://zllbird.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="我是一只小小鸟">
+  <meta name="keywords" content="">
+  
+</head>
+<body>
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>诸隆隆</h1>
+      <p class="lead">我要飞的更高</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/">主页</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91/">开发（Android &#43; iOS）</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E6%80%9D%E8%80%83/">思考</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E7%94%9F%E6%B4%BB/">生活</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://zllbird.github.io/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="https://zllbird.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>切换IM方案以及流程</h1>
+    <span class="post-date">Aug 31, 2016 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2016/08/31/%E5%88%87%E6%8D%A2im%E6%96%B9%E6%A1%88%E4%BB%A5%E5%8F%8A%E6%B5%81%E7%A8%8B/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="https://zllbird.github.io/categories/"></a>
+    </span>
+    
+
+<h2 id="切换im方案以及流程:e85de262239ed3e1368d4a8096a70e96">切换IM方案以及流程</h2>
+
+<p>新版本和旧版本不相互通信，虽然这个逻辑很蛋疼，但最安全。</p>
+
+<h3 id="im迁移:e85de262239ed3e1368d4a8096a70e96">IM迁移</h3>
+
+<ul>
+<li>用户迁移，直接从服务器重新生成用户使用。</li>
+<li>基础消息类型迁移，主要是逻辑迁移，UI不动</li>
+<li>自定义消息类型迁移，主要是逻辑迁移，UI不动（较为繁琐和复杂，主要是处理各种自定义消息的逻辑） <strong>（困难）</strong></li>
+</ul>
+
+<p>预计周期，前端一个周，后端也要大半个周。
+风险：自定义消息的处理</p>
+
+<h3 id="本地化数据迁移:e85de262239ed3e1368d4a8096a70e96">本地化数据迁移</h3>
+
+<p>本地数据的迁移风险很高。环信是登录后才能查阅本地数据，所以如果到时候环信停了，这个功能就相当于白做了。因为登不上环信，也取不出来本地聊天记录。
+* 本地会话转存数据库
+* 本地聊天记录转存数据库</p>
+
+<p>预计周期：2-3天。
+风险: 环信关闭。</p>
+
+<h3 id="如果新旧版本兼容:e85de262239ed3e1368d4a8096a70e96">如果新旧版本兼容</h3>
+
+<p>两个方案：
+1. 环信和百川中间搭建消息路由。（这个逻辑上可以，但实践基本不可能，我们不可能要环信去请求百川服务的&hellip;）
+2. 新版本同时发送新旧两个消息。（需要新版本同时处理两个消息的收发，会不稳定，主要不稳定体现在环信和百川两个长连接服务会抢夺资源，造成不稳定，开发周期和风险也很高，最蛋疼的是，环信如果被关闭后，这个直接没用了）</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "ZllBird";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "ZllBird";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="https://zllbird.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

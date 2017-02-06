@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coder-bird</title>
+    <link>https://zllbird.github.io/categories/</link>
+    <description>Recent content on Coder-bird</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <lastBuildDate>Wed, 31 Aug 2016 18:42:34 +0800</lastBuildDate>
+    <atom:link href="https://zllbird.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>最好的时代，最差的时代</title>
+      <link>https://zllbird.github.io/2016/08/31/%E6%9C%80%E5%A5%BD%E7%9A%84%E6%97%B6%E4%BB%A3%E6%9C%80%E5%B7%AE%E7%9A%84%E6%97%B6%E4%BB%A3/</link>
+      <pubDate>Wed, 31 Aug 2016 18:42:34 +0800</pubDate>
+      
+      <guid>https://zllbird.github.io/2016/08/31/%E6%9C%80%E5%A5%BD%E7%9A%84%E6%97%B6%E4%BB%A3%E6%9C%80%E5%B7%AE%E7%9A%84%E6%97%B6%E4%BB%A3/</guid>
+      <description>
+
+&lt;h2 id=&#34;切换im方案以及流程:e85de262239ed3e1368d4a8096a70e96&#34;&gt;切换IM方案以及流程&lt;/h2&gt;
+
+&lt;p&gt;新版本和旧版本不相互通信，虽然这个逻辑很蛋疼，但最安全。&lt;/p&gt;
+
+&lt;h3 id=&#34;im迁移:e85de262239ed3e1368d4a8096a70e96&#34;&gt;IM迁移&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用户迁移，直接从服务器重新生成用户使用。&lt;/li&gt;
+&lt;li&gt;基础消息类型迁移，主要是逻辑迁移，UI不动&lt;/li&gt;
+&lt;li&gt;自定义消息类型迁移，主要是逻辑迁移，UI不动（较为繁琐和复杂，主要是处理各种自定义消息的逻辑） &lt;strong&gt;（困难）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;预计周期，前端一个周，后端也要大半个周。
+风险：自定义消息的处理&lt;/p&gt;
+
+&lt;h3 id=&#34;本地化数据迁移:e85de262239ed3e1368d4a8096a70e96&#34;&gt;本地化数据迁移&lt;/h3&gt;
+
+&lt;p&gt;本地数据的迁移风险很高。环信是登录后才能查阅本地数据，所以如果到时候环信停了，这个功能就相当于白做了。因为登不上环信，也取不出来本地聊天记录。
+* 本地会话转存数据库
+* 本地聊天记录转存数据库&lt;/p&gt;
+
+&lt;p&gt;预计周期：2-3天。
+风险: 环信关闭。&lt;/p&gt;
+
+&lt;h3 id=&#34;如果新旧版本兼容:e85de262239ed3e1368d4a8096a70e96&#34;&gt;如果新旧版本兼容&lt;/h3&gt;
+
+&lt;p&gt;两个方案：
+1. 环信和百川中间搭建消息路由。（这个逻辑上可以，但实践基本不可能，我们不可能要环信去请求百川服务的&amp;hellip;）
+2. 新版本同时发送新旧两个消息。（需要新版本同时处理两个消息的收发，会不稳定，主要不稳定体现在环信和百川两个长连接服务会抢夺资源，造成不稳定，开发周期和风险也很高，最蛋疼的是，环信如果被关闭后，这个直接没用了）&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

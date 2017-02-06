@@ -70,7 +70,7 @@
 
     
 
-    <p>Copyright &copy; 2016 <a href="https://zllbird.github.io/license/">License</a><br/>
+    <p>Copyright &copy; 2017 <a href="https://zllbird.github.io/license/">License</a><br/>
        Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -79,6 +79,21 @@
 <div class="content container">
   <div class="posts">
     
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="https://zllbird.github.io/2016/05/12/%E7%BB%99%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%B5%8B%E8%AF%95%E7%9A%84%E7%8E%AF%E5%A2%83/">给测试一个可以‘测试’的环境</a>
+      </h1>
+      <span class="post-date">May 12, 2016 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2016/05/12/%E7%BB%99%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%B5%8B%E8%AF%95%E7%9A%84%E7%8E%AF%E5%A2%83/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+      </span>
+      
+      给测试一个可以‘测试’的环境 也算是一点心得。随便聊几句，感受下。 现在的软件开发，至少有两个环境，一个是测试环境，用来开发、更改、调整代码，只提供给内部使用的环境。另一个是正式环境（线上环境），提供给外部使用的环境。当然，一般还有一个灰度测试环境，用于从测试环境到正式环境的缓冲带，给内部使用真实的环境。 废话说完。 说实情，也是我准备更改的一件事情。不能给测试提供一个，可以有效用来进行测试的环境。 测试本身，是存在大量重复和冗余工作，这点无法消除。但的确也存在，不必要的重复和冗余，导致测试的工作即便和饱和，但产品的质量却仍然得不到一个很好的保证。（加上，我们的测试比较嫩，更容易被开发忽悠）。 提供给测试的环境不完整！对于测试来说，这是一个相当大的拖累，对于项目来说，这是一个非常错误的信息，会让项目的所以协作者都误以为达到了某种节点或者里程碑，但事实上，这本就应该是未达到测试标准。偷换了概念，用不完整掩盖未达标，从而将工作转移到了修复和维护上，自然加重了测试的工作量。可怜的是，包括工程师在内，都不是有意为之，因为工程师在这个环节中，也是受害者——提测后的压力本就大于开发期的压力。 提供给测试可以调控状况的能力！在阶段性测试中，经常会遇到，由于这样那样的原因，导致测试频繁的（过度频繁的）要求开发提供响应的状况，双方都在这过程中产生大量的相互等待和相互影响，这是一种高额成本的损耗，而且相当没有意义。（简单举例说明，测试经常需要开发更改标志性时间戳，更改对应账号的参数，更改客户端请求不同服务器等）事实上，这不仅仅是损耗，还有可能在相互的更改中，忽略其他相关的问题。这点颇有心得，开发总会忽略一些调控状态的输出，但如果发生一个测试经常会要求更改的状况的话，开发本就应该提供相应的输出。 给测试足够的否决权！说完两个硬环境，说一个软环境。测试本身有否决开发的权利，当然这点我们团队做的有些缺陷，仍然在补全中，但毋庸置疑。而我这次想说的却是，测试也有相当一部分否决产品的权利。这点我想了很久，对于小团队来说，测试是项目输出的第一道守护，很大程度上，测试对于项目输出的具体形态有着相当大影响，如此，否决产品很大程度上能制约乱改乱加现象，同时也能维护住成本。 所以，尽早构建CI，绝对是测试的福音。自动构建系统，至少满足两点。 1. 不依赖开发，只需要开发做不定时的维护就可以。 2. 可以提供多种环境的构建。 3. 可以自动发布。
+      
+      
+    </div>
     
     <div class="post">
       <h1 class="post-title">
@@ -200,21 +215,6 @@
       
     </div>
     
-    <div class="post">
-      <h1 class="post-title">
-        <a href="https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/">CocoaLumberjack的集成和学习</a>
-      </h1>
-      <span class="post-date">Jan 9, 2016 &middot; 2 minute read &middot; <a href="https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/#disqus_thread">Comments</a>
-      
-      <br/>
-      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
-      </span>
-      
-      <p>CocoaLumberjack的集成和学习</p>
-      <a href="https://zllbird.github.io/2016/01/09/cocoalumberjack%E7%9A%84%E9%9B%86%E6%88%90%E5%92%8C%E5%AD%A6%E4%B9%A0/">Read On &rarr;</a>
-      
-    </div>
-    
     
     
     <ul class="pagination">
@@ -238,12 +238,15 @@
         ><a href="/page/3/">3</a></li>
         
         <li
+        ><a href="/page/4/">4</a></li>
+        
+        <li
         >
         <a href="/page/3/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/3/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/4/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

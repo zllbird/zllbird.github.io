@@ -82,6 +82,21 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/">Git清理误传的文件</a>
+      </h1>
+      <span class="post-date">Nov 11, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="https://zllbird.github.io/categories/%E5%BC%80%E5%8F%91">开发</a>
+      </span>
+      
+      Git清理误传的文件 ​ Git进行版本管理的时候，项目中很多文件(配置文件，自动生成文件，构建生成文件，依赖包等)是不需要同步上传到服务器。一方面，造成文件的多余，另一方面，如本地配置文件（local.properties），不同人员的来回提交，则会造成同步开发人员的版本混乱——不断地解决重复冲突，这是相当不值得的。 ​ Git提供了一种忽略机制——gitignore。本质上也是一种Git配置，类似于配置文件。将配置文件中相关文件忽略，写法与Android工程是熟悉的混淆配置文件（proguard-rules.pro）非常相似。功能也是将.gitignore里面配置好的文件忽略，或者说是剔除，不让此文件加入版本控制。 ​ 关于gitignore的详细介绍请参考这里,第二章基础 ​ 显然，对于我这种Git新手，很可能知道这些的时候，已经把配置文件都扔到服务器上了。然后，一阵胡搞乱搞…（都是满纸辛酸泪），其实根本原因还是对Git本身理解不够。接下来，简单介绍一下做法，以及远离。 ​ 解决步奏： 将配置文件文件名（如local.properties）放到.gitignore里。 检查工作空间里是否还有这个文件（如，在配置文件里随便改点，然后，git status检查工作空间里是否存在） 如果不存在，你可以关掉网页了。如果存在，备份，然后删除它！！！（直接在shell里rm） 然后 add , commit ,push 一套走下来。 查看远程git服务器端也没有这个文件。 然后，把刚才备份的文件拿回来。 写到这，突然觉得自己好无聊啊好无聊，这么特么的不就是删了就完了。好吧，我承认，这就是&hellip; 接下来说说我的理解，Git的版本控制其实本质上是对文件的操作跟踪。所以，一旦进入了版本控制，跟踪系统就会去记录它（这个文件）上发生的所有操作，即便把它放到忽略文件里也同样。因为忽略是晚于跟踪的，也就是说，只有未被跟踪的文件才有被忽略的权利。 下面是 git status 中对于修改的文件和刚刚加入的文件的显示 这个时候，上面两个文件是无法被忽略的，而add.txt，是可以被忽略的。 这也刚才我们必须先删除，再拿回来的原因。 附上Android常用的.gitgnore。 # built application files *.ap_ # files for the dex VM *.dex *.iml # Java class files *.class # generated files bin/ gen/ *target/ *build/ *build* .gradle/ .idea/ gen-external-apklibs/ # Local configuration file (sdk path, etc) /library_wheel/build local.properties
+      <a href="https://zllbird.github.io/2015/11/11/git%E6%B8%85%E7%90%86%E8%AF%AF%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="https://zllbird.github.io/2015/11/03/second/">second</a>
       </h1>
       <span class="post-date">Nov 3, 2015 &middot; 1 minute read &middot; <a href="https://zllbird.github.io/2015/11/03/second/#disqus_thread">Comments</a>
